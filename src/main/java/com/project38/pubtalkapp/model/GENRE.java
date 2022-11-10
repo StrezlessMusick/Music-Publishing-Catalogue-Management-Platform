@@ -1,0 +1,32 @@
+package com.project38.pubtalkapp.model;
+
+public enum GENRE {
+    POP,
+    DANCE_POP,
+    HOUSE,
+    TEEN_POP,
+    ELECTRO_HOUSE,
+    EDM,
+    POP_RAP,
+    POP_CHRISTMAS,
+    POP_ROCK,
+    RHYTHM_AND_BLUES,
+    BIG_ROOM,
+    ALTERNATIVE_HIP_HOP,
+    URBAN_CONTEMPORARY,
+    PROGRESSIVE_ELECTRO_HOUSE,
+    INDIE_RHYTHM_AND_BLUES,
+    INDIETRONICA,
+    PERMANENT_WAVE,
+    SYNTHPOP,
+    CONTEMPORARY_COUNTRY,
+    NEO_MELLOW,
+    DIRTY_SOUTH_RAP,
+    TRAP_MUSIC,
+    CLASSICAL,
+    JAZZ,
+    LOUNGE,
+    SOUL,
+    NEO_SOUL,
+    ROCK
+}

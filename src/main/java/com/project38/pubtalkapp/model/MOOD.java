@@ -24,5 +24,15 @@ public enum MOOD {
     AMUSING,
     JOYFUL,
     CHEERFUL,
-    MELODIC
+    MELODIC,
+    HAPPY,
+    EXCITED,
+    FEEL_GOOD,
+    SILLY,
+    OPTIMISTIC,
+    ANGRY,
+    BAD,
+    IRRITATED,
+    FRUSTRATED,
+    LOVING
 }

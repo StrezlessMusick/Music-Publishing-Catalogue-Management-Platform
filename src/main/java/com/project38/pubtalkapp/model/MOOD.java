@@ -23,5 +23,6 @@ public enum MOOD {
     PUMP_UP,
     AMUSING,
     JOYFUL,
-    CHEERFUL
+    CHEERFUL,
+    MELODIC
 }

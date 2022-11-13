@@ -5,7 +5,7 @@ public class Work {
     private Artist artist;
     private Project project;
     private String trackName;
-    private RightsOwner rightsOwner;
+//    private RightsOwner rightsOwner;
     private ISRC isrcNumber;
     private String copyrightCaseNumber;
     private PRO pro;

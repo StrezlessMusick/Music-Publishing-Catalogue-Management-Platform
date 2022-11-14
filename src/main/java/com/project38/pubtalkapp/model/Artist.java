@@ -5,18 +5,15 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Data
 @Entity
-@Table(name = "artists")
-@Getter
-@Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@Table(name = "artists")
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long artistId;
+    private Long id;
     @NotBlank(message = "Artist name is required!")
     private String artistName;
     @NotBlank(message = "Image url is required!")

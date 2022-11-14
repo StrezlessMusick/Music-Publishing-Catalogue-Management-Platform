@@ -5,18 +5,15 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
+@Data
 @Entity
-@Table(name = "tracks")
-@Getter
-@Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@Table(name = "tracks")
 public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long trackId;
+    private Long id;
     @NotBlank(message = "Track name is required!")
     private String trackName;
     @NotBlank(message = "Cover art url is required!")
@@ -25,8 +22,9 @@ public class Track {
     private Duration trackLength;
 
     @ManyToOne
-    private Artist artistName;
+    private Artist artist;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Project.class)
+    @JoinColumn(name = "project_id")
     private Project project;
 }

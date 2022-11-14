@@ -2,10 +2,7 @@ package com.project38.pubtalkapp.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
 @Entity
@@ -23,8 +20,12 @@ public class Track {
     private String trackName;
     @NotBlank(message = "Cover art url is required!")
     private String trackImageUrl;
-    @NotBlank(message = "Artist name is required!")
-    private String artistName;
     @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
+
+    @NotBlank(message = "Artist name is required!")
+    @ManyToOne(targetEntity = Artist.class)
+    private Artist artistName;
+    @ManyToOne(targetEntity = Project.class)
+    private Project projectName;
 }

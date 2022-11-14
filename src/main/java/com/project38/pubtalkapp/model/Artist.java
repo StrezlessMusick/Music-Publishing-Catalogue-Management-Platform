@@ -26,8 +26,4 @@ public class Artist {
     private PRO pro;
     @NotBlank(message = "Artist PRO IPI number is required!")
     private String proIPI;
-
-
-
-
 }

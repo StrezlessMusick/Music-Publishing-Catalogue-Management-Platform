@@ -24,7 +24,6 @@ public class Track {
     @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
 
-    @NotBlank(message = "Artist name is required!")
     @ManyToOne
     private Artist artistName;
 

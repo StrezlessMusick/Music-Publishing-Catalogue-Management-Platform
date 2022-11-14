@@ -6,8 +6,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "projects")
 @Getter
 @Setter
 @ToString
@@ -26,6 +28,6 @@ public class Project {
     private Integer numOfTracks;
     private Duration projectLength;
 
-    @OneToMany(targetEntity = Track.class)
-    private ArrayList<Track> trackList;
+    @OneToMany(mappedBy = "project")
+    private List<Track> trackList;
 }

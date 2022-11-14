@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
 @Entity
+@Table(name = "tracks")
 @Getter
 @Setter
 @ToString
@@ -24,8 +25,9 @@ public class Track {
     private Duration trackLength;
 
     @NotBlank(message = "Artist name is required!")
-    @ManyToOne(targetEntity = Artist.class)
+    @ManyToOne
     private Artist artistName;
-    @ManyToOne(targetEntity = Project.class)
-    private Project projectName;
+
+    @ManyToOne
+    private Project project;
 }

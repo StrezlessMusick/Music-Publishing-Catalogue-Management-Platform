@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -24,7 +27,6 @@ public class Track {
     @ManyToOne
     private Artist artist;
 
-    @ManyToOne(targetEntity = Project.class)
-    @JoinColumn(name = "project_id")
-    private Project project;
+    @ManyToMany(mappedBy = "trackList")
+    private List<Project> project = new ArrayList<>();
 }

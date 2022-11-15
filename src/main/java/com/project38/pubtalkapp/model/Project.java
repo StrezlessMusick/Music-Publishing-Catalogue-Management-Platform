@@ -25,6 +25,11 @@ public class Project {
     private Integer numOfTracks;
     private Duration projectLength;
 
-    @OneToMany(mappedBy = "project")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "project_track",
+            joinColumns = {@JoinColumn(name = "project_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+    )
     private List<Track> trackList = new ArrayList<>();
 }

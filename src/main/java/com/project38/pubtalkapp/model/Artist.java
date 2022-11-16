@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,4 +25,21 @@ public class Artist {
     private PRO pro;
     @NotBlank(message = "Artist PRO IPI number is required!")
     private String proIPI;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "artist_track",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+    )
+    private List<Track> artistTracks = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "artist_project",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")}
+    )
+    private List<Project> artistProjects = new ArrayList<>();
+
 }

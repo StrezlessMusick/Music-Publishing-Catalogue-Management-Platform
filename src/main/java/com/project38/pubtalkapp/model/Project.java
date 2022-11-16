@@ -25,6 +25,9 @@ public class Project {
     private Integer numOfTracks;
     private Duration projectLength;
 
+    @ManyToMany(mappedBy = "artistProjects")
+    private List<Artist> artist = new ArrayList<>();
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "project_track",

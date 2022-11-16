@@ -24,8 +24,9 @@ public class Track {
     @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
 
-    @ManyToOne
-    private Artist artist;
+
+    @ManyToMany(mappedBy = "artistTracks")
+    private List<Artist> artist = new ArrayList<>();
 
     @ManyToMany(mappedBy = "trackList")
     private List<Project> project = new ArrayList<>();

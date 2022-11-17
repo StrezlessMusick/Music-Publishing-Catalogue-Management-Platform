@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.TrackNotFoundException;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.TrackRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +19,25 @@ public class TrackService {
     }
 
     public List<Track> findAllTracks() {
-        return null;
+        return trackRepo.findAll();
     }
 
     public Track findTrackById(Long id) {
-        return null;
+        return trackRepo.findById(id)
+                .orElseThrow(()-> new TrackNotFoundException(
+                        String.format("Track with id [%s] not found.", id)
+                ));
     }
 
     public Track createTrack(Track track) {
-        return null;
+        return trackRepo.save(track);
     }
 
     public Track editTrack(Track track) {
-        return null;
+        return trackRepo.save(track);
     }
 
     public void deleteTrackById(Long id) {
-
+        trackRepo.deleteTrackById();
     }
 }

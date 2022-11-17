@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.ProjectNotFoundException;
 import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.repo.ProjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class ProjectService {
     }
 
     public Project findProjectById(Long id) {
-        return null;
+        return projectRepo.findById(id)
+                .orElseThrow(()-> new ProjectNotFoundException(
+                        String.format("Project with id [%s] not found.", id)
+                ));
     }
 
     public Project createProject(Project project) {

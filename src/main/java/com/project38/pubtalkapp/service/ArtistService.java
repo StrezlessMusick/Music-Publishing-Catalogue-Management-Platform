@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.ArtistNotFoundException;
 import com.project38.pubtalkapp.model.Artist;
 import com.project38.pubtalkapp.repo.ArtistRepo;
 import org.springframework.beans.factory.annotation.Autowired;

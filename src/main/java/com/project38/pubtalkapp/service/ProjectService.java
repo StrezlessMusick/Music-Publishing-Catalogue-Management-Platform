@@ -38,6 +38,6 @@ public class ProjectService {
     }
 
     public void deleteProjectById(Long id) {
-        projectRepo.deleteProjectById(id);
+        projectRepo.deleteById(id);
     }
 }

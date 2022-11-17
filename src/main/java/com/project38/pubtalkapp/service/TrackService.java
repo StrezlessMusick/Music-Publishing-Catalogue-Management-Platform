@@ -38,6 +38,6 @@ public class TrackService {
     }
 
     public void deleteTrackById(Long id) {
-        trackRepo.deleteTrackById();
+        trackRepo.deleteById(id);
     }
 }

@@ -38,6 +38,6 @@ public class ArtistService {
     }
 
     public void deleteArtistById(Long id) {
-        artistRepo.deleteArtistById();
+        artistRepo.deleteById(id);
     }
 }

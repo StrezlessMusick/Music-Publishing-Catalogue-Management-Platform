@@ -18,7 +18,7 @@ public class ProjectService {
     }
 
     public List<Project> findAllProjects() {
-        return null;
+        return projectRepo.findAll();
     }
 
     public Project findProjectById(Long id) {
@@ -26,14 +26,14 @@ public class ProjectService {
     }
 
     public Project createProject(Project project) {
-        return null;
+        return projectRepo.save(project);
     }
 
     public Project editProject(Project project) {
-        return null;
+        return projectRepo.save(project);
     }
 
     public void deleteProjectById(Long id) {
-
+        projectRepo.deleteProjectById(id);
     }
 }

@@ -18,22 +18,25 @@ public class ArtistService {
     }
 
     public List<Artist> findAllArtists() {
-        return null;
+        return artistRepo.findAll();
     }
 
     public Artist findArtistById(Long id) {
-        return null;
+        return artistRepo.findById(id)
+                .orElseThrow(() -> new ArtistNotFoundException(
+                        String.format("Artist with id [%s] not found.", id)
+                ));
     }
 
     public Artist createArtist(Artist artist) {
-        return null;
+        return artistRepo.save(artist);
     }
 
     public Artist editArtist(Artist artist) {
-        return null;
+        return artistRepo.save(artist);
     }
 
     public void deleteArtistById(Long id) {
-
+        artistRepo.deleteArtistById();
     }
 }

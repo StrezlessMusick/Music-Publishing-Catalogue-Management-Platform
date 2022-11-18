@@ -9,6 +9,12 @@ import {TracksComponent} from './tracks/tracks.component';
 import {ProjectsComponent} from './projects/projects.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { HeaderComponent } from './header/header.component';
+import { ArtistDetailsComponent } from './artists/artist-details/artist-details.component';
+import { ArtistListComponent } from './artists/artist-list/artist-list.component';
+import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
+import { ProjectListComponent } from './projects/project-list/project-list.component';
+import { TrackDetailsComponent } from './tracks/track-details/track-details.component';
+import { TrackListComponent } from './tracks/track-list/track-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { HeaderComponent } from './header/header.component';
     ArtistsComponent,
     TracksComponent,
     ProjectsComponent,
-    HeaderComponent
+    HeaderComponent,
+    ArtistDetailsComponent,
+    ArtistListComponent,
+    ProjectDetailsComponent,
+    ProjectListComponent,
+    TrackDetailsComponent,
+    TrackListComponent
   ],
   imports: [
     BrowserModule,

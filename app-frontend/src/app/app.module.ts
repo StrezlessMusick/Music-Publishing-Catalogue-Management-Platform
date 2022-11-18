@@ -15,6 +15,8 @@ import { ProjectDetailsComponent } from './projects/project-details/project-deta
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { TrackDetailsComponent } from './tracks/track-details/track-details.component';
 import { TrackListComponent } from './tracks/track-list/track-list.component';
+import { HomeComponent } from './home/home.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TrackListComponent } from './tracks/track-list/track-list.component';
     ProjectDetailsComponent,
     ProjectListComponent,
     TrackDetailsComponent,
-    TrackListComponent
+    TrackListComponent,
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

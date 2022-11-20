@@ -1,2 +1,2 @@
-export interface Track {
+export class Track {
 }

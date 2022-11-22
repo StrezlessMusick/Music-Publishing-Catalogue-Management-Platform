@@ -17,6 +17,7 @@ import { TrackDetailsComponent } from './tracks/track-details/track-details.comp
 import { TrackListComponent } from './tracks/track-list/track-list.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ArtistListEntryComponent } from './artists/artist-list/artist-list-entry/artist-list-entry.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     TrackDetailsComponent,
     TrackListComponent,
     HomeComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ArtistListEntryComponent
   ],
   imports: [
     BrowserModule,

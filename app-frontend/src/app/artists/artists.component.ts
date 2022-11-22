@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ArtistsService} from "../zshared/services/artists.service";
+import {Artist} from "../zshared/interfaces/artist";
 
 @Component({
   selector: 'app-artists',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artists.component.css']
 })
 export class ArtistsComponent implements OnInit {
+  public artists: Artist[] | undefined;
+  public addArtist: Artist | undefined;
+  public deleteArtist: Artist | undefined;
 
-  constructor() { }
+  constructor(private artistsService: ArtistsService) { }
 
   ngOnInit(): void {
   }

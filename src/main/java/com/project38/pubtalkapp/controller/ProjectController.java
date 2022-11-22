@@ -34,8 +34,8 @@ public class ProjectController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Project> addProject(@RequestBody Project project) {
-        Project createdProject = projectService.createProject(project);
+    public ResponseEntity<Project> addProject(@RequestBody Project newProject) {
+        Project createdProject = projectService.createProject(newProject);
         return new ResponseEntity<>(createdProject, HttpStatus.CREATED);
     }
 

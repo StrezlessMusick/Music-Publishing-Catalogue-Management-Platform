@@ -34,8 +34,8 @@ public class ArtistController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Artist> addArtist(@RequestBody Artist artist) {
-        Artist createdArtist = artistService.createArtist(artist);
+    public ResponseEntity<Artist> addArtist(@RequestBody Artist newArtist) {
+        Artist createdArtist = artistService.createArtist(newArtist);
         return new ResponseEntity<>(createdArtist, HttpStatus.CREATED);
     }
 

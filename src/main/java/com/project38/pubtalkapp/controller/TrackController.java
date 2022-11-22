@@ -34,8 +34,8 @@ public class TrackController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Track> addTrack(@RequestBody Track track) {
-        Track createdTrack = trackService.createTrack(track);
+    public ResponseEntity<Track> addTrack(@RequestBody Track newTrack) {
+        Track createdTrack = trackService.createTrack(newTrack);
         return new ResponseEntity<>(createdTrack, HttpStatus.CREATED);
     }
 

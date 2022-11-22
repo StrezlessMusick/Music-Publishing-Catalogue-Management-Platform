@@ -1,17 +1,16 @@
 <a
-  class="list-group-item clearfix"
+  [routerLink]="[index]"
   routerLinkActive="active"
+  class="list-group-item clearfix"
   style="cursor:pointer;"
 >
   <div class="pull-left">
-    <h4 class="list-group-item-heading"
-    >Artist Name</h4>
-    <p class="list-group-item-text"
-    >Artist Description</p>
+    <h4 class="list-group-item-heading">{{artist.artistName}}</h4>
+    <p class="list-group-item-text">Artist Description</p>
   </div>
   <span class="pull-right">
         <img
-          src="https://i.etsystatic.com/13386525/r/il/304c20/2417951462/il_fullxfull.2417951462_r3p8.jpg"
+          [src]="[artist.artistImageUrl]"
           alt=""
           class="img-responsive"
           style="max-height: 50px;"

@@ -3,13 +3,14 @@ import {TracksService} from "./tracks.service";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Artist} from "../interfaces/artist";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistsService {
   private apiServerUrl = environment.apiBaseUrl;
+  // public artistsChanged = new Subject<Artist[]>();
 
   constructor(private http: HttpClient,
               private tracksService: TracksService) {}

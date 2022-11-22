@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Artist} from "../../zshared/interfaces/artist";
+import {ArtistsService} from "../../zshared/services/artists.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-artist-list',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist-list.component.css']
 })
 export class ArtistListComponent implements OnInit {
+  artists: Artist[] | undefined;
 
-  constructor() { }
+  constructor(private artistsService: ArtistsService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.onGetArtists()
+  }
+
+  onGetArtists() {
+    this.artistsService.getArtists()
+      .subscribe(
+        (artists: Artist[]) => {
+          this.artists = artists;
+        }
+      )
   }
 
 }

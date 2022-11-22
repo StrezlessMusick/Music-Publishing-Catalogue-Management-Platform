@@ -18,6 +18,7 @@ import { TrackListComponent } from './tracks/track-list/track-list.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ArtistListEntryComponent } from './artists/artist-list/artist-list-entry/artist-list-entry.component';
+import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ArtistListEntryComponent } from './artists/artist-list/artist-list-entr
     TrackListComponent,
     HomeComponent,
     ErrorPageComponent,
-    ArtistListEntryComponent
+    ArtistListEntryComponent,
+    ArtistEditComponent
   ],
   imports: [
     BrowserModule,

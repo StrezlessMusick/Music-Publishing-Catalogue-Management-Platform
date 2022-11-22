@@ -8,6 +8,10 @@
 <br>
 <div class="row">
   <div class="col-xs-12">
-    <app-artist-list-entry></app-artist-list-entry>
+    <app-artist-list-entry
+      *ngFor="let artistElem of artists; let i = index"
+      [artist]="artistElem"
+      [index]="i"
+    ></app-artist-list-entry>
   </div>
 </div>

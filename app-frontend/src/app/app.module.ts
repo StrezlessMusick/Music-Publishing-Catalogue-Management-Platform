@@ -19,6 +19,10 @@ import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ArtistListEntryComponent } from './artists/artist-list/artist-list-entry/artist-list-entry.component';
 import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { TrackEditComponent } from './tracks/track-edit/track-edit.component';
+import { TrackListEntryComponent } from './tracks/track-list/track-list-entry/track-list-entry.component';
+import { ProjectListEntryComponent } from './projects/project-list/project-list-entry/project-list-entry.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { ArtistEditComponent } from './artists/artist-edit/artist-edit.component
     HomeComponent,
     ErrorPageComponent,
     ArtistListEntryComponent,
-    ArtistEditComponent
+    ArtistEditComponent,
+    ProjectEditComponent,
+    TrackEditComponent,
+    TrackListEntryComponent,
+    ProjectListEntryComponent
   ],
   imports: [
     BrowserModule,

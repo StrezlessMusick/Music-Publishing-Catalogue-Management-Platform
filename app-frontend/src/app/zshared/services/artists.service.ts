@@ -15,6 +15,22 @@ export class ArtistsService {
               private tracksService: TracksService) { }
 
   public getArtists(): Observable<Artist[]> {
-    return this.http.get<Artist[]>(`${this.apiServerUrl}/v1/artists/`);
+    return this.http.get<Artist[]>(`${this.apiServerUrl}/v1/artists/all`);
+  }
+
+  public getArtistById(artistId: number): Observable<Artist> {
+    return this.http.get<Artist>(`${this.apiServerUrl}/v1/artists/find${artistId}`);
+  }
+
+  public addArtist(artist: Artist): Observable<Artist> {
+    return this.http.post<Artist>(`${this.apiServerUrl}/v1/artists/add`, artist);
+  }
+
+  public updateArtist(artist: Artist): Observable<Artist> {
+    return this.http.put<Artist>(`${this.apiServerUrl}/v1/artists/update`, artist);
+  }
+
+  public deleteArtist(artistId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/v1/artists/delete${artistId}`);
   }
 }

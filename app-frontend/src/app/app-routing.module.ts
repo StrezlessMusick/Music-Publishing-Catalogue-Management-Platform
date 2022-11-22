@@ -14,19 +14,22 @@ import {TrackDetailsComponent} from "./tracks/track-details/track-details.compon
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'artists', component: ArtistsComponent,
-  children: [
-    {path: 'new', component: ArtistEditComponent},
-    {
-      path: 'id',
-      component: ArtistDetailsComponent
-    },
-    {
-      path: 'id/edit',
-      component: ArtistEditComponent
-    }
-  ]},
-  {path: 'projects', component: ProjectsComponent,
+  {
+    path: 'artists', component: ArtistsComponent,
+    children: [
+      {path: 'new', component: ArtistEditComponent},
+      {
+        path: 'id',
+        component: ArtistDetailsComponent
+      },
+      {
+        path: 'id/edit',
+        component: ArtistEditComponent
+      }
+    ]
+  },
+  {
+    path: 'projects', component: ProjectsComponent,
     children: [
       {path: 'new', component: ProjectEditComponent},
       {
@@ -37,8 +40,10 @@ const appRoutes: Routes = [
         path: 'id/edit',
         component: ProjectEditComponent
       }
-    ]},
-  {path: 'tracks', component: TracksComponent,
+    ]
+  },
+  {
+    path: 'tracks', component: TracksComponent,
     children: [
       {path: 'new', component: TrackEditComponent},
       {
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
         path: 'id/edit',
         component: TrackEditComponent
       }
-    ]},
+    ]
+  },
 
 
   // fallback error pages

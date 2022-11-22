@@ -26,7 +26,14 @@ export class ArtistListComponent implements OnInit {
         (artists: Artist[]) => {
           this.artists = artists;
         }
-      )
+      );
+  }
+
+  onNewArtist() {
+    this.router.navigate(
+      ['new'],
+      {relativeTo: this.route}
+    )
   }
 
 }

@@ -10,8 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor(private artistsService: ArtistsService,
-              private route: ActivatedRoute) { }
+  constructor() {}
 
   ngOnInit(): void {}
 

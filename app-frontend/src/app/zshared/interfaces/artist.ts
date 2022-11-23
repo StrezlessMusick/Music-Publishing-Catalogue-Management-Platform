@@ -4,10 +4,10 @@ import {PRO} from "../enums/pro";
 
 export interface Artist {
   id: number;
-  artistName?: string;
-  artistImageUrl?: string;
-  pro?: PRO;
-  proIPI?: string;
-  artistTrack?: Track[];
-  artistProject?: Project[];
+  artistName: string;
+  artistImageUrl: string;
+  pro: PRO;
+  proIPI: string;
+  artistTrack: Track[];
+  artistProject: Project[];
 }

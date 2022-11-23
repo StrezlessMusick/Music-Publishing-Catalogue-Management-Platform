@@ -11,7 +11,6 @@ import {Observable} from "rxjs";
 })
 export class ArtistDetailsComponent implements OnInit {
   artist!: Artist;
-  id!: number;
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
@@ -21,7 +20,6 @@ export class ArtistDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (param: Params) => {
-          // this.artist = this.artistsService.getArtist(1);
           this.artist.id = +param['id'];
         }
       );
@@ -35,7 +33,7 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   onDeleteArtist() {
-    this.artistsService.removeArtist(this.id);
+    this.artistsService.removeArtist(this.artist.id);
     this.router.navigate(
       ['../'],
       {relativeTo: this.route}

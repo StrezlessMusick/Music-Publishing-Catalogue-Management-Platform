@@ -6,12 +6,12 @@
 >
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{artist.artistName}}</h4>
-    <p class="list-group-item-text">Artist Description</p>
+    <p class="list-group-item-text">{{artist.pro}}</p>
   </div>
   <span class="pull-right">
         <img
-          [src]="[artist.artistImageUrl]"
-          alt=""
+          [src]="artist.artistImageUrl"
+          [alt]="artist.artistName"
           class="img-responsive"
           style="max-height: 50px;"
         >

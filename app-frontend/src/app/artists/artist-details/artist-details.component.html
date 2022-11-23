@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-xs-12">
     <img
-      src="https://i.etsystatic.com/13386525/r/il/304c20/2417951462/il_fullxfull.2417951462_r3p8.jpg"
-      alt=""
+      [src]="artist.artistImageUrl"
+      [alt]="artist.artistName"
       class="img-responsive"
       style="max-height: 200px;"
     >
@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>Artist Name</h1>
+    <h1>{{artist.artistName}}</h1>
   </div>
 </div>
 <div class="row">
@@ -23,8 +23,8 @@
       </button>
       <ul class="dropdown-menu">
         <li><a style="cursor: pointer;">Add to Favorites</a></li>
-        <li><a style="cursor: pointer;">Edit Artist</a></li>
-        <li><a style="cursor: pointer;">Delete Artist</a></li>
+        <li><a (click)="onEditArtist()" style="cursor: pointer;">Edit Artist</a></li>
+        <li><a (click)="onDeleteArtist()" style="cursor: pointer;">Delete Artist</a></li>
       </ul>
     </div>
   </div>

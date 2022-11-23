@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
-  artist!: Observable<Artist>;
+  artist!: Artist;
   id!: number;
 
   constructor(private artistsService: ArtistsService,
@@ -22,7 +22,7 @@ export class ArtistDetailsComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          this.artist = this.artistsService.getArtist(this.id);
+          // this.artist = this.artistsService.getArtist(this.id);
         }
       );
   }

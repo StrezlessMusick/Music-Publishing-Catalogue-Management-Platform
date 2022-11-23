@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArtistsService} from "../../../zshared/services/artists.service";
 import {Artist} from "../../../zshared/interfaces/artist";
+import {empty} from "rxjs";
 
 @Component({
   selector: 'app-artist-list-entry',

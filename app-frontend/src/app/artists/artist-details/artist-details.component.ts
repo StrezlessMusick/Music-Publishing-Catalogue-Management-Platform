@@ -21,8 +21,8 @@ export class ArtistDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (param: Params) => {
-          this.id = param['id'];
-          // this.artist = this.artistsService.getArtist(this.id);
+          // this.artist = this.artistsService.getArtist(1);
+          this.artist.id = +param['id'];
         }
       );
   }

@@ -19,11 +19,11 @@ const appRoutes: Routes = [
     children: [
       {path: 'new', component: ArtistEditComponent},
       {
-        path: 'id',
+        path: ':id',
         component: ArtistDetailsComponent
       },
       {
-        path: 'id/edit',
+        path: ':id/edit',
         component: ArtistEditComponent
       }
     ]
@@ -33,11 +33,11 @@ const appRoutes: Routes = [
     children: [
       {path: 'new', component: ProjectEditComponent},
       {
-        path: 'id',
+        path: ':id',
         component: ProjectDetailsComponent
       },
       {
-        path: 'id/edit',
+        path: ':id/edit',
         component: ProjectEditComponent
       }
     ]
@@ -47,11 +47,11 @@ const appRoutes: Routes = [
     children: [
       {path: 'new', component: TrackEditComponent},
       {
-        path: 'id',
+        path: ':id',
         component: TrackDetailsComponent
       },
       {
-        path: 'id/edit',
+        path: ':id/edit',
         component: TrackEditComponent
       }
     ]

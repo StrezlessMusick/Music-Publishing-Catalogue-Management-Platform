@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./artist-list.component.css']
 })
 export class ArtistListComponent implements OnInit {
-  artists: Artist[] | undefined;
+  artists: Artist[] = [];
 
   constructor(private artistsService: ArtistsService,
               private router: Router,

@@ -20,11 +20,15 @@ export class ArtistDetailsComponent implements OnInit {
     this.route.params
       .subscribe(
         (param: Params) => {
-          this.artist.id = +param['id'];
+          this.artist.artistName = param['id'];
         }
       );
+    this.onShowArtist();
   }
 
+  onShowArtist() {
+    this.artistsService.getArtist(this.artist.id);
+  }
   onEditArtist() {
     this.router.navigate(
       ['edit'],

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Observable} from "rxjs";
+import {ArtistListEntryComponent} from "../artist-list/artist-list-entry/artist-list-entry.component";
 
 @Component({
   selector: 'app-artist-details',
@@ -14,9 +15,10 @@ export class ArtistDetailsComponent implements OnInit {
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {}
 
   ngOnInit(): void {
+
     this.route.params
       .subscribe(
         (param: Params) => {
@@ -28,7 +30,9 @@ export class ArtistDetailsComponent implements OnInit {
 
   onShowArtist() {
     this.artistsService.getArtist(this.artist.id);
+    console.log("This Artist: " + this.artist);
   }
+
   onEditArtist() {
     this.router.navigate(
       ['edit'],

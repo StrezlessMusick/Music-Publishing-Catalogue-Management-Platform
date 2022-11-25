@@ -10,7 +10,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   styleUrls: ['./artist-edit.component.css']
 })
 export class ArtistEditComponent implements OnInit {
-  id: number | undefined;
+  id!: number;
   editMode = false;
   artistForm: FormGroup | any;
   pro: PRO | any;
@@ -37,6 +37,14 @@ export class ArtistEditComponent implements OnInit {
     let imagePath = '';
     let pro = '';
     let ipi = '';
+
+    // if (this.editMode) {
+    //   const artist = this.artistsService.getArtist(this.id);
+    //   artistName = artist.artistname;
+    //   imagePath = artist.artistImageUrl;
+    //   pro = artist.pro;
+    //   ipi = artist.proIpi;
+    // }
 
     this.artistForm = new FormGroup({
       artistName: new FormControl(artistName),

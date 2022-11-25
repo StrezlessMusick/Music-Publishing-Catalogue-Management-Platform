@@ -4,6 +4,7 @@ import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {ArtistListEntryComponent} from "../artist-list/artist-list-entry/artist-list-entry.component";
+import {ArtistsComponent} from "../artists.component";
 
 @Component({
   selector: 'app-artist-details',
@@ -11,26 +12,20 @@ import {ArtistListEntryComponent} from "../artist-list/artist-list-entry/artist-
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
-  artist!: Artist;
+  @ViewChild('artist')artist!: Artist;
+  id!: number;
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
               private router: Router) {}
 
   ngOnInit(): void {
-
     this.route.params
       .subscribe(
         (param: Params) => {
-          this.artist.artistName = param['id'];
+          this.id = param['id'];
         }
       );
-    this.onShowArtist();
-  }
-
-  onShowArtist() {
-    this.artistsService.getArtist(this.artist.id);
-    console.log("This Artist: " + this.artist);
   }
 
   onEditArtist() {
@@ -41,7 +36,7 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   onDeleteArtist() {
-    this.artistsService.removeArtist(this.artist.id);
+    this.artistsService.removeArtist(this.id);
     this.router.navigate(
       ['../'],
       {relativeTo: this.route}

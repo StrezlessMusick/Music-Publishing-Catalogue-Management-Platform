@@ -17,7 +17,7 @@ export class ArtistListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.onGetArtists()
+    this.onGetArtists();
   }
 
   onGetArtists() {
@@ -33,7 +33,7 @@ export class ArtistListComponent implements OnInit {
     this.router.navigate(
       ['new'],
       {relativeTo: this.route}
-    )
+    );
   }
 
 }

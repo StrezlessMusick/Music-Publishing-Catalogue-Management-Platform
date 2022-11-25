@@ -10,7 +10,7 @@ import {empty} from "rxjs";
 })
 export class ArtistListEntryComponent implements OnInit {
   @Input() artist!: Artist;
-  @Input() index!: any;
+  // @Input() index!: number;
 
   constructor(private artistsService: ArtistsService) { }
 

@@ -13,7 +13,7 @@ import {ArtistsComponent} from "../artists.component";
 })
 export class ArtistDetailsComponent implements OnInit {
   @ViewChild('artist')artist!: Artist;
-  id!: number;
+  id!: any;
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,

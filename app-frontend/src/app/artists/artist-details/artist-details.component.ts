@@ -12,7 +12,7 @@ import {ArtistsComponent} from "../artists.component";
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
-  @ViewChild('artist')artist!: Artist;
+  @ViewChild('?')artist!: Artist;
   id!: any;
 
   constructor(private artistsService: ArtistsService,

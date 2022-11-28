@@ -1,10 +1,7 @@
-import {Component, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Observable} from "rxjs";
-import {ArtistListEntryComponent} from "../artist-list/artist-list-entry/artist-list-entry.component";
-import {ArtistsComponent} from "../artists.component";
 
 @Component({
   selector: 'app-artist-details',
@@ -12,7 +9,7 @@ import {ArtistsComponent} from "../artists.component";
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
-  @ViewChild('?')artist!: Artist;
+  artist!: Artist;
   id!: any;
 
   constructor(private artistsService: ArtistsService,

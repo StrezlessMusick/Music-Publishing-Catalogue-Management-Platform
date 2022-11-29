@@ -1,9 +1,7 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Output, ViewChild} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {ArtistListEntryComponent} from "../artist-list/artist-list-entry/artist-list-entry.component";
-import {ArtistListComponent} from "../artist-list/artist-list.component";
 
 @Component({
   selector: 'app-artist-details',
@@ -11,8 +9,8 @@ import {ArtistListComponent} from "../artist-list/artist-list.component";
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
-  @ViewChild(ArtistListComponent, {static: true}) artist!: Artist;
-  id!: any;
+  artist: Artist;
+  id: number;
   placeHolderImage: string = 'https://i.guim.co.uk/img/media/3f6d39f213b18361c95ad0d4672ebf5680d19e7d/0_19_3500_2100/master/3500.jpg?width=620&quality=85&dpr=1&s=none'
 
   constructor(private artistsService: ArtistsService,
@@ -20,12 +18,14 @@ export class ArtistDetailsComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    // this.route.params
-    //   .subscribe(
-    //     (param: Params) => {
-    //       this.id = param['id'];
-    //     }
-    //   );
+    this.route.params
+      .subscribe(
+        (param: Params) => {
+          this.id = +param['id'];
+          console.log('Current Param ID: ' + this.id);
+          // this.artist = this.artistsService.getArtist(this.id);
+        }
+      );
   }
 
   onEditArtist() {

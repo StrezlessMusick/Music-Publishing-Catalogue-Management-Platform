@@ -10,10 +10,10 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   styleUrls: ['./artist-edit.component.css']
 })
 export class ArtistEditComponent implements OnInit {
-  id!: number;
+  id: number;
   editMode = false;
-  artistForm: FormGroup | any;
-  pro: PRO | any;
+  artistForm: FormGroup;
+  pro: PRO;
   defaultPro = '';
 
   constructor(private artistsService: ArtistsService,
@@ -62,7 +62,11 @@ export class ArtistEditComponent implements OnInit {
     } else {
       this.artistsService
         .addArtist(this.artistForm.value)
-        .subscribe();
+        .subscribe(
+          (newArtist) => {
+            console.log('onSubmit log: ' + newArtist);
+          }
+        );
     }
     this.onCancel();
   }

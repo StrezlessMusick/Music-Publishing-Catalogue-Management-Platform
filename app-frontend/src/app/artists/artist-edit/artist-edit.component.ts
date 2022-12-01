@@ -13,12 +13,14 @@ export class ArtistEditComponent implements OnInit {
   id: number;
   editMode = false;
   artistForm: FormGroup;
-  pro: PRO;
+  pro = PRO;
+  proKeys = [];
   defaultPro = '';
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.proKeys = Object.keys(this.pro);
   }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class ArtistEditComponent implements OnInit {
   private initForm() {
     let artistName = '';
     let imagePath = '';
-    let pro = '';
+    let pro = null;
     let ipi = '';
 
     // if (this.editMode) {

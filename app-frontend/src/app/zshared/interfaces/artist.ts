@@ -6,8 +6,8 @@ export interface Artist {
   id: number;
   artistName: string;
   artistImageUrl: string;
-  pro: string;
-  proIPI: PRO;
+  pro: PRO;
+  proIPI: string;
   artistTrack: Track[];
   artistProject: Project[];
 }

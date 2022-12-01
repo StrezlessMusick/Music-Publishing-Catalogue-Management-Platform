@@ -63,10 +63,10 @@
           class="form-control"
           name="pro"
           id="pro"
+          formControlName="pro"
         >
-          <option value="ascap">ASCAP</option>
-          <option value="bmi">BMI</option>
-          <option value="sesac">SESAC</option>
+          <option value="" disabled selected>-select-</option>
+          <option *ngFor="let p of proKeys" [value]="p">{{p}}</option>
         </select>
       </div>
       <div class="row">

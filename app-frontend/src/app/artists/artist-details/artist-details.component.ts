@@ -22,7 +22,6 @@ export class ArtistDetailsComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          console.log('Current Param ID: ' + this.id);
           // this.artist = this.artistsService.getArtist(this.id);
         }
       );

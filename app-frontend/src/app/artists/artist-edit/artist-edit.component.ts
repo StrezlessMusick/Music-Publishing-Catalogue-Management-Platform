@@ -56,9 +56,13 @@ export class ArtistEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.artistsService.updateArtist(this.artistForm.value);
+      this.artistsService
+        .updateArtist(this.artistForm.value)
+        .subscribe();
     } else {
-      this.artistsService.addArtist(this.artistForm.value);
+      this.artistsService
+        .addArtist(this.artistForm.value)
+        .subscribe();
     }
     this.onCancel();
   }

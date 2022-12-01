@@ -26,6 +26,7 @@ export class ArtistsService {
   }
 
   public addArtist(newArtist: Artist): Observable<Artist> {
+    console.log(newArtist);
     return this.http
       .post<Artist>(`${this.apiServerUrl}/v1/artists/add`, newArtist);
   }

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -66,7 +67,8 @@ class ArtistServiceTest {
         doReturn(artistList).when(artistRepo).findAll();
 
         // Then
-
+        List<Artist> testList = underTest.findAllArtists();
+        assertThat(testList).hasSize(2);
     }
 
     @Test

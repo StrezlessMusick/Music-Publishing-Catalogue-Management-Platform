@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/artists")
 public class ArtistController {
 
-    private ArtistService artistService;
+    private final ArtistService artistService;
 
     @Autowired
     public ArtistController(ArtistService artistService) {

@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class ArtistService {
 
-    private ArtistRepo artistRepo;
+    private final ArtistRepo artistRepo;
 
     @Autowired
     public ArtistService(ArtistRepo artistRepo) {

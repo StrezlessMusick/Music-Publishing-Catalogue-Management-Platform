@@ -12,13 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 
 class ArtistServiceTest {
 
@@ -51,7 +49,7 @@ class ArtistServiceTest {
                         "22321",
                         trackList,
                         projectList
-                        ),
+                ),
                 new Artist(
                         2L,
                         "Tyler",
@@ -74,10 +72,25 @@ class ArtistServiceTest {
     @Test
     void itShouldFindArtistById() {
         // Given
+        List<Track> trackList = new ArrayList<>();
+        List<Project> projectList = new ArrayList<>();
 
+        Artist billy = new Artist(
+                1L,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
         // When
+//        doReturn(billy).when(artistRepo).findById(1L);
+        artistRepo.save(billy);
 
         // Then
+        Artist returned = underTest.findArtistById(1L);
+        assertThat(billy).isEqualToComparingFieldByField(returned);
 
     }
 

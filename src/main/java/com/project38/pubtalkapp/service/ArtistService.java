@@ -29,8 +29,8 @@ public class ArtistService {
                 ));
     }
 
-    public Artist createArtist(Artist artist) {
-        return artistRepo.save(artist);
+    public Artist createArtist(Artist newArtist) {
+        return artistRepo.save(newArtist);
     }
 
     public Artist editArtist(Artist artist) {

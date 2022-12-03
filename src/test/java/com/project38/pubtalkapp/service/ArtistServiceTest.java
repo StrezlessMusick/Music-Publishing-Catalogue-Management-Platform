@@ -75,8 +75,9 @@ class ArtistServiceTest {
         List<Track> trackList = new ArrayList<>();
         List<Project> projectList = new ArrayList<>();
 
+        Long id = 1L;
         Artist billy = new Artist(
-                1L,
+                id,
                 "Billy",
                 "www.imageurl.com",
                 PRO.ASCAP,
@@ -89,7 +90,7 @@ class ArtistServiceTest {
         artistRepo.save(billy);
 
         // Then
-        Artist returned = underTest.findArtistById(1L);
+        Artist returned = underTest.findArtistById(id);
         assertThat(billy).isEqualToComparingFieldByField(returned);
 
     }

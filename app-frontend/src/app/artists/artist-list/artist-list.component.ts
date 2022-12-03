@@ -1,8 +1,7 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-artist-list',

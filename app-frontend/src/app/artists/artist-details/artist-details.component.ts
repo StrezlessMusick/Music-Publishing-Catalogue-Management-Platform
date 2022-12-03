@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
@@ -11,20 +11,31 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class ArtistDetailsComponent implements OnInit {
   artist: Artist;
   id: number;
-  placeHolderImage: string = 'https://i.guim.co.uk/img/media/3f6d39f213b18361c95ad0d4672ebf5680d19e7d/0_19_3500_2100/master/3500.jpg?width=620&quality=85&dpr=1&s=none'
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
               private router: Router) {}
 
   ngOnInit(): void {
+
     this.route.params
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          // this.artist = this.artistsService.getArtist(this.id);
+          this.artistsService.getArtist(this.id)
+            .subscribe(
+              (artist: Artist) => {
+                this.artist = artist;
+              }
+            );
         }
       );
+  }
+
+  onAddTracks() {
+    this.router.navigate(
+      ['tracks/new']
+    )
   }
 
   onEditArtist() {
@@ -35,7 +46,8 @@ export class ArtistDetailsComponent implements OnInit {
   }
 
   onDeleteArtist() {
-    this.artistsService.removeArtist(this.id);
+    this.artistsService.removeArtist(this.id)
+      .subscribe();
     this.router.navigate(
       ['../'],
       {relativeTo: this.route}

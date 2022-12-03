@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <img
-      [src]="[artist.artistImageUrl]"
+      src="{{artist.artistImageUrl}}"
       [alt]="[artist.artistName]"
       class="img-responsive"
       style="max-height: 200px;"
@@ -25,7 +25,7 @@
         Manager Artist<span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a style="cursor: pointer;">Add to Favorites</a></li>
+        <li><a (click)="onAddTracks()" style="cursor: pointer;">Add Tracks</a></li>
         <li><a (click)="onEditArtist()" style="cursor: pointer;">Edit Artist</a></li>
         <li><a (click)="onDeleteArtist()" style="cursor: pointer;">Delete Artist</a></li>
       </ul>

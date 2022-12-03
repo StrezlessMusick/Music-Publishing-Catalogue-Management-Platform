@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {PRO} from "../../zshared/enums/pro";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Artist} from "../../zshared/interfaces/artist";
 
 @Component({
   selector: 'app-artist-edit',
@@ -12,10 +13,10 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 export class ArtistEditComponent implements OnInit {
   id: number;
   editMode = false;
+  artist: Artist;
   artistForm: FormGroup;
   pro = PRO;
   proKeys = [];
-  defaultPro = '';
 
   constructor(private artistsService: ArtistsService,
               private route: ActivatedRoute,
@@ -28,6 +29,12 @@ export class ArtistEditComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
+          this.artistsService.getArtist(this.id)
+            .subscribe(
+              (artist: Artist) => {
+                this.artist = artist;
+              }
+            );
           this.editMode = param['id'] != null;
           this.initForm()
         }
@@ -40,13 +47,14 @@ export class ArtistEditComponent implements OnInit {
     let pro = null;
     let ipi = '';
 
-    // if (this.editMode) {
-    //   const artist = this.artistsService.getArtist(this.id);
-    //   artistName = artist.artistname;
-    //   imagePath = artist.artistImageUrl;
-    //   pro = artist.pro;
-    //   ipi = artist.proIpi;
-    // }
+    if (this.editMode) {
+      artistName = this.artist.artistName;
+      imagePath = this.artist.artistImageUrl;
+      pro = this.artist.pro;
+      ipi = this.artist.proIPI;
+
+      console.log(artistName)
+    }
 
     this.artistForm = new FormGroup({
       artistName: new FormControl(artistName),

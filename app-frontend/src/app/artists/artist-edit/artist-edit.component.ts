@@ -50,9 +50,9 @@ export class ArtistEditComponent implements OnInit {
 
     this.artistForm = new FormGroup({
       artistName: new FormControl(artistName),
-      imagePath: new FormControl(imagePath),
+      artistImageUrl: new FormControl(imagePath),
       pro: new FormControl(pro),
-      ipi: new FormControl(ipi)
+      proIPI: new FormControl(ipi)
     });
   }
 
@@ -66,7 +66,7 @@ export class ArtistEditComponent implements OnInit {
         .addArtist(this.artistForm.value)
         .subscribe(
           (newArtist) => {
-            console.log('onSubmit log: ' + newArtist);
+            console.log(newArtist);
           }
         );
     }

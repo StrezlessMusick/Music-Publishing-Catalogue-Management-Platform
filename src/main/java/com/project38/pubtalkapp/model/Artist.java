@@ -20,7 +20,7 @@ public class Artist {
     private String artistName;
     @NotBlank(message = "Image url is required!")
     private String artistImageUrl;
-    @NotBlank(message = "Artist PRO is required")
+
     @Enumerated(EnumType.STRING)
     private PRO pro;
     @NotBlank(message = "Artist PRO IPI number is required!")

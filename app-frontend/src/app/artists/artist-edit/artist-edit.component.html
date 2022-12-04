@@ -70,7 +70,7 @@
             formControlName="pro"
           >
             <option value="" disabled selected>-select-</option>
-            <option *ngFor="let p of proKeys" [value]="p">{{pro[p]}}</option>
+            <option *ngFor="let key of proKeys" [value]="key">{{pro[key]}}</option>
           </select>
         </div>
         <div class="row">

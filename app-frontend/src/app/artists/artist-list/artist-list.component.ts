@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-artist-list',
@@ -16,16 +17,16 @@ export class ArtistListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.onGetArtists();
+    this.onGetArtists()
   }
 
   onGetArtists() {
     this.artistsService.getArtists()
-      .subscribe(
-        (artists: Artist[]) => {
+      .pipe(
+        tap((artists: Artist[]) => {
           this.artists = artists;
-        }
-      );
+        })
+      ).subscribe();
   }
 
   onNewArtist() {

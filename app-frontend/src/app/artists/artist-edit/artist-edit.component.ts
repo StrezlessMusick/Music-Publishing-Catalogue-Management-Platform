@@ -29,12 +29,6 @@ export class ArtistEditComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          this.artistsService.getArtist(this.id)
-            .subscribe(
-              (artist: Artist) => {
-                this.artist = artist;
-              }
-            );
           this.editMode = param['id'] != null;
           this.initForm()
         }
@@ -48,10 +42,17 @@ export class ArtistEditComponent implements OnInit {
     let ipi = '';
 
     if (this.editMode) {
-      artistName = this.artist.artistName;
-      imagePath = this.artist.artistImageUrl;
-      pro = this.artist.pro;
-      ipi = this.artist.proIPI;
+      this.artistsService.getArtist(this.id)
+        .subscribe(
+          (artist: Artist) => {
+            this.artist = artist;
+          }
+        );
+
+      artistName = this.artist?.artistName;
+      imagePath = this.artist?.artistImageUrl;
+      pro = this.artist?.pro;
+      ipi = this.artist?.proIPI;
 
       console.log(artistName)
     }

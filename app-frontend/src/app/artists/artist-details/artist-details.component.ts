@@ -32,7 +32,7 @@ export class ArtistDetailsComponent implements OnInit {
       );
   }
 
-  onAddTracks() {
+  onAddTrack() {
     this.router.navigate(
       ['tracks/new']
     )

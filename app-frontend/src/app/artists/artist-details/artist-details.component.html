@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-xs-12">
     <img
-      [src]="artist.artistImageUrl"
-      [alt]="artist.artistName"
+      [src]="artist?.artistImageUrl"
+      [alt]="artist?.artistName"
       class="img-responsive"
       style="max-height: 200px;"
     >
@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{artist.artistName}}</h1>
+    <h1>{{artist?.artistName}}</h1>
   </div>
 </div>
 <div class="row">
@@ -25,7 +25,7 @@
         Manager Artist<span class="caret"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a (click)="onAddTracks()" style="cursor: pointer;">Add Track</a></li>
+        <li><a (click)="onAddTrack()" style="cursor: pointer;">Add Track</a></li>
         <li><a (click)="onEditArtist()" style="cursor: pointer;">Edit Artist</a></li>
         <li><a (click)="onDeleteArtist()" style="cursor: pointer;">Delete Artist</a></li>
       </ul>
@@ -41,7 +41,7 @@
   <div class="col-xs-12">
     <ul class="list-group">
       <li class="list-group-item">
-        <p>{{artist.pro}} - {{artist.proIPI}}</p>
+        <p>{{artist?.pro}} - {{artist?.proIPI}}</p>
       </li>
     </ul>
   </div>

@@ -13,7 +13,7 @@ import {Artist} from "../../zshared/interfaces/artist";
 export class ArtistEditComponent implements OnInit {
   id: number;
   editMode = false;
-  artist: Artist = undefined;
+  artist: Artist;
   artistForm: FormGroup;
   pro = PRO;
   proKeys = [];
@@ -25,6 +25,7 @@ export class ArtistEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.route.params
       .subscribe(
         (param: Params) => {
@@ -52,9 +53,9 @@ export class ArtistEditComponent implements OnInit {
         );
 
       artistName = this.artist?.artistName;
-      // imagePath = this.artist?.artistImageUrl;
-      // pro = this.artist?.pro;
-      // ipi = this.artist?.proIPI;
+      imagePath = this.artist?.artistImageUrl;
+      pro = this.artist?.pro;
+      ipi = this.artist?.proIPI;
 
       console.log(artistName);
 
@@ -91,5 +92,4 @@ export class ArtistEditComponent implements OnInit {
       {relativeTo: this.route}
     );
   }
-
 }

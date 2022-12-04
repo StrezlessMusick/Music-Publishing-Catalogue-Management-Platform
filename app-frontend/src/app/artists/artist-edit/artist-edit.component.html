@@ -1,89 +1,92 @@
-<ng-container >
-<div class="row">
-  <div class="col-xs-12">
-    <form
-      [formGroup]="artistForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="row">
-        <div class="col-xs-12">
-          <button
-            type="submit"
-            class="btn btn-success"
-          >Save
-          </button>
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="onCancel()"
-          >Cancel
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              formControlName="artistName"
-              class="form-control"
-            >
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">Image Url</label>
-            <input
-              type="text"
-              id="imagePath"
-              formControlName="artistImageUrl"
-              class="form-control"
-              #artistImageUrl
-            >
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <img
-            src=""
-            alt=""
-            class="img-responsive"
-          >
-        </div>
-      </div>
-      <div
-        class="form-group"
+<ng-container>
+  <div class="row">
+    <div class="col-xs-12">
+      <form
+        [formGroup]="artistForm"
+        (ngSubmit)="onSubmit()"
       >
-        <label for="pro">PRO</label>
-        <select
-          class="form-control"
-          name="pro"
-          id="pro"
-          formControlName="pro"
-        >
-          <option value="" disabled selected>-select-</option>
-          <option *ngFor="let p of proKeys" [value]="p">{{pro[p]}}</option>
-        </select>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="ipi">IPI Number</label>
-            <input
-              type="text"
-              id="ipi"
-              class="form-control"
-              formControlName="proIPI"
-            >
+        <div class="row">
+          <div class="col-xs-12">
+            <button
+              type="submit"
+              class="btn btn-success"
+            >Save
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onCancel()"
+            >Cancel
+            </button>
           </div>
         </div>
-      </div>
-    </form>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                formControlName="artistName"
+                class="form-control"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="imagePath">Image Url</label>
+              <input
+                type="text"
+                id="imagePath"
+                formControlName="artistImageUrl"
+                class="form-control"
+                #artistImageUrl
+              >
+            </div>
+          </div>
+        </div>
+<!--        <div class="row">-->
+<!--          <div class="col-xs-12">-->
+<!--            <div class="form-group">-->
+<!--              <img-->
+<!--                [src]="artistImageUrl"-->
+<!--                alt=""-->
+<!--                class="img-responsive"-->
+<!--                style="max-height: 150px;"-->
+<!--              >-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div
+          class="form-group"
+        >
+          <label for="pro">PRO</label>
+          <select
+            class="form-control"
+            name="pro"
+            id="pro"
+            formControlName="pro"
+          >
+            <option value="" disabled selected>-select-</option>
+            <option *ngFor="let p of proKeys" [value]="p">{{pro[p]}}</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="ipi">IPI Number</label>
+              <input
+                type="text"
+                id="ipi"
+                class="form-control"
+                formControlName="proIPI"
+              >
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </ng-container>

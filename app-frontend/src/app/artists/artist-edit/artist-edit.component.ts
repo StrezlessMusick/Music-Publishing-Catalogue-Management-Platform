@@ -44,15 +44,12 @@ export class ArtistEditComponent implements OnInit {
     let ipi = '';
 
     if (this.editMode) {
-
-      const artist = await this.artistsService.getArtist(this.id).toPromise();
-
+      const artist = await this.artistsService
+        .getArtist(this.id).toPromise();
       artistName = artist?.artistName;
       imagePath = artist?.artistImageUrl;
       pro = artist?.pro;
       ipi = artist?.proIPI;
-
-      console.log(artistName);
 
     }
 

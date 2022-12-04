@@ -13,7 +13,7 @@ import {Artist} from "../../zshared/interfaces/artist";
 export class ArtistEditComponent implements OnInit {
   id: number;
   editMode = false;
-  artist: Artist;
+  artist: Artist = undefined;
   artistForm: FormGroup;
   pro = PRO;
   proKeys = [];
@@ -36,12 +36,14 @@ export class ArtistEditComponent implements OnInit {
   }
 
   private initForm() {
+
     let artistName = '';
     let imagePath = '';
     let pro = null;
     let ipi = '';
 
     if (this.editMode) {
+
       this.artistsService.getArtist(this.id)
         .subscribe(
           (artist: Artist) => {
@@ -50,11 +52,12 @@ export class ArtistEditComponent implements OnInit {
         );
 
       artistName = this.artist?.artistName;
-      imagePath = this.artist?.artistImageUrl;
-      pro = this.artist?.pro;
-      ipi = this.artist?.proIPI;
+      // imagePath = this.artist?.artistImageUrl;
+      // pro = this.artist?.pro;
+      // ipi = this.artist?.proIPI;
 
-      console.log(artistName)
+      console.log(artistName);
+
     }
 
     this.artistForm = new FormGroup({

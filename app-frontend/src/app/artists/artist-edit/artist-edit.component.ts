@@ -4,6 +4,7 @@ import {PRO} from "../../zshared/enums/pro";
 import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Artist} from "../../zshared/interfaces/artist";
+import {firstValueFrom, of} from "rxjs";
 
 @Component({
   selector: 'app-artist-edit',
@@ -36,7 +37,7 @@ export class ArtistEditComponent implements OnInit {
       );
   }
 
-  private initForm() {
+  private async initForm() {
 
     let artistName = '';
     let imagePath = '';
@@ -45,17 +46,12 @@ export class ArtistEditComponent implements OnInit {
 
     if (this.editMode) {
 
-      this.artistsService.getArtist(this.id)
-        .subscribe(
-          (artist: Artist) => {
-            this.artist = artist;
-          }
-        );
+      const artist = await this.artistsService.getArtist(this.id).toPromise();
 
-      artistName = this.artist?.artistName;
-      imagePath = this.artist?.artistImageUrl;
-      pro = this.artist?.pro;
-      ipi = this.artist?.proIPI;
+      artistName = artist?.artistName;
+      imagePath = artist?.artistImageUrl;
+      pro = artist?.pro;
+      ipi = artist?.proIPI;
 
       console.log(artistName);
 

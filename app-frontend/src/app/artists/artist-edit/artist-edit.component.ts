@@ -40,7 +40,7 @@ export class ArtistEditComponent implements OnInit {
   private async initForm() {
     let artistName = '';
     let imagePath = '';
-    let pro = null;
+    let pro = '';
     let ipi = '';
 
     if (this.editMode) {

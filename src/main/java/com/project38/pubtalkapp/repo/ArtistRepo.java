@@ -1,7 +1,6 @@
 package com.project38.pubtalkapp.repo;
 
 import com.project38.pubtalkapp.model.Artist;
-import org.hibernate.sql.Update;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

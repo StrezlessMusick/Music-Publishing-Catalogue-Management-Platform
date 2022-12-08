@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 public interface ArtistRepo extends JpaRepository<Artist, Long> {
 
     @Modifying
-    @Query(value = "UPDATE artist " +
+    @Query(value = "UPDATE artists " +
             "SET artist_name = ?," +
             "artist_image_url = ?," +
             "pro = ?," +
             "proipi = ? " +
-            "WHERE id = ?")
+            "WHERE id = ?", nativeQuery = true)
     Artist updateArtist(Artist artist);
 }

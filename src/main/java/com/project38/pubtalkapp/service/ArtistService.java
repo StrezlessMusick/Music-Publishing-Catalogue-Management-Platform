@@ -34,7 +34,6 @@ public class ArtistService {
     }
 
     public Artist editArtist(Artist artist) {
-
         return artistRepo.updateArtist(artist);
     }
 

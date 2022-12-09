@@ -15,6 +15,7 @@ public interface ArtistRepo extends JpaRepository<Artist, Long> {
     @Query(value =
             "UPDATE artists SET artist_name = ?, artist_image_url = ?, pro = ?, proipi = ? WHERE id = ?;",
             nativeQuery = true)
+
     Artist updateArtist(Artist artist);
 
 }

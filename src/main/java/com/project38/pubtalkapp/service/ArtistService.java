@@ -34,7 +34,7 @@ public class ArtistService {
     }
 
     public Artist editArtist(Artist artist) {
-        return artistRepo.updateArtist(artist);
+        return artistRepo.save(artist);
     }
 
     public void deleteArtistById(Long id) {

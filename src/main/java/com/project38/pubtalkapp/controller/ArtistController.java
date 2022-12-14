@@ -40,7 +40,7 @@ public class ArtistController {
         return new ResponseEntity<>(createdArtist, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    @PatchMapping("/update")
     public ResponseEntity<Artist> updateArtist(@RequestBody Artist artist) {
         Artist editedArtist = artistService.editArtist(artist);
         return new ResponseEntity<>(editedArtist, HttpStatus.CREATED);

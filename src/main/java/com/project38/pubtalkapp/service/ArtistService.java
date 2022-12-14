@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArtistService {
@@ -34,7 +35,11 @@ public class ArtistService {
     }
 
     public Artist editArtist(Artist artist) {
-        return artistRepo.save(artist);
+        Optional<Artist> existingArtist = artistRepo.findById(artist.getId());
+        if (existingArtist.isPresent()) {
+            return artistRepo.save(artist);
+        }
+        return null;
     }
 
     public void deleteArtistById(Long id) {

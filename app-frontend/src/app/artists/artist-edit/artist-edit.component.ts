@@ -31,13 +31,14 @@ export class ArtistEditComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          this.editMode = param['id'] != null;
+          this.editMode = +param['id'] != null;
           this.initForm()
         }
       );
   }
 
   private async initForm() {
+    // let aritstId = NaN;
     let artistName = '';
     let imagePath = '';
     let pro = '';
@@ -47,6 +48,7 @@ export class ArtistEditComponent implements OnInit {
       const artist = await this.artistsService
         .getArtist(this.id).toPromise();
 
+      // aritstId = artist?.id;
       artistName = artist?.artistName;
       imagePath = artist?.artistImageUrl;
       pro = artist?.pro;

@@ -36,10 +36,10 @@ public class ArtistService {
 
     public Artist editArtist(Artist artist) {
         Optional<Artist> existingArtist = artistRepo.findById(artist.getId());
-        if (existingArtist.isPresent()) {
+        if (existingArtist.isPresent())
             return artistRepo.save(artist);
-        }
-        return null;
+
+        return artist;
     }
 
     public void deleteArtistById(Long id) {

@@ -38,28 +38,29 @@ export class ArtistEditComponent implements OnInit {
   }
 
   private async initForm() {
-    let aritstId = NaN;
+    let artistId = -1;
     let artistName = '';
     let imagePath = '';
     let pro = '';
-    let ipi = '';
+    let proIPI = '';
 
     if (this.editMode) {
       const artist = await this.artistsService
         .getArtist(this.id).toPromise();
 
-      // aritstId = artist?.id;
+      artistId = artist?.id
       artistName = artist?.artistName;
       imagePath = artist?.artistImageUrl;
       pro = artist?.pro;
-      ipi = artist?.proIPI;
+      proIPI = artist?.proIPI;
     }
 
     this.artistForm = new FormGroup({
+      artistId: new FormControl(artistId),
       artistName: new FormControl(artistName),
       artistImageUrl: new FormControl(imagePath),
       pro: new FormControl(pro),
-      proIPI: new FormControl(ipi)
+      proIPI: new FormControl(proIPI)
     });
   }
 
@@ -81,7 +82,6 @@ export class ArtistEditComponent implements OnInit {
           })
         ).subscribe();
     }
-
     this.onCancel();
   }
 

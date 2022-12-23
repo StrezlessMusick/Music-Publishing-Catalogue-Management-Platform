@@ -56,7 +56,7 @@ export class ArtistEditComponent implements OnInit {
     }
 
     this.artistForm = new FormGroup({
-      artistId: new FormControl(artistId),
+      id: new FormControl(artistId),
       artistName: new FormControl(artistName),
       artistImageUrl: new FormControl(imagePath),
       pro: new FormControl(pro),

@@ -20,6 +20,19 @@
             </button>
           </div>
         </div>
+        <div class="row" *ngIf="!editMode">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="id">Artist ID</label>
+              <input
+                type="text"
+                id="id"
+                formControlName="id"
+                class="form-control"
+                >
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">

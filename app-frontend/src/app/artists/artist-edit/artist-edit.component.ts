@@ -38,13 +38,13 @@ export class ArtistEditComponent implements OnInit {
   }
 
   private async initForm() {
-    let artistId = -1;
+    let artistId = 0;
     let artistName = '';
     let imagePath = '';
     let pro = '';
     let proIPI = '';
 
-    if (this.editMode) {
+    if (!this.editMode) {
       const artist = await this.artistsService
         .getArtist(this.id).toPromise();
 

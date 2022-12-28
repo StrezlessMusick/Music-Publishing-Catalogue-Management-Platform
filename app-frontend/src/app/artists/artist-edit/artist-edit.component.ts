@@ -38,6 +38,8 @@ export class ArtistEditComponent implements OnInit {
   }
 
   private async initForm() {
+
+    // TODO: Check what the numeric equivalent of default id is
     let id = -1;
     let artistName = '';
     let imagePath = '';
@@ -45,6 +47,8 @@ export class ArtistEditComponent implements OnInit {
     let proIPI = '';
 
     if (this.editMode) {
+
+      // TODO: Still getting "NG01052: formGroup expects a FormGroup instance" console error
       const artist = await this.artistsService
         .getArtist(this.id).toPromise();
 
@@ -82,10 +86,13 @@ export class ArtistEditComponent implements OnInit {
           })
         ).subscribe();
     }
+
+    // TODO: Refresh artist list page with updated information on submit
     this.onCancel();
   }
 
   onCancel() {
+    // TODO: See if ['/artists'] would work better
     this.router.navigate(
       ['../'],
       {relativeTo: this.route}

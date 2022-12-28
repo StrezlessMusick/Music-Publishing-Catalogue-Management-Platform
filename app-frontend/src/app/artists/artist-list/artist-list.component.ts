@@ -14,19 +14,17 @@ export class ArtistListComponent implements OnInit {
 
   constructor(private artistsService: ArtistsService,
               private router: Router,
-              private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.onGetArtists()
+              private route: ActivatedRoute) {
   }
 
-  onGetArtists() {
+  ngOnInit(): void {
     this.artistsService.getArtists()
       .pipe(
-        tap((artists: Artist[]) => {
-          this.artists = artists;
-        })
-      ).subscribe();
+        tap(
+          (artists: Artist[]) => {
+            this.artists = artists;
+          }
+        )).subscribe();
   }
 
   onNewArtist() {

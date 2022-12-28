@@ -31,24 +31,24 @@ export class ArtistEditComponent implements OnInit {
       .subscribe(
         (param: Params) => {
           this.id = +param['id'];
-          this.editMode = +param['id'] != null;
+          this.editMode = param['id'] != null;
           this.initForm()
         }
       );
   }
 
   private async initForm() {
-    let artistId = -1;
+    let id = -1;
     let artistName = '';
     let imagePath = '';
     let pro = '';
     let proIPI = '';
 
-    if (!this.editMode) {
+    if (this.editMode) {
       const artist = await this.artistsService
         .getArtist(this.id).toPromise();
 
-      artistId = artist?.id
+      id = artist?.id
       artistName = artist?.artistName;
       imagePath = artist?.artistImageUrl;
       pro = artist?.pro;
@@ -56,7 +56,7 @@ export class ArtistEditComponent implements OnInit {
     }
 
     this.artistForm = new FormGroup({
-      id: new FormControl(artistId),
+      id: new FormControl(id),
       artistName: new FormControl(artistName),
       artistImageUrl: new FormControl(imagePath),
       pro: new FormControl(pro),
@@ -65,7 +65,7 @@ export class ArtistEditComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.editMode) {
+    if (this.editMode) {
       this.artistsService
         .updateArtist(this.artistForm.value)
         .pipe(

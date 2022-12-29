@@ -18,7 +18,7 @@ export class TracksService {
       .get<Track[]>(`${this.apiServerUrl}/v1/tracks/all`);
   }
 
-  public getTrack(trackId: Track): Observable<Track> {
+  public getTrack(trackId: number): Observable<Track> {
     return this.http
       .get<Track>(`${this.apiServerUrl}/v1/tracks/find${trackId}`);
   }

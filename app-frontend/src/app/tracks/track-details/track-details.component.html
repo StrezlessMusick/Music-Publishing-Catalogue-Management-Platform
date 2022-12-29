@@ -1,1 +1,51 @@
-<p>track-details works!</p>
+<ng-container *ngIf="track">
+  <div class="row">
+    <div class="col-xs-12">
+      <img
+        [src]="[track.trackImageUrl]"
+        [alt]="[track.artist]"
+        class="img-responsive"
+        style="max-height: 200px;"
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{track.trackName}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div
+        class="btn-group"
+        appDropdown
+      >
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+        >
+          Manage Track <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a (click)="onAddToProject()" style="cursor: pointer">Add To A Project</a> </li>
+          <li><a (click)="onEditTrack()" style="cursor: pointer">Edit Track</a> </li>
+          <li><a (click)="onDeleteTrack()" style="cursor: pointer">Delete Track</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Track Description</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p>{{track.id}} - {{track.trackLength}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

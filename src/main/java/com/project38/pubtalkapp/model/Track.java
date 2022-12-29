@@ -17,11 +17,11 @@ public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Track name is required!")
+//    @NotBlank(message = "Track name is required!")
     private String trackName;
-    @NotBlank(message = "Cover art url is required!")
+//    @NotBlank(message = "Cover art url is required!")
     private String trackImageUrl;
-    @NotBlank(message = "Length of track is required!")
+//    @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
 
 

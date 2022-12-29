@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TracksService} from "../../zshared/services/tracks.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Track} from "../../zshared/interfaces/track";
@@ -19,7 +19,8 @@ export class TrackEditComponent implements OnInit {
 
   constructor(private tracksService: TracksService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -33,7 +34,7 @@ export class TrackEditComponent implements OnInit {
   }
 
   private async initForm() {
-    let trackId = null;
+    let trackId = 0;
     let trackName = '';
     let trackImageUrl = '';
     let trackLength = '';
@@ -68,12 +69,11 @@ export class TrackEditComponent implements OnInit {
     } else {
       this.tracksService.addTrack(this.trackForm.value)
         .pipe(
-          tap((newTrack : Track) => {
+          tap((newTrack: Track) => {
             this.track = newTrack;
           })
         ).subscribe();
     }
-    console.log(this.track);
     this.onCancel();
   }
 

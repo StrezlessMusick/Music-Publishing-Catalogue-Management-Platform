@@ -44,7 +44,11 @@ export class TrackDetailsComponent implements OnInit {
   }
 
   onDeleteTrack() {
-    // TODO:
-
+    this.tracksService.removeTrack(this.id)
+      .subscribe();
+    this.router.navigate(
+      ['../'],
+      {relativeTo: this.route}
+    );
   }
 }

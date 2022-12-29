@@ -1,1 +1,58 @@
-<p>track-edit works!</p>
+<ng-container>
+  <div class="row">
+    <div class="col-xs-12">
+      <form
+        [formGroup]="trackForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="row">
+          <div class="col-xs-12">
+            <button
+              type="submit"
+              class="btn btn-success"
+            >Save</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onCancel()"
+            >Cancel</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="name">Track Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="trackName"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="imageUrl">Image Url</label>
+            <input
+              type="text"
+              class="form-control"
+              id="imageUrl"
+              formControlName="trackImageUrl"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="length">Track Length</label>
+            <input
+              type="text"
+              class="form-control"
+              id="length"
+              formControlName="trackLength"
+            >
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-container>

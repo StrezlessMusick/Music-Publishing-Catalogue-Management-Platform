@@ -27,15 +27,13 @@ export class TrackEditComponent implements OnInit {
         (param: Params) => {
           this.id = +param['id'];
           this.editMode = param['id'] != null;
-          this.trackForm;
+          this.initForm();
         }
       );
-
-
   }
 
   private async initForm() {
-    let trackId = -1;
+    let trackId = null;
     let trackName = '';
     let trackImageUrl = '';
     let trackLength = '';
@@ -48,6 +46,7 @@ export class TrackEditComponent implements OnInit {
       trackName = track?.trackName;
       trackImageUrl = track?.trackImageUrl;
       trackLength = track?.trackLength;
+
     }
 
     this.trackForm = new FormGroup({
@@ -59,10 +58,29 @@ export class TrackEditComponent implements OnInit {
   }
 
   onSubmit() {
-
+    if (this.editMode) {
+      this.tracksService.updateTrack(this.trackForm.value)
+        .pipe(
+          tap(track => {
+            this.track = track;
+          })
+        ).subscribe();
+    } else {
+      this.tracksService.addTrack(this.trackForm.value)
+        .pipe(
+          tap((newTrack : Track) => {
+            this.track = newTrack;
+          })
+        ).subscribe();
+    }
+    console.log(this.track);
+    this.onCancel();
   }
 
   onCancel() {
-
+    this.router.navigate(
+      ['../'],
+      {relativeTo: this.route}
+    );
   }
 }

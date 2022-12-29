@@ -1,1 +1,19 @@
-<p>track-list works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="onNewTrack()"
+    >New Track</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <app-track-list-entry
+    *ngFor="let track of tracks"
+    [track]="track"
+    ></app-track-list-entry>
+  </div>
+</div>
+

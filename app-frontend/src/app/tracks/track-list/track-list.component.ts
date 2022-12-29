@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {TracksService} from "../../zshared/services/tracks.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Track} from "../../zshared/interfaces/track";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-track-list',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./track-list.component.css']
 })
 export class TrackListComponent implements OnInit {
+  tracks: Track[];
 
-  constructor() { }
+  constructor(private tracksService: TracksService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.tracksService.getTracks()
+      .pipe(
+        tap(
+          (tracks: Track[]) => {
+            this.tracks = tracks;
+          })
+      ).subscribe();
   }
 
+  onNewTrack() {
+    this.router.navigate(
+      ['new'],
+      {relativeTo: this.route}
+    )
+  }
 }

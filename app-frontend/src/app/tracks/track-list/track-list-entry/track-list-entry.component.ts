@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Track} from "../../../zshared/interfaces/track";
 
 @Component({
   selector: 'app-track-list-entry',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./track-list-entry.component.css']
 })
 export class TrackListEntryComponent implements OnInit {
+  @Input() track: Track;
 
   constructor() { }
 

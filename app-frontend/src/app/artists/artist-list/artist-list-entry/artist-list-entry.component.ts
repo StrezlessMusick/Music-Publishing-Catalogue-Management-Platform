@@ -9,7 +9,7 @@ import {empty} from "rxjs";
   styleUrls: ['./artist-list-entry.component.css']
 })
 export class ArtistListEntryComponent implements OnInit {
-  @Input() artist!: Artist;
+  @Input() artist: Artist;
 
   constructor(private artistsService: ArtistsService) { }
 

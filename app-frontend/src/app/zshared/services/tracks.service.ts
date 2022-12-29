@@ -13,9 +13,9 @@ export class TracksService {
 
   constructor(private http: HttpClient) {}
 
-  public getTracks(): Observable<Track> {
+  public getTracks(): Observable<Track[]> {
     return this.http
-      .get<Track>(`${this.apiServerUrl}/v1/tracks/all`);
+      .get<Track[]>(`${this.apiServerUrl}/v1/tracks/all`);
   }
 
   public getTrack(trackId: Track): Observable<Track> {

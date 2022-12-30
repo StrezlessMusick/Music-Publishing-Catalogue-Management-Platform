@@ -3,7 +3,7 @@ import {TracksService} from "../../zshared/services/tracks.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Track} from "../../zshared/interfaces/track";
 import {FormControl, FormGroup} from "@angular/forms";
-import {tap} from "rxjs";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-track-edit',
@@ -34,7 +34,7 @@ export class TrackEditComponent implements OnInit {
   }
 
   private async initForm() {
-    let trackId : number;
+    let trackId: number;
     let trackName = '';
     let trackImageUrl = '';
     let trackLength = '';
@@ -55,24 +55,19 @@ export class TrackEditComponent implements OnInit {
       trackImageUrl: new FormControl(trackImageUrl),
       trackLength: new FormControl(trackLength)
     });
+
   }
 
   onSubmit() {
     if (this.editMode) {
       this.tracksService.updateTrack(this.trackForm.value)
-        .pipe(
-          tap(track => {
+        .pipe(tap(track => {
             this.track = track;
-          })
-        ).subscribe();
+          })).subscribe();
     }
 
     this.tracksService.addTrack(this.trackForm.value)
-      .pipe(
-        tap((newTrack: Track) => {
-          this.track = newTrack;
-        })
-      ).subscribe();
+      .pipe(tap(newTrack => this.track = newTrack)).subscribe();
 
     this.onCancel();
   }

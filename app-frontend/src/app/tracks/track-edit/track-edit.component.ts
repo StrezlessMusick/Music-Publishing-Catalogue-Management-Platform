@@ -62,13 +62,14 @@ export class TrackEditComponent implements OnInit {
     if (this.editMode) {
       this.tracksService.updateTrack(this.trackForm.value)
         .pipe(tap(track => {
-            this.track = track;
-          })).subscribe();
+          this.track = track;
+        })).subscribe();
+    } else {
+      this.tracksService.addTrack(this.trackForm.value)
+        .pipe(tap(newTrack => {
+          this.track = newTrack
+        })).subscribe();
     }
-
-    this.tracksService.addTrack(this.trackForm.value)
-      .pipe(tap(newTrack => this.track = newTrack)).subscribe();
-
     this.onCancel();
   }
 

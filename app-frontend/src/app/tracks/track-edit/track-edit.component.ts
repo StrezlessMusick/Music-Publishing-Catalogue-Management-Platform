@@ -34,7 +34,7 @@ export class TrackEditComponent implements OnInit {
   }
 
   private async initForm() {
-    let trackId = 0;
+    let trackId : number;
     let trackName = '';
     let trackImageUrl = '';
     let trackLength = '';
@@ -47,7 +47,6 @@ export class TrackEditComponent implements OnInit {
       trackName = track?.trackName;
       trackImageUrl = track?.trackImageUrl;
       trackLength = track?.trackLength;
-
     }
 
     this.trackForm = new FormGroup({
@@ -66,14 +65,15 @@ export class TrackEditComponent implements OnInit {
             this.track = track;
           })
         ).subscribe();
-    } else {
-      this.tracksService.addTrack(this.trackForm.value)
-        .pipe(
-          tap((newTrack: Track) => {
-            this.track = newTrack;
-          })
-        ).subscribe();
     }
+
+    this.tracksService.addTrack(this.trackForm.value)
+      .pipe(
+        tap((newTrack: Track) => {
+          this.track = newTrack;
+        })
+      ).subscribe();
+
     this.onCancel();
   }
 

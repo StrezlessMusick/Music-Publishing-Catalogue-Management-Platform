@@ -37,7 +37,7 @@ export class TrackEditComponent implements OnInit {
     let trackId: number;
     let trackName = '';
     let trackImageUrl = '';
-    let trackLength = '';
+    let trackLength: number;
 
     if (this.editMode) {
       const track = await this.tracksService

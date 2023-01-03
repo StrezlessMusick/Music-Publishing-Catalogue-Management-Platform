@@ -5,7 +5,7 @@ export interface Track {
   id: number;
   trackName: string;
   trackImageUrl: string;
-  trackLength: string;
+  trackLength: number;
   artist: Artist[];
   project: Project[];
 }

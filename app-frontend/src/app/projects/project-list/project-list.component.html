@@ -1,1 +1,13 @@
-<p>project-list works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onNewProject()"
+    >New Project</button>
+  </div>
+  <app-project-list-entry
+    *ngFor="let project of projects"
+    [project]="project"
+  ></app-project-list-entry>
+</div>

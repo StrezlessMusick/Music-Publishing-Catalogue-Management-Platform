@@ -6,7 +6,7 @@ export interface Project {
   projectName: string;
   projectImageUrl: string;
   numOfTracks: number;
-  projectLength: string
+  projectLength: number;
   artist: Artist[];
   trackList: Track[];
 }

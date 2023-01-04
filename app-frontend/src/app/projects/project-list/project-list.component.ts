@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Project} from "../../zshared/interfaces/project";
 import {ProjectsService} from "../../zshared/services/projects.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-project-list',
@@ -16,9 +17,16 @@ export class ProjectListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.projectsService.getProjects()
+      .pipe(
+        tap(projects => this.projects = projects)
+      ).subscribe();
   }
 
   onNewProject() {
-
+    this.router.navigate(
+      ["new"],
+      {relativeTo: this.route}
+    );
   }
 }

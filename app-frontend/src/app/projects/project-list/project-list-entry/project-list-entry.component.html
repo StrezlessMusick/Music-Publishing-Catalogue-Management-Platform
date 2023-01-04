@@ -1,1 +1,19 @@
-<p>project-list-entry works!</p>
+<a
+  [routerLink]="[project.id]"
+  routerLinkActive="active"
+  class="list-group-item clearfix"
+  style="cursor: pointer;"
+>
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{project.projectName}}</h4>
+    <p class="list-group-item-text">{{project.numOfTracks}}</p>
+  </div>
+  <span class="pull-right">
+    <img
+      [src]="[project.projectImageUrl]"
+      [alt]="[project.projectName]"
+      class="img-responsive"
+      style="max-height: 50px;"
+    >
+  </span>
+</a>

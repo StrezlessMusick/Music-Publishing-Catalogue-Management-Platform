@@ -29,6 +29,41 @@
             >
           </div>
         </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="image">Cover Image Url</label>
+            <input
+              type="text"
+              id="image"
+              formControlName="projectImageUrl"
+              class="form-control"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="trackCount">Number of Tracks</label>
+            <input
+              type="number"
+              id="trackCount"
+              formControlName="numOfTracks"
+              class="form-control"
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="totalLength">Total Project Time</label>
+            <!-- Calculate the sum of all track.trackLength of this.project -->
+            <!-- but for now.. -->
+            <input
+              type="number"
+              id="totalLength"
+              formControlName="projectLength"
+              class="form-control"
+            >
+          </div>
+        </div>
       </form>
     </div>
   </div>

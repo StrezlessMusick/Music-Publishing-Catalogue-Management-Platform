@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectsService} from "../../zshared/services/projects.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Project} from "../../zshared/interfaces/project";
@@ -18,7 +18,8 @@ export class ProjectEditComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.route.params
@@ -31,22 +32,20 @@ export class ProjectEditComponent implements OnInit {
       );
   }
 
-  private initForm() {
+  private async initForm() {
     let name = '';
     let image = '';
-    let trackCount = 0;
-    let totalLength = 0;
+    let trackCount: number;
+    let totalLength: number;
 
     if (this.editMode) {
-      this.projectsService.getProject(this.id)
-        .pipe(
-          tap(project => this.project = project)
-        ).toPromise()
+      const project = await this.projectsService
+        .getProject(this.id).toPromise();
 
-      name = this.project?.projectName;
-      image = this.project?.projectImageUrl;
-      trackCount = this.project?.numOfTracks;
-      totalLength = this.project?.projectLength;
+      name = project?.projectName;
+      image = project?.projectImageUrl;
+      trackCount = project?.numOfTracks;
+      totalLength = project?.projectLength;
     }
 
     this.projectForm = new FormGroup({
@@ -60,6 +59,18 @@ export class ProjectEditComponent implements OnInit {
 
   onSubmit() {
 
+    if (this.editMode) {
+      this.projectsService.updateProject(this.projectForm.value)
+        .pipe(
+          tap(project => this.project = project)
+        ).subscribe();
+    } else {
+      this.projectsService.addProject(this.projectForm.value)
+        .pipe(
+          tap(newProject => this.project = newProject)
+        ).subscribe();
+    }
+    this.onCancel();
   }
 
   onCancel() {

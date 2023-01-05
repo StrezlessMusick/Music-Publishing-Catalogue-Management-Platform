@@ -42,7 +42,12 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   onDeleteProject() {
-
+    this.projectsService.removeProject(this.id)
+      .subscribe();
+    this.router.navigate(
+      ['../'],
+      {relativeTo: this.route}
+    );
   }
 
 }

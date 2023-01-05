@@ -54,11 +54,9 @@ export class ProjectEditComponent implements OnInit {
       numOfTracks: new FormControl(trackCount),
       projectLength: new FormControl(totalLength),
     });
-
   }
 
   onSubmit() {
-
     if (this.editMode) {
       this.projectsService.updateProject(this.projectForm.value)
         .pipe(

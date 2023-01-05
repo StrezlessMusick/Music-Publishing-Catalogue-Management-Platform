@@ -62,4 +62,11 @@ export class ProjectEditComponent implements OnInit {
 
   }
 
+  onCancel() {
+    this.router.navigate(
+      ['../'],
+      {relativeTo: this.route}
+    );
+  }
+
 }

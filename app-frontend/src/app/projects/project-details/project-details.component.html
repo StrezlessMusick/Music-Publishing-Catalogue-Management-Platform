@@ -1,1 +1,51 @@
-<p>project-details works!</p>
+<ng-container *ngIf="project">
+  <div class="row">
+    <div class="col-xs-12">
+      <img
+        [src]="[project.projectImageUrl]"
+        [alt]="[project.projectName]"
+        class="img-responsive"
+        style="max-height: 200px;"
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{project.projectName}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div
+        class="btn-group"
+        appDropdown
+      >
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+        >
+          Manage Project <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a (click)="onAddToFavorites()" style="cursor: pointer;">Add To Favorites</a></li>
+          <li><a (click)="onEditProject()" style="cursor: pointer;">Edit Project</a></li>
+          <li><a (click)="onDeleteProject()" style="cursor: pointer;">Delete</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Project Description</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <p>{{project.projectName}} - {{project.numOfTracks}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

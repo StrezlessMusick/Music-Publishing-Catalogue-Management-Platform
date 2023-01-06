@@ -29,6 +29,7 @@ export class ProjectEditComponent implements OnInit {
           this.editMode = params['id'] != null;
           this.initForm();
         }
+        
       );
   }
 

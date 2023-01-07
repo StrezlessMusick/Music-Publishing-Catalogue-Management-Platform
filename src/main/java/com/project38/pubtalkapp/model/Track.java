@@ -24,6 +24,8 @@ public class Track {
 //    @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
 
+    private javax.sound.midi.Track
+
 
     @ManyToMany(mappedBy = "artistTracks")
     private List<Artist> artist = new ArrayList<>();

@@ -21,6 +21,7 @@ public class Track {
     private String trackName;
 //    @NotBlank(message = "Cover art url is required!")
     private String trackImageUrl;
+    private String trackUrl;
 //    @NotBlank(message = "Length of track is required!")
     private Duration trackLength;
 

@@ -37,6 +37,7 @@ export class TrackEditComponent implements OnInit {
     let trackId: number;
     let trackName = '';
     let trackImageUrl = '';
+    let trackUrl = '';
     let trackLength: number;
 
     if (this.editMode) {
@@ -46,6 +47,7 @@ export class TrackEditComponent implements OnInit {
       trackId = track?.id;
       trackName = track?.trackName;
       trackImageUrl = track?.trackImageUrl;
+      trackUrl = track?.trackUrl;
       trackLength = track?.trackLength;
     }
 
@@ -53,6 +55,7 @@ export class TrackEditComponent implements OnInit {
       id: new FormControl(trackId),
       trackName: new FormControl(trackName),
       trackImageUrl: new FormControl(trackImageUrl),
+      trackUrl: new FormControl(trackUrl),
       trackLength: new FormControl(trackLength)
     });
 

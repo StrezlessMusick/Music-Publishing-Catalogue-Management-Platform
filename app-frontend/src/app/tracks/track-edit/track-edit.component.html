@@ -54,57 +54,6 @@
           </div>
         </div>
         <div class="row">
-          <div
-            class="col-xs-12"
-            formArrayName="artist"
-          >
-            <div
-              class="row"
-              *ngFor="let artistCrl of artistControls"
-              style="margin-top: 10px;"
-            >
-              <div class="col-xs-12">
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="artistName"
-                >
-              </div>
-              <!--              <div class="col-xs-2">-->
-              <!--                <input-->
-              <!--                  type="text"-->
-              <!--                  class="form-control"-->
-              <!--                  formControlName="pro"-->
-              <!--                >-->
-              <!--              </div>-->
-              <!--              <div class="col-xs-3">-->
-              <!--                <input-->
-              <!--                  type="text"-->
-              <!--                  class="form-control"-->
-              <!--                  formControlName="proIPI"-->
-              <!--                >-->
-              <!--              </div>-->
-              <div class="col-xs-2">
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  (click)="onDeleteArtist()"
-                >X</button>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-xs-12">
-                <button
-                  type="button"
-                  class="btn btn-success"
-                  (click)="onAddArtist()"
-                >Add Artist</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-xs-12">
             <label for="length">Track Length</label>
             <input
@@ -115,7 +64,65 @@
             >
           </div>
         </div>
-
+        <div class="row">
+          <div
+            class="col-xs-12"
+            formArrayName="artist"
+          >
+            <div
+              class="row"
+              *ngFor="let artistCrl of artistControls"
+              style="margin-top: 10px;"
+            >
+              <div class="col-xs-4">
+                <label for="artistName">Artist Name</label>
+                <input
+                  type="text"
+                  id="artistName"
+                  class="form-control"
+                  formControlName="artistName"
+                >
+              </div>
+              <div class="col-xs-3">
+                <label for="pro">PRO</label>
+                <input
+                  type="text"
+                  id="pro"
+                  class="form-control"
+                  formControlName="pro"
+                >
+              </div>
+              <div class="col-xs-3">
+                <label for="proIPI">IPI #</label>
+                <input
+                  type="text"
+                  id="proIPI"
+                  class="form-control"
+                  formControlName="proIPI"
+                >
+              </div>
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteArtist()"
+                >X
+                </button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="onAddArtist()"
+                >Add Artist
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>

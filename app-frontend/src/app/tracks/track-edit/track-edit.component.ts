@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TracksService} from "../../zshared/services/tracks.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Track} from "../../zshared/interfaces/track";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {tap} from "rxjs/operators";
+import { Artist } from 'src/app/zshared/interfaces/artist';
 
 @Component({
   selector: 'app-track-edit',
@@ -40,6 +41,8 @@ export class TrackEditComponent implements OnInit {
     let trackUrl = '';
     let trackLength: number;
 
+    let artist = [];
+
     if (this.editMode) {
       const track = await this.tracksService
         .getTrack(this.id).toPromise();
@@ -49,6 +52,8 @@ export class TrackEditComponent implements OnInit {
       trackImageUrl = track?.trackImageUrl;
       trackUrl = track?.trackUrl;
       trackLength = track?.trackLength;
+
+      artist = track?.artist;
     }
 
     this.trackForm = new FormGroup({
@@ -56,7 +61,9 @@ export class TrackEditComponent implements OnInit {
       trackName: new FormControl(trackName),
       trackImageUrl: new FormControl(trackImageUrl),
       trackUrl: new FormControl(trackUrl),
-      trackLength: new FormControl(trackLength)
+      trackLength: new FormControl(trackLength),
+
+      artist: new FormArray(artist)
     });
 
   }

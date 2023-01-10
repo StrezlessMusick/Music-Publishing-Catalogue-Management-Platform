@@ -10,12 +10,14 @@
             <button
               type="submit"
               class="btn btn-success"
-            >Save</button>
+            >Save
+            </button>
             <button
               type="button"
               class="btn btn-danger"
               (click)="onCancel()"
-            >Cancel</button>
+            >Cancel
+            </button>
           </div>
         </div>
         <div class="row">
@@ -52,15 +54,54 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
-            <label for="artist">Track Artist</label>
-            <br>
-            <textarea
-              name="trackArtist"
-              id="artist"
-              cols="30"
-              rows="3"
-            ></textarea>
+          <div
+            class="col-xs-12"
+            formArrayName="artist"
+          >
+            <div
+              class="row"
+              *ngFor="let artistCrl of artistControls"
+              style="margin-top: 10px;"
+            >
+              <div class="col-xs-12">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="artistName"
+                >
+              </div>
+              <!--              <div class="col-xs-2">-->
+              <!--                <input-->
+              <!--                  type="text"-->
+              <!--                  class="form-control"-->
+              <!--                  formControlName="pro"-->
+              <!--                >-->
+              <!--              </div>-->
+              <!--              <div class="col-xs-3">-->
+              <!--                <input-->
+              <!--                  type="text"-->
+              <!--                  class="form-control"-->
+              <!--                  formControlName="proIPI"-->
+              <!--                >-->
+              <!--              </div>-->
+              <div class="col-xs-2">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeleteArtist()"
+                >X</button>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="onAddArtist()"
+                >Add Artist</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">

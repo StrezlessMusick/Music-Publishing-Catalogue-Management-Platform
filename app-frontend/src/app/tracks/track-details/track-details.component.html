@@ -21,7 +21,6 @@
         [src]="[track.trackUrl]"
         controls
         loop
-        autoplay
       ></audio>
     </div>
   </div>
@@ -56,6 +55,7 @@
       <ul class="list-group">
         <li class="list-group-item">
           <p>{{track.id}} - {{track.trackLength}}</p>
+          <p>Artist: {{track.artist}}</p>
         </li>
       </ul>
     </div>

@@ -34,40 +34,6 @@ export class TrackEditComponent implements OnInit {
       );
   }
 
-  private async initForm() {
-    let trackId: number;
-    let trackName = '';
-    let trackImageUrl = '';
-    let trackUrl = '';
-    let trackLength: number;
-
-    let artist = [];
-
-    if (this.editMode) {
-      const track = await this.tracksService
-        .getTrack(this.id).toPromise();
-
-      trackId = track?.id;
-      trackName = track?.trackName;
-      trackImageUrl = track?.trackImageUrl;
-      trackUrl = track?.trackUrl;
-      trackLength = track?.trackLength;
-
-      artist = track?.artist;
-    }
-
-    this.trackForm = new FormGroup({
-      id: new FormControl(trackId),
-      trackName: new FormControl(trackName),
-      trackImageUrl: new FormControl(trackImageUrl),
-      trackUrl: new FormControl(trackUrl),
-      trackLength: new FormControl(trackLength),
-
-      artist: new FormArray(artist)
-    });
-
-  }
-
   onSubmit() {
     if (this.editMode) {
       this.tracksService.updateTrack(this.trackForm.value)
@@ -89,4 +55,68 @@ export class TrackEditComponent implements OnInit {
       {relativeTo: this.route}
     );
   }
+
+  private async initForm() {
+    let trackId: number;
+    let trackName = '';
+    let trackImageUrl = '';
+    let trackUrl = '';
+    let trackLength: number;
+
+    let trackArtist = new FormArray([]);
+
+    if (this.editMode) {
+      const track = await this.tracksService
+        .getTrack(this.id).toPromise();
+
+      trackId = track?.id;
+      trackName = track?.trackName;
+      trackImageUrl = track?.trackImageUrl;
+      trackUrl = track?.trackUrl;
+      trackLength = track?.trackLength;
+
+      if (track['artist']) {
+        for (let artist of track.artist) {
+          trackArtist.push(
+            new FormGroup({
+              artistName: new FormControl(artist.artistName),
+              artistImageUrl: new FormControl(artist.artistImageUrl),
+              pro: new FormControl(artist.pro),
+              proIPI: new FormControl(artist.proIPI)
+            })
+          );
+        }
+      }
+
+    }
+
+    this.trackForm = new FormGroup({
+      id: new FormControl(trackId),
+      trackName: new FormControl(trackName),
+      trackImageUrl: new FormControl(trackImageUrl),
+      trackUrl: new FormControl(trackUrl),
+      trackLength: new FormControl(trackLength),
+      'artist' : trackArtist
+    });
+  }
+
+  get artistControls() {
+    return (<FormArray>this.trackForm.get('artist')).controls;
+  }
+
+  onAddArtist() {
+    (<FormArray>this.trackForm.get('artist')).push(
+      new FormGroup({
+        artistName: new FormControl(null),
+        artistImageUrl: new FormControl(null),
+        pro: new FormControl(null),
+        proIPI: new FormControl(null)
+      })
+    );
+  }
+
+  onDeleteArtist() {
+
+  }
+
 }

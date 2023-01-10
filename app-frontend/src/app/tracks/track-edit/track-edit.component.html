@@ -71,7 +71,8 @@
           >
             <div
               class="row"
-              *ngFor="let artistCrl of artistControls"
+              *ngFor="let artistCrl of artistControls; let i = index"
+              [formGroupName]="i"
               style="margin-top: 10px;"
             >
               <div class="col-xs-4">
@@ -105,7 +106,7 @@
                 <button
                   type="button"
                   class="btn btn-danger"
-                  (click)="onDeleteArtist()"
+                  (click)="onDeleteArtist(i)"
                 >X</button>
               </div>
             </div>

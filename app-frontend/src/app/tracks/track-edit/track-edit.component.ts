@@ -115,8 +115,8 @@ export class TrackEditComponent implements OnInit {
     );
   }
 
-  onDeleteArtist() {
-
+  onDeleteArtist(index: number) {
+    (<FormArray>this.trackForm.get('artist')).removeAt(index);
   }
 
 }

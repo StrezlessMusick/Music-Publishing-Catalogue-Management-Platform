@@ -4,7 +4,6 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Track} from "../../zshared/interfaces/track";
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {tap} from "rxjs/operators";
-import { Artist } from 'src/app/zshared/interfaces/artist';
 
 @Component({
   selector: 'app-track-edit',

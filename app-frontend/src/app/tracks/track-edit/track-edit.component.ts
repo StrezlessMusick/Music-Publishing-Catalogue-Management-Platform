@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {TracksService} from "../../zshared/services/tracks.service";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Track} from "../../zshared/interfaces/track";
 import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {tap} from "rxjs/operators";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {TracksService} from "../../zshared/services/tracks.service";
+import {Track} from "../../zshared/interfaces/track";
 
 @Component({
   selector: 'app-track-edit',

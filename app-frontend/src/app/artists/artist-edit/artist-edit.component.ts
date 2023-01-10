@@ -23,6 +23,7 @@ export class ArtistEditComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router) {
     this.proKeys = Object.keys(this.pro);
+    this.initForm();
   }
 
   ngOnInit(): void {

@@ -19,6 +19,7 @@ export class ProjectEditComponent implements OnInit {
   constructor(private projectsService: ProjectsService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.initForm();
   }
 
   ngOnInit(): void {

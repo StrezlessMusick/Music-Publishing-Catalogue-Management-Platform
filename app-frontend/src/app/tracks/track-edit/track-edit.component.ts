@@ -19,6 +19,7 @@ export class TrackEditComponent implements OnInit {
   constructor(private tracksService: TracksService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.initForm();
   }
 
   ngOnInit(): void {
@@ -116,5 +117,4 @@ export class TrackEditComponent implements OnInit {
   onDeleteArtist(index: number) {
     (<FormArray>this.trackForm.get('artist')).removeAt(index);
   }
-
 }

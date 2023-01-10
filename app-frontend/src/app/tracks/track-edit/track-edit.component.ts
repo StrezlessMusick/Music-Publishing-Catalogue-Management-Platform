@@ -17,7 +17,6 @@ export class TrackEditComponent implements OnInit {
   editMode = false;
   trackForm: FormGroup;
 
-
   constructor(private tracksService: TracksService,
               private route: ActivatedRoute,
               private router: Router) {

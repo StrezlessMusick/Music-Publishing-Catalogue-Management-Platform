@@ -14,16 +14,18 @@ export class TrackListComponent implements OnInit {
 
   constructor(private tracksService: TracksService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+    this.onGetTracks();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onGetTracks() {
     this.tracksService.getTracks()
-      .pipe(
-        tap(
+      .pipe(tap(
           (tracks: Track[]) => {
             this.tracks = tracks;
-          })
-      ).subscribe();
+          })).subscribe();
   }
 
   onNewTrack() {

@@ -23,7 +23,7 @@ public class Project {
     private String projectImageUrl;
 //    @NotBlank(message = "Number of tracks is required!")
     private Integer numOfTracks;
-    private Duration projectLength;
+    private Integer projectLength;
 
     @ManyToMany(mappedBy = "artistProjects")
     private List<Artist> artist = new ArrayList<>();

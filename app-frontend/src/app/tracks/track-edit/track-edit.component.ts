@@ -71,7 +71,7 @@ export class TrackEditComponent implements OnInit {
     let trackName = '';
     let trackImageUrl = '';
     let trackUrl = '';
-    let trackLength: number;
+    let trackLength = 0;
 
     let trackArtist = new FormArray([]);
 

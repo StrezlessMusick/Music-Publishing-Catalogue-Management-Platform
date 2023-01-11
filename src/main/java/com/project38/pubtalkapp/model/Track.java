@@ -23,7 +23,7 @@ public class Track {
     private String trackImageUrl;
     private String trackUrl;
 //    @NotBlank(message = "Length of track is required!")
-    private Duration trackLength;
+    private Integer trackLength;
 
 
     @ManyToMany(mappedBy = "artistTracks")

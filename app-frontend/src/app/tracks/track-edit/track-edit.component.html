@@ -77,30 +77,32 @@
             >
               <div class="col-xs-4">
                 <select
-                  type="text"
-                  id="artistName"
                   class="form-control"
+                  name="artistName"
+                  id="artistName"
                   formControlName="artistName"
                 >
                   <option value="" disabled selected>-select-</option>
                   <option *ngFor="let artist of artists" [value]="artist" >{{artist.artistName}}</option>
                 </select>
-<!--                <input-->
-<!--                  type="text"-->
-<!--                  id="artistName"-->
-<!--                  class="form-control"-->
-<!--                  formControlName="artistName"-->
-<!--                  placeholder="Artist Name"-->
-<!--                >-->
               </div>
               <div class="col-xs-3">
-                <input
-                  type="text"
-                  id="pro"
+                <select
                   class="form-control"
+                  name="pro"
+                  id="pro"
                   formControlName="pro"
-                  placeholder="PRO"
                 >
+                  <option value="" disabled selected>-select-</option>
+                  <option *ngFor="let key of proKeys" [value]="key">{{pro[key]}}</option>
+                </select>
+<!--                <input-->
+<!--                  type="text"-->
+<!--                  id="pro"-->
+<!--                  class="form-control"-->
+<!--                  formControlName="pro"-->
+<!--                  placeholder="PRO"-->
+<!--                >-->
               </div>
               <div class="col-xs-3">
                 <input

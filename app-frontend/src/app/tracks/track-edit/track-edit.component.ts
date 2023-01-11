@@ -6,6 +6,7 @@ import {TracksService} from "../../zshared/services/tracks.service";
 import {Track} from "../../zshared/interfaces/track";
 import {Artist} from "../../zshared/interfaces/artist";
 import {ArtistsService} from "../../zshared/services/artists.service";
+import {PRO} from "../../zshared/enums/pro";
 
 @Component({
   selector: 'app-track-edit',
@@ -19,11 +20,14 @@ export class TrackEditComponent implements OnInit {
   trackForm: FormGroup;
   artists: Artist[];
   artist: Artist;
+  pro = PRO;
+  proKeys = [];
 
   constructor(private tracksService: TracksService,
               private artistsService: ArtistsService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.proKeys = Object.keys(this.pro);
     this.onGetArtists();
     this.initForm();
   }
@@ -102,7 +106,7 @@ export class TrackEditComponent implements OnInit {
       trackImageUrl: new FormControl(trackImageUrl),
       trackUrl: new FormControl(trackUrl),
       trackLength: new FormControl(trackLength),
-      'artist' : trackArtist
+      'artist': trackArtist
     });
   }
 

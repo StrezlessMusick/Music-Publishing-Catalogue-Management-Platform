@@ -132,6 +132,10 @@ export class TrackEditComponent implements OnInit {
     );
   }
 
+  onNewArtist() {
+    // TODO: Creates non-existent artist when creating new track or updating existing track
+  }
+
   onDeleteArtist(index: number) {
     (<FormArray>this.trackForm.get('artist')).removeAt(index);
   }

@@ -76,13 +76,22 @@
               style="margin-top: 10px;"
             >
               <div class="col-xs-4">
-                <input
+                <select
                   type="text"
                   id="artistName"
                   class="form-control"
                   formControlName="artistName"
-                  placeholder="Artist Name"
                 >
+                  <option value="" disabled selected>-select-</option>
+                  <option *ngFor="let artist of artists" [value]="artist" >{{artist.artistName}}</option>
+                </select>
+<!--                <input-->
+<!--                  type="text"-->
+<!--                  id="artistName"-->
+<!--                  class="form-control"-->
+<!--                  formControlName="artistName"-->
+<!--                  placeholder="Artist Name"-->
+<!--                >-->
               </div>
               <div class="col-xs-3">
                 <input

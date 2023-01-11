@@ -4,6 +4,8 @@ import {tap} from "rxjs/operators";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TracksService} from "../../zshared/services/tracks.service";
 import {Track} from "../../zshared/interfaces/track";
+import {Artist} from "../../zshared/interfaces/artist";
+import {ArtistsService} from "../../zshared/services/artists.service";
 
 @Component({
   selector: 'app-track-edit',
@@ -15,10 +17,14 @@ export class TrackEditComponent implements OnInit {
   id: number;
   editMode = false;
   trackForm: FormGroup;
+  artists: Artist[];
+  artist: Artist;
 
   constructor(private tracksService: TracksService,
+              private artistsService: ArtistsService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.onGetArtists();
     this.initForm();
   }
 
@@ -31,6 +37,7 @@ export class TrackEditComponent implements OnInit {
           this.initForm();
         }
       );
+
   }
 
   onSubmit() {
@@ -101,6 +108,13 @@ export class TrackEditComponent implements OnInit {
 
   get artistControls() {
     return (<FormArray>this.trackForm.get('artist')).controls;
+  }
+
+  onGetArtists() {
+    this.artistsService.getArtists()
+      .pipe(tap(
+        artists => this.artists = artists
+      )).subscribe();
   }
 
   onAddArtist() {

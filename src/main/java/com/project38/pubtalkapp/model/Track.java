@@ -17,16 +17,22 @@ public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NotBlank(message = "Track name is required!")
+    //    @NotBlank(message = "Track name is required!")
     private String trackName;
-//    @NotBlank(message = "Cover art url is required!")
+    //    @NotBlank(message = "Cover art url is required!")
     private String trackImageUrl;
     private String trackUrl;
-//    @NotBlank(message = "Length of track is required!")
+    //    @NotBlank(message = "Length of track is required!")
     private Integer trackLength;
 
 
-    @ManyToMany(mappedBy = "artistTracks")
+    //    @OneToMany(mappedBy = "artistTracks")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "artist_track",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+    )
     private List<Artist> artist = new ArrayList<>();
 
     @ManyToMany(mappedBy = "trackList")

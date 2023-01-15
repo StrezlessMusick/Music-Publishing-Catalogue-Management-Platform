@@ -24,6 +24,7 @@ public class Track {
     private String trackUrl;
     //    @NotBlank(message = "Length of track is required!")
     private Integer trackLength;
+//    private String soundExchange;
 
 
     //    @OneToMany(mappedBy = "artistTracks")

@@ -1,9 +1,12 @@
 package com.project38.pubtalkapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tracks")
-public class Track {
+public class Track implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,12 +31,21 @@ public class Track {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "artist_track",
+            name = "track_artist",
             joinColumns = {@JoinColumn(name = "track_id")},
             inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
+//    @JsonManagedReference
     private List<Artist> artist = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "trackList")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "track_project",
+            joinColumns = {@JoinColumn(name = "track_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")}
+    )
+//    @JsonManagedReference
     private List<Project> project = new ArrayList<>();
+
+
 }

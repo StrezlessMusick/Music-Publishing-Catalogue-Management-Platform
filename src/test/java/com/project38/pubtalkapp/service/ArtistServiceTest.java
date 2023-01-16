@@ -179,22 +179,21 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        doReturn(Optional.of(billy1)).when(artistRepo).findById(id);
-        doReturn(billy1).when(artistRepo).save(billy1);
+        when(artistRepo.findById(id)).thenReturn(Optional.of(billy1));
+        when(artistRepo.save(billy1)).thenReturn(billy1);
 
         // When
-        Artist updated = underTest.editArtist(
-                new Artist(
-                        id,
-                        "Jackie",
-                        "www.imageurl.com",
-                        PRO.ASCAP,
-                        "22321",
-                        trackList,
-                        projectList
-                )
+        Artist billy2 = new Artist(
+                id,
+                "Jackie",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
         );
-        doReturn(updated).when(artistRepo.save(updated));
+        Artist updated = underTest.editArtist(billy2);
+
 
         // Then
 //        verify(artistRepo).save(billy1);

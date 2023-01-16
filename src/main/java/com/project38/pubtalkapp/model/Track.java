@@ -35,17 +35,11 @@ public class Track implements Serializable {
             joinColumns = {@JoinColumn(name = "track_id")},
             inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
-//    @JsonManagedReference
     private List<Artist> artist = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "track_project",
-            joinColumns = {@JoinColumn(name = "track_id")},
-            inverseJoinColumns = {@JoinColumn(name = "project_id")}
-    )
-//    @JsonManagedReference
-    private List<Project> project = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
 
 }

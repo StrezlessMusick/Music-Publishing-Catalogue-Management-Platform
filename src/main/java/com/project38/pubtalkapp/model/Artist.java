@@ -35,7 +35,6 @@ public class Artist implements Serializable {
     private String proIPI;
 
     @ManyToMany(mappedBy = "artist")
-//    @JsonBackReference
     private List<Track> artistTracks = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -44,7 +43,6 @@ public class Artist implements Serializable {
             joinColumns = {@JoinColumn(name = "artist_id")},
             inverseJoinColumns = {@JoinColumn(name = "project_id")}
     )
-//    @JsonManagedReference
     private List<Project> artistProjects = new ArrayList<>();
 
 }

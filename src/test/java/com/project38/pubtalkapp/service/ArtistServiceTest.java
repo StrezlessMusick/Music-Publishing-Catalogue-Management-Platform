@@ -128,6 +128,13 @@ class ArtistServiceTest {
         // When & Then
         assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(id));
 
+        try {
+            underTest.findArtistById(id);
+        } catch (ArtistNotFoundException e) {
+            assertEquals(String.format("Artist with id [%s] not found.", id),
+                    e.getMessage());
+        }
+        
     }
 
     @Test
@@ -153,13 +160,6 @@ class ArtistServiceTest {
 
         // Then
         assertThat(billy).isEqualToComparingFieldByField(returned);
-
-        try {
-            underTest.findArtistById(id);
-        } catch (ArtistNotFoundException e) {
-            assertEquals(String.format("Artist with id [%s] not found.", id),
-                    e.getMessage());
-        }
 
     }
 

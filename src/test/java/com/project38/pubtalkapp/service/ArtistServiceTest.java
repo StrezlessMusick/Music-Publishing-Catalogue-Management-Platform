@@ -14,17 +14,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ArtistServiceTest {
@@ -134,7 +135,7 @@ class ArtistServiceTest {
             assertEquals(String.format("Artist with id [%s] not found.", id),
                     e.getMessage());
         }
-        
+
     }
 
     @Test
@@ -166,10 +167,38 @@ class ArtistServiceTest {
     @Test
     void itShouldEditArtist() {
         // Given
+        List<Track> trackList = new ArrayList<>();
+        List<Project> projectList = new ArrayList<>();
+
+        Long id = 1L;
+        Artist billy1 = new Artist(
+                id,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+        Artist billy2 = new Artist(
+                id,
+                "Jackie",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+        when(artistRepo.save(billy1)).thenReturn(billy2);
 
         // When
 
+        underTest.editArtist(billy1);
+
         // Then
+        verify(artistRepo).save(billy1);
+        assertEquals("Jackie", billy2.getArtistName());
+        assertEquals("22321", billy2.getProIPI());
 
     }
 

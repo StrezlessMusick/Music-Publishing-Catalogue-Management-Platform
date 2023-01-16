@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 
 class ArtistServiceTest {
 
@@ -86,8 +87,37 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        
-        artistRepo.saveAndFlush(billy);
+
+        Optional<Artist> artistOptional = Optional.of(billy);
+        when(artistRepo.findById(id)).thenReturn(artistOptional);
+
+        // When
+        Artist returned = underTest.findArtistById(id);
+
+        // Then
+        assertThat(billy).isEqualToComparingFieldByField(returned);
+
+    }
+
+    @Test
+    void itShouldThrowArtistNotFoundException() {
+        // Given
+        List<Track> trackList = new ArrayList<>();
+        List<Project> projectList = new ArrayList<>();
+
+        Long id = 1L;
+        Artist billy = new Artist(
+                id,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+
+        Optional<Artist> artistOptional = Optional.of(billy);
+        when(artistRepo.findById(id)).thenReturn(artistOptional);
 
         // When
         Artist returned = underTest.findArtistById(id);

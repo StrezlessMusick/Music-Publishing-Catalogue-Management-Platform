@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.ArtistNotFoundException;
 import com.project38.pubtalkapp.model.Artist;
 import com.project38.pubtalkapp.model.PRO;
 import com.project38.pubtalkapp.model.Project;
@@ -8,8 +9,11 @@ import com.project38.pubtalkapp.repo.ArtistRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.ArrayList;
@@ -17,19 +21,20 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class ArtistServiceTest {
 
     @Mock
     private ArtistRepo artistRepo;
+    @InjectMocks
     private ArtistService underTest;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
-        underTest = new ArtistService(artistRepo);
     }
 
     @AfterEach
@@ -117,23 +122,36 @@ class ArtistServiceTest {
         );
 
         Optional<Artist> artistOptional = Optional.of(billy);
-        when(artistRepo.findById(id)).thenReturn(artistOptional);
+        when(artistRepo.findById(id)).thenReturn(Optional.empty());
 
-        // When
-        Artist returned = underTest.findArtistById(id);
-
-        // Then
-        assertThat(billy).isEqualToComparingFieldByField(returned);
+        // When & Then
+        assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(id));
 
     }
 
     @Test
     void itShouldCreateArtist() {
         // Given
+        List<Track> trackList = new ArrayList<>();
+        List<Project> projectList = new ArrayList<>();
+
+        Long id = 1L;
+        Artist billy = new Artist(
+                id,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+        when(artistRepo.save(billy)).thenReturn(billy);
 
         // When
+        Artist returned = underTest.createArtist(billy);
 
         // Then
+        assertThat(billy).isEqualToComparingFieldByField(returned);
 
     }
 

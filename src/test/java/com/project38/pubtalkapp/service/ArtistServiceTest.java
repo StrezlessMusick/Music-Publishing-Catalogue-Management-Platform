@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -180,25 +179,29 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        Artist billy2 = new Artist(
-                id,
-                "Jackie",
-                "www.imageurl.com",
-                PRO.ASCAP,
-                "22321",
-                trackList,
-                projectList
-        );
-        when(artistRepo.save(billy1)).thenReturn(billy2);
+        doReturn(Optional.of(billy1)).when(artistRepo).findById(id);
+        doReturn(billy1).when(artistRepo).save(billy1);
 
         // When
-
-        underTest.editArtist(billy1);
+        Artist updated = underTest.editArtist(
+                new Artist(
+                        id,
+                        "Jackie",
+                        "www.imageurl.com",
+                        PRO.ASCAP,
+                        "22321",
+                        trackList,
+                        projectList
+                )
+        );
+        doReturn(updated).when(artistRepo.save(updated));
 
         // Then
-        verify(artistRepo).save(billy1);
-        assertEquals("Jackie", billy2.getArtistName());
-        assertEquals("22321", billy2.getProIPI());
+//        verify(artistRepo).save(billy1);
+
+        assertNotEquals(billy1, updated);
+        assertEquals("Jackie", updated.getArtistName());
+        assertEquals("22321", updated.getProIPI());
 
     }
 

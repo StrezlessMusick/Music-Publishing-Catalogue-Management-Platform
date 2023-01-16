@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
@@ -152,6 +153,13 @@ class ArtistServiceTest {
 
         // Then
         assertThat(billy).isEqualToComparingFieldByField(returned);
+
+        try {
+            underTest.findArtistById(id);
+        } catch (ArtistNotFoundException e) {
+            assertEquals(String.format("Artist with id [%s] not found.", id),
+                    e.getMessage());
+        }
 
     }
 

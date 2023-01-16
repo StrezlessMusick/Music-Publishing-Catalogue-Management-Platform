@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,12 +86,13 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
+        
+        artistRepo.saveAndFlush(billy);
+
         // When
-//        doReturn(billy).when(artistRepo).findById(1L);
-        artistRepo.save(billy);
+        Artist returned = underTest.findArtistById(id);
 
         // Then
-        Artist returned = underTest.findArtistById(id);
         assertThat(billy).isEqualToComparingFieldByField(returned);
 
     }

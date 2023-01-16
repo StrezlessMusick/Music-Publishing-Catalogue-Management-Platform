@@ -30,12 +30,6 @@ public class Artist {
     //    @NotBlank(message = "Artist PRO IPI number is required!")
     private String proIPI;
 
-    //    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "artist_track",
-//            joinColumns = {@JoinColumn(name = "artist_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "track_id")}
-//    )
     @ManyToMany(mappedBy = "artist")
     private List<Track> artistTracks = new ArrayList<>();
 

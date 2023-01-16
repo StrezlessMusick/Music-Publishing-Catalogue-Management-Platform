@@ -26,13 +26,11 @@ public class Track {
     private Integer trackLength;
 //    private String soundExchange;
 
-
-    //    @OneToMany(mappedBy = "artistTracks")
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "artist_track",
-            joinColumns = {@JoinColumn(name = "artist_id")},
-            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+            joinColumns = {@JoinColumn(name = "track_id")},
+            inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
     private List<Artist> artist = new ArrayList<>();
 

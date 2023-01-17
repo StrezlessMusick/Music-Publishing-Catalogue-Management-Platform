@@ -180,7 +180,7 @@ class ArtistServiceTest {
                 projectList
         );
         when(artistRepo.findById(id)).thenReturn(Optional.of(billy1));
-        when(artistRepo.save(billy1)).thenReturn(billy1);
+//        when(artistRepo.save(billy1)).thenReturn(billy1);
 
         // When
         Artist billy2 = new Artist(

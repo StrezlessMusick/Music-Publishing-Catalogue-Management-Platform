@@ -35,9 +35,17 @@ public class ArtistService {
     }
 
     public Artist editArtist(Artist artist) {
-        Optional<Artist> existingArtist = artistRepo.findById(artist.getId());
-        if (existingArtist.isPresent())
-            return artistRepo.save(artist);
+        Optional<Artist> artistOpt = artistRepo.findById(artist.getId());
+        if (artistOpt.isPresent()) {
+            Artist artistToEdit = artistOpt.get();
+            artistToEdit.setArtistName(artist.getArtistName());
+            artistToEdit.setArtistImageUrl(artist.getArtistImageUrl());
+            artistToEdit.setPro(artist.getPro());
+            artistToEdit.setProIPI(artist.getProIPI());
+            artistToEdit.setArtistTracks(artist.getArtistTracks());
+            artistToEdit.setArtistProjects(artist.getArtistProjects());
+            return artistRepo.save(artistToEdit);
+        }
 
         return artist;
     }

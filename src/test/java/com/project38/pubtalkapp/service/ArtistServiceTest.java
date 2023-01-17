@@ -12,13 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.Answer;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -164,13 +160,13 @@ class ArtistServiceTest {
     }
 
     @Test
-    void itShouldEditArtist() {
+    void itShouldEditExistingArtist() {
         // Given
         List<Track> trackList = new ArrayList<>();
         List<Project> projectList = new ArrayList<>();
 
         Long id = 1L;
-        Artist billy1 = new Artist(
+        Artist billy = new Artist(
                 id,
                 "Billy",
                 "www.imageurl.com",
@@ -179,11 +175,11 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        when(artistRepo.findById(id)).thenReturn(Optional.of(billy1));
+        when(artistRepo.findById(id)).thenReturn(Optional.of(billy));
 //        when(artistRepo.save(billy1)).thenReturn(billy1);
 
         // When
-        Artist billy2 = new Artist(
+        Artist jackie = new Artist(
                 id,
                 "Jackie",
                 "www.imageurl.com",
@@ -192,15 +188,13 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        when(artistRepo.save(billy2)).thenReturn(billy2);
-
-        Artist updated = underTest.editArtist(billy2);
-        System.out.println(underTest.findAllArtists());
+//        when(artistRepo.save(billy2)).thenReturn(billy2);
+        Artist updated = underTest.editArtist(jackie);
 
         // Then
         verify(artistRepo).save(updated);
 
-        assertNotEquals(billy1, updated);
+        assertNotEquals(billy, updated);
         assertNotEquals("Billy", underTest.findArtistById(id).getArtistName());
 
         assertEquals("Jackie", updated.getArtistName());

@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -71,10 +72,22 @@ class TrackServiceTest {
     @Test
     void itShouldFindTrackById() {
         // Given
+        List<Artist> artists = new ArrayList<>();
+        Track track = new Track(
+                1L,
+                "next_up",
+                "www.imageurl.com",
+                "/path/to/next_up.wav",
+                305,
+                artists
+        );
+        when(trackRepo.findById(1L)).thenReturn(Optional.of(track));
 
         // When
+        Track returned = underTest.findTrackById(1L);
 
         // Then
+        assertThat(returned).isEqualToComparingFieldByField(track);
 
     }
 

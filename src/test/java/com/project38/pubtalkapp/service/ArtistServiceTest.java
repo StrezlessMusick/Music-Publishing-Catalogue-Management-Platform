@@ -192,12 +192,13 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
+        when(artistRepo.save(billy2)).thenReturn(billy2);
+
         Artist updated = underTest.editArtist(billy2);
 
 
         // Then
-//        verify(artistRepo).save(billy1);
-
+        verify(artistRepo).save(updated);
         assertNotEquals(billy1, updated);
         assertEquals("Jackie", updated.getArtistName());
         assertEquals("22321", updated.getProIPI());

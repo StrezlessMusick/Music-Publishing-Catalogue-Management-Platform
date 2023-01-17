@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -205,10 +206,40 @@ class ArtistServiceTest {
     @Test
     void itShouldDeleteArtistById() {
         // Given
+        List<Track> trackList = new ArrayList<>();
+        List<Project> projectList = new ArrayList<>();
+
+        Artist billy = new Artist(
+                1L,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+        Artist jackie = new Artist(
+                2L,
+                "Jackie",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                trackList,
+                projectList
+        );
+        artistRepo.saveAll(Arrays.asList(billy, jackie));
+
+        when(artistRepo.findById(1L)).thenReturn(Optional.empty());
+        when(artistRepo.findById(2L)).thenReturn(Optional.of(jackie));
 
         // When
+        underTest.deleteArtistById(1L);
 
         // Then
+        verify(artistRepo, times(1)).deleteById(1L);
+
+        assertEquals(Optional.empty(), artistRepo.findById(1L));
+        assertEquals("Jackie", artistRepo.findById(2L).get().getArtistName());
 
     }
 }

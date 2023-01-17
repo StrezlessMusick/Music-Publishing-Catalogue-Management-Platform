@@ -195,11 +195,14 @@ class ArtistServiceTest {
         when(artistRepo.save(billy2)).thenReturn(billy2);
 
         Artist updated = underTest.editArtist(billy2);
-
+        System.out.println(underTest.findAllArtists());
 
         // Then
         verify(artistRepo).save(updated);
+
         assertNotEquals(billy1, updated);
+        assertNotEquals("Billy", underTest.findArtistById(id).getArtistName());
+
         assertEquals("Jackie", updated.getArtistName());
         assertEquals("22321", updated.getProIPI());
 

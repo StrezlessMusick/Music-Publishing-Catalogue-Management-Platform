@@ -29,6 +29,6 @@ public class Project implements Serializable {
     @ManyToMany(mappedBy = "artistProjects")
     private List<Artist> artist = new ArrayList<>();
 
-    @OneToMany(mappedBy = "project")
-    private List<Track> trackList = new ArrayList<>();
+//    @OneToMany(mappedBy = "project")
+//    private List<Track> trackList = new ArrayList<>();
 }

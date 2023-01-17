@@ -37,9 +37,9 @@ public class Track implements Serializable {
     )
     private List<Artist> artist = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "project_id")
-    private Project project;
+//    @ManyToOne
+//    @JoinColumn(name = "project_id")
+//    private Project project;
 
 
 }

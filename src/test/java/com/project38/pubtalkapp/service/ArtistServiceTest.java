@@ -176,8 +176,8 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
+        artistRepo.save(billy);
         when(artistRepo.findById(id)).thenReturn(Optional.of(billy));
-//        when(artistRepo.save(billy1)).thenReturn(billy1);
 
         // When
         Artist jackie = new Artist(
@@ -185,21 +185,20 @@ class ArtistServiceTest {
                 "Jackie",
                 "www.imageurl.com",
                 PRO.ASCAP,
-                "22321",
+                "22328",
                 trackList,
                 projectList
         );
-//        when(artistRepo.save(billy2)).thenReturn(billy2);
-        Artist updated = underTest.editArtist(jackie);
+        underTest.editArtist(jackie);
+        when(artistRepo.findById(id)).thenReturn(Optional.of(jackie));
 
         // Then
-        verify(artistRepo).save(updated);
+        verify(artistRepo).save(billy);
+        assertEquals("Jackie", artistRepo.findById(id).get().getArtistName());
 
-        assertNotEquals(billy, updated);
+        assertNotEquals(billy, jackie);
         assertNotEquals("Billy", underTest.findArtistById(id).getArtistName());
-
-        assertEquals("Jackie", updated.getArtistName());
-        assertEquals("22321", updated.getProIPI());
+        assertNotEquals("22321", artistRepo.findById(id).get().getProIPI());
 
     }
 

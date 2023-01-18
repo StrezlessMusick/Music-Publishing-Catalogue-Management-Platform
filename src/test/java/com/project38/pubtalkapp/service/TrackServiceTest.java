@@ -1,5 +1,7 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.ArtistNotFoundException;
+import com.project38.pubtalkapp.exception.TrackNotFoundException;
 import com.project38.pubtalkapp.model.Artist;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.TrackRepo;
@@ -93,10 +95,33 @@ class TrackServiceTest {
     @Test
     void itShouldThrowArtistNotFoundException() {
         // Given
+        List<Artist> artists = new ArrayList<>();
+        Long id = 1L;
+        Track track = new Track(
+                id,
+                "next_up",
+                "www.imageurl.com",
+                "/path/to/next_up.wav",
+                305,
+                artists
+        );
+        trackRepo.save(track);
 
-        // When
+        Optional<Track> trackOpt = Optional.of(track);
+        when(trackRepo.findById(id)).thenReturn(trackOpt);
 
-        // Then
+        // Then & When
+        verify(trackRepo).save(track);
+
+        assertEquals(trackOpt.get().getTrackName(), trackRepo.findById(id).get().getTrackName());
+        assertThrows(TrackNotFoundException.class, () -> underTest.findTrackById(2L));
+
+        try {
+            trackRepo.findById(2L);
+        } catch (TrackNotFoundException e) {
+            assertEquals(String.format("Track with id [%s] not found.", 2L),
+                    e.getMessage());
+        }
 
     }
 

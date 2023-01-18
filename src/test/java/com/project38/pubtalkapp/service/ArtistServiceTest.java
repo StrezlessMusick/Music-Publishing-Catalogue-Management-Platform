@@ -118,19 +118,25 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
+        artistRepo.save(billy);
 
-        Optional<Artist> artistOptional = Optional.of(billy);
-        when(artistRepo.findById(id)).thenReturn(Optional.empty());
+        Optional<Artist> artistOpt = Optional.of(billy);
+        when(artistRepo.findById(id)).thenReturn(artistOpt);
+
 
         // When & Then
-        assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(id));
+        verify(artistRepo).save(billy);
+
+        assertEquals(artistOpt.get().getArtistName(), artistRepo.findById(id).get().getArtistName());
+        assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(2L));
 
         try {
-            underTest.findArtistById(id);
+            underTest.findArtistById(2L);
         } catch (ArtistNotFoundException e) {
-            assertEquals(String.format("Artist with id [%s] not found.", id),
+            assertEquals(String.format("Artist with id [%s] not found.", 2L),
                     e.getMessage());
         }
+
 
     }
 

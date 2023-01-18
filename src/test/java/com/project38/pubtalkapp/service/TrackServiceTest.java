@@ -60,7 +60,7 @@ class TrackServiceTest {
         );
 
         // When
-        doReturn(trackList).when(trackRepo).findAll();
+        when(trackRepo.findAll()).thenReturn(trackList);
 
         // Then
         List<Track> returned = underTest.findAllTracks();
@@ -145,11 +145,11 @@ class TrackServiceTest {
         );
         trackRepo.saveAll(Arrays.asList(track1, track2));
 
-        when(trackRepo.findById(1L)).thenReturn(Optional.empty());
-        when(trackRepo.findById(2L)).thenReturn(Optional.of(track2));
-
         // When
         underTest.deleteTrackById(1L);
+
+        when(trackRepo.findById(1L)).thenReturn(Optional.empty());
+        when(trackRepo.findById(2L)).thenReturn(Optional.of(track2));
 
         // Then
         verify(trackRepo, times(1)).deleteById(1L);

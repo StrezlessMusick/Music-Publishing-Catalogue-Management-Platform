@@ -18,8 +18,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TrackServiceTest {
@@ -94,10 +93,23 @@ class TrackServiceTest {
     @Test
     void itShouldCreateTrack() {
         // Given
+        List<Artist> artists = new ArrayList<>();
+        Track track = new Track(
+                1L,
+                "next_up",
+                "www.imageurl.com",
+                "/path/to/next_up.wav",
+                305,
+                artists
+        );
+        when(trackRepo.save(track)).thenReturn(track);
 
         // When
+        Track returned = underTest.createTrack(track);
 
         // Then
+        verify(trackRepo).save(track);
+        assertThat(returned).isEqualToComparingFieldByField(track);
 
     }
 

@@ -126,10 +126,29 @@ class TrackServiceTest {
     @Test
     void itShouldDeleteTrackById() {
         // Given
+        List<Artist> artists = new ArrayList<>();
+        Track track1 = new Track(
+                1L,
+                "intro",
+                "www.imageurl.com",
+                "/path/to/intro.wav",
+                256,
+                artists
+        );
+        Track track2 = new Track(
+                2L,
+                "next_up",
+                "www.imageurl.com",
+                "/path/to/next_up.wav",
+                305,
+                artists
+        );
+        when(trackRepo.saveAll(Arrays.asList(track1, track2))).thenReturn(Arrays.asList(track1, track2));
 
         // When
 
         // Then
+        verify(trackRepo).saveAll(Arrays.asList(track1, track2));
 
     }
 }

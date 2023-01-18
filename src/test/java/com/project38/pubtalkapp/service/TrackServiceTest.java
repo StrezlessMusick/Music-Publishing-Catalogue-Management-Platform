@@ -91,6 +91,16 @@ class TrackServiceTest {
     }
 
     @Test
+    void itShouldThrowArtistNotFoundException() {
+        // Given
+
+        // When
+
+        // Then
+
+    }
+
+    @Test
     void itShouldCreateTrack() {
         // Given
         List<Artist> artists = new ArrayList<>();
@@ -116,11 +126,36 @@ class TrackServiceTest {
     @Test
     void itShouldEditTrack() {
         // Given
+        List<Artist> artists = new ArrayList<>();
+        Track track1 = new Track(
+                1L,
+                "intro",
+                "www.imageurl.com",
+                "/path/to/intro.wav",
+                256,
+                artists
+        );
+        trackRepo.save(track1);
+        when(trackRepo.findById(1L)).thenReturn(Optional.of(track1));
 
         // When
+        Track track1Edit = new Track(
+                1L,
+                "first_on",
+                "www.imageurl.com",
+                "/path/to/first_on.wav",
+                256,
+                artists
+        );
+        underTest.editTrack(track1Edit);
+        when(trackRepo.findById(1L)).thenReturn(Optional.of(track1Edit));
 
         // Then
+        verify(trackRepo).save(track1);
+        assertEquals("first_on", trackRepo.findById(1L).get().getTrackName());
 
+        assertNotEquals(Optional.empty(), trackRepo.findById(1L));
+        assertNotEquals("intro", trackRepo.findById(1L).get().getTrackName());
     }
 
     @Test

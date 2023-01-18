@@ -143,12 +143,19 @@ class TrackServiceTest {
                 305,
                 artists
         );
-        when(trackRepo.saveAll(Arrays.asList(track1, track2))).thenReturn(Arrays.asList(track1, track2));
+        trackRepo.saveAll(Arrays.asList(track1, track2));
+
+        when(trackRepo.findById(1L)).thenReturn(Optional.empty());
+        when(trackRepo.findById(2L)).thenReturn(Optional.of(track2));
 
         // When
+        underTest.deleteTrackById(1L);
 
         // Then
-        verify(trackRepo).saveAll(Arrays.asList(track1, track2));
+        verify(trackRepo, times(1)).deleteById(1L);
+
+        assertEquals(Optional.empty(), trackRepo.findById(1L));
+        assertEquals("next_up", trackRepo.findById(2L).get().getTrackName());
 
     }
 }

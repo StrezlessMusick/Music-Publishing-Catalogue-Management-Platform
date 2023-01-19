@@ -57,7 +57,7 @@ class ArtistServiceTest {
         );
 
         // When
-        doReturn(artistList).when(artistRepo).findAll();
+        when(artistRepo.findAll()).thenReturn(artistList);
 
         // Then
         List<Artist> testList = underTest.findAllArtists();

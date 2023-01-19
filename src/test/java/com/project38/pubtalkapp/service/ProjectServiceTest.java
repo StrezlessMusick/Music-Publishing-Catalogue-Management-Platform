@@ -49,14 +49,12 @@ class ProjectServiceTest {
                         artist
                 )
         );
-        projectRepo.saveAll(projectList);
-        when(projectRepo.findAll()).thenReturn(projectList);
 
         // When
-        List<Project> returned = underTest.findAllProjects();
+        when(projectRepo.findAll()).thenReturn(projectList);
 
         // Then
-        verify(projectRepo).saveAll(projectList);
+        List<Project> returned = underTest.findAllProjects();
         assertThat(returned).hasSize(2);
     }
 
@@ -72,7 +70,6 @@ class ProjectServiceTest {
                 4321,
                 artist
         );
-        projectRepo.save(project);
         when(projectRepo.findById(1L)).thenReturn(Optional.of(project));
 
         // When
@@ -80,9 +77,6 @@ class ProjectServiceTest {
 
         // Then
         assertThat(returned).isEqualToComparingFieldByField(project);
-        assertEquals(17, projectRepo.findById(1L).get().getNumOfTracks());
-
-        assertNotEquals(18, projectRepo.findById(1L).get().getNumOfTracks());
     }
 
     @Test

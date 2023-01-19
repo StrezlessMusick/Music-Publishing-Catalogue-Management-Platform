@@ -62,18 +62,20 @@ class ProjectServiceTest {
     void itShouldFindProjectById() {
         // Given
         List<Artist> artist = new ArrayList<>();
+        Long id = 1L;
         Project project = new Project(
-                1L,
+                id,
                 "My First Project",
                 "www.image1url.com",
                 17,
                 4321,
                 artist
         );
-        when(projectRepo.findById(1L)).thenReturn(Optional.of(project));
+        Optional<Project> projOpt = Optional.of(project);
+        when(projectRepo.findById(id)).thenReturn(projOpt);
 
         // When
-        Project returned = underTest.findProjectById(1L);
+        Project returned = underTest.findProjectById(id);
 
         // Then
         assertThat(returned).isEqualToComparingFieldByField(project);

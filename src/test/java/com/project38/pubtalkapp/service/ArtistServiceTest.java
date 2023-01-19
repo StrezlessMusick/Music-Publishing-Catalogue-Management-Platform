@@ -6,8 +6,6 @@ import com.project38.pubtalkapp.model.PRO;
 import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.ArtistRepo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,14 +28,6 @@ class ArtistServiceTest {
     private ArtistRepo artistRepo;
     @InjectMocks
     private ArtistService underTest;
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     @Test
     void itShouldFindAllArtists() {
@@ -90,7 +80,6 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-
         Optional<Artist> artistOptional = Optional.of(billy);
         when(artistRepo.findById(id)).thenReturn(artistOptional);
 
@@ -99,7 +88,6 @@ class ArtistServiceTest {
 
         // Then
         assertThat(billy).isEqualToComparingFieldByField(returned);
-
     }
 
     @Test
@@ -123,7 +111,6 @@ class ArtistServiceTest {
         Optional<Artist> artistOpt = Optional.of(billy);
         when(artistRepo.findById(id)).thenReturn(artistOpt);
 
-
         // When & Then
         verify(artistRepo).save(billy);
 
@@ -136,8 +123,6 @@ class ArtistServiceTest {
             assertEquals(String.format("Artist with id [%s] not found.", 2L),
                     e.getMessage());
         }
-
-
     }
 
     @Test
@@ -163,7 +148,6 @@ class ArtistServiceTest {
 
         // Then
         assertThat(billy).isEqualToComparingFieldByField(returned);
-
     }
 
     @Test
@@ -205,7 +189,6 @@ class ArtistServiceTest {
         assertNotEquals(billy, jackie);
         assertNotEquals("Billy", underTest.findArtistById(id).getArtistName());
         assertNotEquals("22321", artistRepo.findById(id).get().getProIPI());
-
     }
 
     @Test
@@ -245,6 +228,6 @@ class ArtistServiceTest {
 
         assertEquals(Optional.empty(), artistRepo.findById(1L));
         assertEquals("Jackie", artistRepo.findById(2L).get().getArtistName());
-
     }
+
 }

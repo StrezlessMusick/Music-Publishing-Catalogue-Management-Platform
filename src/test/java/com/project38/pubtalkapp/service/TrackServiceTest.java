@@ -30,14 +30,6 @@ class TrackServiceTest {
     @InjectMocks
     private TrackService underTest;
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void itShouldFindAllTracks() {
         // Given

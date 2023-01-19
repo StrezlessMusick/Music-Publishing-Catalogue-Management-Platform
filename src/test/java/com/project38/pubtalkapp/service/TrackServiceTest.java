@@ -1,12 +1,9 @@
 package com.project38.pubtalkapp.service;
 
-import com.project38.pubtalkapp.exception.ArtistNotFoundException;
 import com.project38.pubtalkapp.exception.TrackNotFoundException;
 import com.project38.pubtalkapp.model.Artist;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.TrackRepo;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -59,7 +56,6 @@ class TrackServiceTest {
         // Then
         List<Track> returned = underTest.findAllTracks();
         assertThat(returned).hasSize(2);
-
     }
 
     @Test
@@ -81,7 +77,6 @@ class TrackServiceTest {
 
         // Then
         assertThat(returned).isEqualToComparingFieldByField(track);
-
     }
 
     @Test
@@ -114,7 +109,6 @@ class TrackServiceTest {
             assertEquals(String.format("Track with id [%s] not found.", 2L),
                     e.getMessage());
         }
-
     }
 
     @Test
@@ -137,7 +131,6 @@ class TrackServiceTest {
         // Then
         verify(trackRepo).save(track);
         assertThat(returned).isEqualToComparingFieldByField(track);
-
     }
 
     @Test
@@ -208,6 +201,6 @@ class TrackServiceTest {
 
         assertEquals(Optional.empty(), trackRepo.findById(1L));
         assertEquals("next_up", trackRepo.findById(2L).get().getTrackName());
-
     }
+
 }

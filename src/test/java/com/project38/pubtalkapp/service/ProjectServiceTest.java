@@ -17,8 +17,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ProjectServiceTest {
@@ -185,10 +184,36 @@ class ProjectServiceTest {
     @Test
     void itShouldDeleteProjectById() {
         // Given
+        List<Artist> artist = new ArrayList<>();
+        Project project = new Project(
+                1L,
+                "My First Project",
+                "www.image1url.com",
+                17,
+                4321,
+                artist
+        );
+        Project realProject = new Project(
+                2L,
+                "First Up",
+                "www.image1url.com",
+                19,
+                2743,
+                artist
+        );
+        projectRepo.saveAll(Arrays.asList(project, realProject));
 
         // When
+        underTest.deleteProjectById(1L);
+
+        when(projectRepo.findById(1L)).thenReturn(Optional.empty());
+        when(projectRepo.findById(2L)).thenReturn(Optional.of(realProject));
 
         // Then
+        verify(projectRepo, times(1)).deleteById(1L);
+
+        assertEquals(Optional.empty(), projectRepo.findById(1L));
+        assertEquals(19, projectRepo.findById(2L).get().getNumOfTracks());
 
     }
 }

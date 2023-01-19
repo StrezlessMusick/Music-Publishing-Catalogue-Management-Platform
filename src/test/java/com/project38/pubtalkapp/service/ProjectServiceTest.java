@@ -87,12 +87,23 @@ class ProjectServiceTest {
 
         assertNotEquals(18, projectRepo.findById(1L).get().getNumOfTracks());
 
-
     }
 
     @Test
     void itShouldThrowProjectNotFoundException() {
         // Given
+        List<Artist> artist = new ArrayList<>();
+        Long id = 1L;
+        Project project = new Project(
+                id,
+                "My First Project",
+                "www.image1url.com",
+                17,
+                4321,
+                artist
+        );
+        projectRepo.save(project);
+        when(projectRepo.findById(id)).thenReturn(Optional.of(project));
 
         // When
 

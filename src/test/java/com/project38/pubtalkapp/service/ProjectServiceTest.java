@@ -48,7 +48,6 @@ class ProjectServiceTest {
                         3412,
                         artist
                 )
-
         );
         projectRepo.saveAll(projectList);
         when(projectRepo.findAll()).thenReturn(projectList);
@@ -59,8 +58,6 @@ class ProjectServiceTest {
         // Then
         verify(projectRepo).saveAll(projectList);
         assertThat(returned).hasSize(2);
-
-
     }
 
     @Test
@@ -86,7 +83,6 @@ class ProjectServiceTest {
         assertEquals(17, projectRepo.findById(1L).get().getNumOfTracks());
 
         assertNotEquals(18, projectRepo.findById(1L).get().getNumOfTracks());
-
     }
 
     @Test
@@ -118,7 +114,6 @@ class ProjectServiceTest {
             assertEquals(String.format("Project with id [%s] not found.", id),
                     e.getMessage());
         }
-
     }
 
     @Test
@@ -142,7 +137,6 @@ class ProjectServiceTest {
         // Then
         verify(projectRepo).save(project);
         assertThat(returned).isEqualToComparingFieldByField(project);
-
     }
 
     @Test
@@ -214,6 +208,6 @@ class ProjectServiceTest {
 
         assertEquals(Optional.empty(), projectRepo.findById(1L));
         assertEquals(19, projectRepo.findById(2L).get().getNumOfTracks());
-
     }
+
 }

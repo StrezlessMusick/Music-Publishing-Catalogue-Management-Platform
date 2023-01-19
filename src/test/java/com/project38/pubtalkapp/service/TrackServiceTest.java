@@ -62,18 +62,20 @@ class TrackServiceTest {
     void itShouldFindTrackById() {
         // Given
         List<Artist> artists = new ArrayList<>();
+        Long id = 1L;
         Track track = new Track(
-                1L,
+                id,
                 "next_up",
                 "www.imageurl.com",
                 "/path/to/next_up.wav",
                 305,
                 artists
         );
-        when(trackRepo.findById(1L)).thenReturn(Optional.of(track));
+        Optional<Track> trackOpt = Optional.of(track);
+        when(trackRepo.findById(id)).thenReturn(trackOpt);
 
         // When
-        Track returned = underTest.findTrackById(1L);
+        Track returned = underTest.findTrackById(id);
 
         // Then
         assertThat(returned).isEqualToComparingFieldByField(track);

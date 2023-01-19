@@ -106,14 +106,10 @@ class ArtistServiceTest {
                 trackList,
                 projectList
         );
-        artistRepo.save(billy);
-
         Optional<Artist> artistOpt = Optional.of(billy);
         when(artistRepo.findById(id)).thenReturn(artistOpt);
 
         // When & Then
-        verify(artistRepo).save(billy);
-
         assertEquals(artistOpt.get().getArtistName(), artistRepo.findById(id).get().getArtistName());
         assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(2L));
 

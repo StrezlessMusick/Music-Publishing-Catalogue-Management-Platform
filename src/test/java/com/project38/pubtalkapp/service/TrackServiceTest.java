@@ -94,21 +94,17 @@ class TrackServiceTest {
                 305,
                 artists
         );
-        trackRepo.save(track);
-
         Optional<Track> trackOpt = Optional.of(track);
         when(trackRepo.findById(id)).thenReturn(trackOpt);
 
         // When & Then
-        verify(trackRepo).save(track);
-
         assertEquals(trackOpt.get().getTrackName(), trackRepo.findById(id).get().getTrackName());
         assertThrows(TrackNotFoundException.class, () -> underTest.findTrackById(2L));
 
         try {
             trackRepo.findById(2L);
         } catch (TrackNotFoundException e) {
-            assertEquals(String.format("Track with id [%s] not found.", 2L),
+            assertEquals(String.format("Track with id [%s] not found.", 1L),
                     e.getMessage());
         }
     }

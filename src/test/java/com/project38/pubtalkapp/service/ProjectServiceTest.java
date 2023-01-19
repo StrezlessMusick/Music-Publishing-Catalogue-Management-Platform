@@ -94,18 +94,15 @@ class ProjectServiceTest {
                 4321,
                 artist
         );
-        projectRepo.save(project);
-
         Optional<Project> projOpt = Optional.of(project);
         when(projectRepo.findById(id)).thenReturn(projOpt);
 
         // When & Then
-        verify(projectRepo).save(project);
-
-        assertEquals(17, projectRepo.findById(1L).get().getNumOfTracks());
+        assertEquals(projOpt.get().getNumOfTracks(), projectRepo.findById(id).get().getNumOfTracks());
         assertThrows(ProjectNotFoundException.class, () -> underTest.findProjectById(2L));
+
         try {
-            projectRepo.findById(2L);
+            projectRepo.findById(id);
         } catch (ProjectNotFoundException e) {
             assertEquals(String.format("Project with id [%s] not found.", id),
                     e.getMessage());

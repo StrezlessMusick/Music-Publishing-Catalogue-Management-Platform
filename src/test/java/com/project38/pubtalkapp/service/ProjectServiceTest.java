@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,10 +66,27 @@ class ProjectServiceTest {
     @Test
     void itShouldFindProjectById() {
         // Given
+        List<Artist> artist = new ArrayList<>();
+        Project project = new Project(
+                1L,
+                "My First Project",
+                "www.image1url.com",
+                17,
+                4321,
+                artist
+        );
+        projectRepo.save(project);
+        when(projectRepo.findById(1L)).thenReturn(Optional.of(project));
 
         // When
+        Project returned = underTest.findProjectById(1L);
 
         // Then
+        assertThat(returned).isEqualToComparingFieldByField(project);
+        assertEquals(17, projectRepo.findById(1L).get().getNumOfTracks());
+
+        assertNotEquals(18, projectRepo.findById(1L).get().getNumOfTracks());
+
 
     }
 

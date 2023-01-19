@@ -110,7 +110,7 @@ class TrackServiceTest {
         Optional<Track> trackOpt = Optional.of(track);
         when(trackRepo.findById(id)).thenReturn(trackOpt);
 
-        // Then & When
+        // When & Then
         verify(trackRepo).save(track);
 
         assertEquals(trackOpt.get().getTrackName(), trackRepo.findById(id).get().getTrackName());

@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.service;
 
+import com.project38.pubtalkapp.exception.ProjectNotFoundException;
 import com.project38.pubtalkapp.model.Artist;
 import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.repo.ProjectRepo;
@@ -103,11 +104,21 @@ class ProjectServiceTest {
                 artist
         );
         projectRepo.save(project);
-        when(projectRepo.findById(id)).thenReturn(Optional.of(project));
 
-        // When
+        Optional<Project> projOpt = Optional.of(project);
+        when(projectRepo.findById(id)).thenReturn(projOpt);
 
-        // Then
+        // When & Then
+        verify(projectRepo).save(project);
+
+        assertEquals(17, projectRepo.findById(1L).get().getNumOfTracks());
+        assertThrows(ProjectNotFoundException.class, () -> underTest.findProjectById(2L));
+        try {
+            projectRepo.findById(2L);
+        } catch (ProjectNotFoundException e) {
+            assertEquals(String.format("Project with id [%s] not found.", id),
+                    e.getMessage());
+        }
 
     }
 

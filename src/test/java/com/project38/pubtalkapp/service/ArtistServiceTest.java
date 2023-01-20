@@ -164,7 +164,9 @@ class ArtistServiceTest {
                 projectList
         );
         artistRepo.save(billy);
-        when(artistRepo.findById(id)).thenReturn(Optional.of(billy));
+
+        Optional<Artist> artistOpt = Optional.of(billy);
+        when(artistRepo.findById(id)).thenReturn(artistOpt);
 
         // When
         Artist jackie = new Artist(
@@ -177,6 +179,8 @@ class ArtistServiceTest {
                 projectList
         );
         underTest.editArtist(jackie);
+
+        Optional<Artist> editArtistOpt = Optional.of(jackie);
         when(artistRepo.findById(id)).thenReturn(Optional.of(jackie));
 
         // Then
@@ -215,7 +219,9 @@ class ArtistServiceTest {
         artistRepo.saveAll(Arrays.asList(billy, jackie));
 
         when(artistRepo.findById(1L)).thenReturn(Optional.empty());
-        when(artistRepo.findById(2L)).thenReturn(Optional.of(jackie));
+
+        Optional<Artist> artistOpt = Optional.of(jackie);
+        when(artistRepo.findById(2L)).thenReturn(artistOpt);
 
         // When
         underTest.deleteArtistById(1L);

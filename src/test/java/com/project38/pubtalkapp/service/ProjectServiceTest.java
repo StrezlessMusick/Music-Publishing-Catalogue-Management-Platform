@@ -147,7 +147,9 @@ class ProjectServiceTest {
                 artist
         );
         projectRepo.save(project);
-        when(projectRepo.findById(id)).thenReturn(Optional.of(project));
+
+        Optional<Project> projOpt = Optional.of(project);
+        when(projectRepo.findById(id)).thenReturn(projOpt);
 
         // When
         Project projEdit = new Project(
@@ -159,14 +161,16 @@ class ProjectServiceTest {
                 artist
         );
         underTest.editProject(projEdit);
-        when(projectRepo.findById(id)).thenReturn(Optional.of(projEdit));
+
+        Optional<Project> projEditOpt = Optional.of(projEdit);
+        when(projectRepo.findById(id)).thenReturn(projEditOpt);
 
         // Then
         verify(projectRepo).save(project);
-        assertEquals("First Up", projectRepo.findById(1L).get().getProjectName());
+        assertEquals(projEdit.getProjectName(), projectRepo.findById(1L).get().getProjectName());
 
         assertNotEquals(Optional.empty(), projectRepo.findById(1L));
-        assertNotEquals(4321, projectRepo.findById(1L).get().getProjectLength());
+        assertNotEquals(project.getProjectLength(), projectRepo.findById(1L).get().getProjectLength());
     }
 
     @Test
@@ -201,7 +205,7 @@ class ProjectServiceTest {
         verify(projectRepo, times(1)).deleteById(1L);
 
         assertEquals(Optional.empty(), projectRepo.findById(1L));
-        assertEquals(19, projectRepo.findById(2L).get().getNumOfTracks());
+        assertEquals(realProject.getNumOfTracks(), projectRepo.findById(2L).get().getNumOfTracks());
     }
 
 }

@@ -136,7 +136,7 @@ class TrackServiceTest {
     void itShouldEditTrack() {
         // Given
         List<Artist> artists = new ArrayList<>();
-        Track track1 = new Track(
+        Track track = new Track(
                 1L,
                 "intro",
                 "www.imageurl.com",
@@ -144,11 +144,13 @@ class TrackServiceTest {
                 256,
                 artists
         );
-        trackRepo.save(track1);
-        when(trackRepo.findById(1L)).thenReturn(Optional.of(track1));
+        trackRepo.save(track);
+
+        Optional<Track> trackOpt = Optional.of(track);
+        when(trackRepo.findById(1L)).thenReturn(trackOpt);
 
         // When
-        Track track1Edit = new Track(
+        Track trackEdit = new Track(
                 1L,
                 "first_on",
                 "www.imageurl.com",
@@ -156,12 +158,14 @@ class TrackServiceTest {
                 256,
                 artists
         );
-        underTest.editTrack(track1Edit);
-        when(trackRepo.findById(1L)).thenReturn(Optional.of(track1Edit));
+        underTest.editTrack(trackEdit);
+
+        Optional<Track> trackEditOpt = Optional.of(trackEdit);
+        when(trackRepo.findById(1L)).thenReturn(trackEditOpt);
 
         // Then
-        verify(trackRepo).save(track1);
-        assertEquals("first_on", trackRepo.findById(1L).get().getTrackName());
+        verify(trackRepo).save(track);
+        assertEquals(trackEdit.getTrackName(), trackRepo.findById(1L).get().getTrackName());
 
         assertNotEquals(Optional.empty(), trackRepo.findById(1L));
         assertNotEquals("intro", trackRepo.findById(1L).get().getTrackName());
@@ -193,13 +197,15 @@ class TrackServiceTest {
         underTest.deleteTrackById(1L);
 
         when(trackRepo.findById(1L)).thenReturn(Optional.empty());
-        when(trackRepo.findById(2L)).thenReturn(Optional.of(track2));
+
+        Optional<Track> track2Opt = Optional.of(track2);
+        when(trackRepo.findById(2L)).thenReturn(track2Opt);
 
         // Then
         verify(trackRepo, times(1)).deleteById(1L);
 
         assertEquals(Optional.empty(), trackRepo.findById(1L));
-        assertEquals("next_up", trackRepo.findById(2L).get().getTrackName());
+        assertEquals(track2.getTrackName(), trackRepo.findById(2L).get().getTrackName());
     }
 
 }

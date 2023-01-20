@@ -101,10 +101,11 @@ class TrackServiceTest {
         assertEquals(trackOpt.get().getTrackName(), trackRepo.findById(id).get().getTrackName());
         assertThrows(TrackNotFoundException.class, () -> underTest.findTrackById(2L));
 
+        Long tcId = 1L;
         try {
-            trackRepo.findById(2L);
+            trackRepo.findById(tcId);
         } catch (TrackNotFoundException e) {
-            assertEquals(String.format("Track with id [%s] not found.", 1L),
+            assertEquals(String.format("Track with id [%s] not found.", tcId),
                     e.getMessage());
         }
     }

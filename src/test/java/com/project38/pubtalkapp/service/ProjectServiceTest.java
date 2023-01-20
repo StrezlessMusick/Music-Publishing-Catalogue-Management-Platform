@@ -101,10 +101,11 @@ class ProjectServiceTest {
         assertEquals(projOpt.get().getNumOfTracks(), projectRepo.findById(id).get().getNumOfTracks());
         assertThrows(ProjectNotFoundException.class, () -> underTest.findProjectById(2L));
 
+        Long tcId = 3L;
         try {
-            projectRepo.findById(id);
+            projectRepo.findById(tcId);
         } catch (ProjectNotFoundException e) {
-            assertEquals(String.format("Project with id [%s] not found.", id),
+            assertEquals(String.format("Project with id [%s] not found.", tcId),
                     e.getMessage());
         }
     }

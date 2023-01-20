@@ -113,10 +113,11 @@ class ArtistServiceTest {
         assertEquals(artistOpt.get().getArtistName(), artistRepo.findById(id).get().getArtistName());
         assertThrows(ArtistNotFoundException.class, () -> underTest.findArtistById(2L));
 
+        Long tcId = 5L;
         try {
-            underTest.findArtistById(2L);
+            underTest.findArtistById(tcId);
         } catch (ArtistNotFoundException e) {
-            assertEquals(String.format("Artist with id [%s] not found.", 2L),
+            assertEquals(String.format("Artist with id [%s] not found.", tcId),
                     e.getMessage());
         }
     }

@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 *.properties
+*.http
 
 ### NetBeans ###
 /nbproject/private/
@@ -32,3 +33,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Docker files
+Dockerfile
+docker-compose.*
+
+# Environment files
+.env
+.env.*
+

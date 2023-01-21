@@ -71,3 +71,8 @@ n
 >app-frontend/src/app/tracks/track-edit/track-edit.component.ts,7\8\78437d1dff2101ef73a74f3fb3eb8a3b16ab7b58
 n
 >app-frontend/src/app/tracks/track-list/track-list.component.ts,6\c\6cdb031d468c6102ef7f512b0c076613fd19e657
+q
+Asrc/main/java/com/project38/pubtalkapp/PubtalkappApplication.java,8\e\8e5081dbcc85ca26db8a349c9835bd7ce96cce02
+:
+
+DockerFIle,7\6\76dd5121c1fb226048b7a479968c3b9601e3c8c2

@@ -10,5 +10,5 @@ public class PubtalkappApplication {
 		SpringApplication.run(PubtalkappApplication.class, args);
 	}
 
-	
+
 }

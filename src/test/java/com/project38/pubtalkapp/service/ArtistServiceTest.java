@@ -35,7 +35,7 @@ class ArtistServiceTest {
         List<Track> trackList = new ArrayList<>();
         List<Project> projectList = new ArrayList<>();
 
-        List<Artist> artistList = List.of(
+        List<Artist> artistList = Arrays.asList(
                 new Artist(
                         1L,
                         "Billy",

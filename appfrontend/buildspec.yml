@@ -2,7 +2,7 @@
 #
 #env:
 #  variables:
-#    APP_NAME: "e-commerce"
+#    APP_NAME: "Pub Talk App"
 #phases:
 #  install:
 #    runtime-versions:

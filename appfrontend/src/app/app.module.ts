@@ -59,4 +59,5 @@ import { DropdownDirective } from './zshared/directives/dropdown.directive';
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+}

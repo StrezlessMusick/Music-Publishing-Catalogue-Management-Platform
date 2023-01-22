@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ArtistsService} from "../zshared/services/artists.service";
-import {Artist} from "../zshared/interfaces/artist";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-artists',
@@ -10,8 +7,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 }

@@ -15,9 +15,9 @@ POST http://localhost:8080/api/v1/tracks/add
 Content-Type: application/json
 
 {
-  "trackName" : "New Track",
-  "trackImageUrl" : "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
-  "trackLength" : 55242
+  "trackName": "New Track",
+  "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
+  "trackLength": 55242
 }
 
 <> 2023-01-11T161831.201.json
@@ -30,11 +30,11 @@ PUT http://localhost:8080/api/v1/tracks/update
 Content-Type: application/json
 
 {
-  "id" : 1,
-  "trackName" : "Updated Track Name",
-  "trackImageUrl" : "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
-  "trackUrl" : "./assets/static/audio/test/Release.mp3",
-  "trackLength" : 256
+  "id": 1,
+  "trackName": "Updated Track Name",
+  "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
+  "trackUrl": "./assets/static/audio/test/Release.mp3",
+  "trackLength": 256
 }
 
 <> 2023-01-11T161831-1.201.json
@@ -59,10 +59,10 @@ POST http://localhost:8080/api/v1/artists/add
 Content-Type: application/json
 
 {
-  "artistName" : "'Ol Boy",
-  "artistImageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
-  "pro" : "SESAC",
-  "proIPI" : "8513776"
+  "artistName": "'Ol Boy",
+  "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
+  "pro": "SESAC",
+  "proIPI": "8513776"
 }
 
 <> 2023-01-11T161831-2.201.json
@@ -74,11 +74,11 @@ PUT http://localhost:8080/api/v1/artists/update
 Content-Type: application/json
 
 {
-  "id" : "1",
-  "artistName" : "'Ol Boy",
-  "artistImageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
-  "pro" : "BMI",
-  "proIPI" : "8513776"
+  "id": "1",
+  "artistName": "'Ol Boy",
+  "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
+  "pro": "BMI",
+  "proIPI": "8513776"
 }
 
 <> 2023-01-11T161831-3.201.json
@@ -102,10 +102,10 @@ POST http://localhost:8080/api/v1/projects/add
 Content-Type: application/json
 
 {
-  "projectName" : "Glued Up",
-  "projectImageUrl" : "https://media.cnn.com/api/v1/images/stellar/prod/210208082052-01-gorilla-glue-harispray.jpg?q=x_0,y_0,h_947,w_1682,c_fill/h_720,w_1280",
-  "numOfTracks" : 38,
-  "projectLength" : 888
+  "projectName": "Glued Up",
+  "projectImageUrl": "https://media.cnn.com/api/v1/images/stellar/prod/210208082052-01-gorilla-glue-harispray.jpg?q=x_0,y_0,h_947,w_1682,c_fill/h_720,w_1280",
+  "numOfTracks": 38,
+  "projectLength": 888
 }
 
 <> 2023-01-11T161831-4.201.json
@@ -119,11 +119,11 @@ PUT http://localhost:8080/api/v1/projects/update
 Content-Type: application/json
 
 {
-  "id" : 1,
-  "projectName" : "Glued Down",
-  "projectImageUrl" : "https://media.redbullmusicacademy.com/assets/Black_Milk_by_Maxwell_Schiano-2.132b8df9.jpg",
-  "numOfTracks" : 38,
-  "projectLength" : 888
+  "id": 1,
+  "projectName": "Glued Down",
+  "projectImageUrl": "https://media.redbullmusicacademy.com/assets/Black_Milk_by_Maxwell_Schiano-2.132b8df9.jpg",
+  "numOfTracks": 38,
+  "projectLength": 888
 }
 
 <> 2023-01-11T161831-5.201.json
@@ -145,6 +145,7 @@ Accept: application/json
 <> 2023-01-11T155438.200.json
 <> 2023-01-11T154314.200.json
 <> 2023-01-11T153722.200.json
+
 ###
 
 // Adding new Artist to existing Track
@@ -159,10 +160,10 @@ Content-Type: application/json
   "trackLength": 256,
   "artist": [
     {
-      "artistName" : "One Too Many",
-      "artistImageUrl" : "https://i1.sndcdn.com/artworks-xVvWQxMKwDrOz2fu-mSeoyg-t500x500.jpg",
-      "pro" : "ASCAP",
-      "proIPI" : "159753"
+      "artistName": "One Too Many",
+      "artistImageUrl": "https://i1.sndcdn.com/artworks-xVvWQxMKwDrOz2fu-mSeoyg-t500x500.jpg",
+      "pro": "ASCAP",
+      "proIPI": "159753"
     }
   ],
   "project": []
@@ -173,6 +174,7 @@ Content-Type: application/json
 <> 2023-01-11T161424-2.201.json
 <> 2023-01-11T154533.201.json
 <> 2023-01-11T154303.201.json
+
 ###
 
 // Creating a new Track with existing Artist
@@ -186,11 +188,11 @@ Content-Type: application/json
   "trackLength": 127,
   "artist": [
     {
-      "id" : "1",
-      "artistName" : "'Ol Boy",
-      "artistImageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
-      "pro" : "BMI",
-      "proIPI" : "8513776"
+      "id": "1",
+      "artistName": "'Ol Boy",
+      "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
+      "pro": "BMI",
+      "proIPI": "8513776"
     }
   ],
   "project": []
@@ -215,10 +217,10 @@ Content-Type: application/json
   "trackLength": 85,
   "artist": [
     {
-      "artistName" : "Blu Tew",
-      "artistImageUrl" : "https://www.billboard.com/wp-content/uploads/2022/04/Willow-cr-Dana-Trippe-press-2022-billboard-1548.jpg",
-      "pro" : "BMI",
-      "proIPI" : "673198"
+      "artistName": "Blu Tew",
+      "artistImageUrl": "https://www.billboard.com/wp-content/uploads/2022/04/Willow-cr-Dana-Trippe-press-2022-billboard-1548.jpg",
+      "pro": "BMI",
+      "proIPI": "673198"
     }
   ],
   "project": []

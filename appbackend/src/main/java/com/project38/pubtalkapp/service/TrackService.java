@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class TrackService {
 
-    private TrackRepo trackRepo;
+    private final TrackRepo trackRepo;
 
     @Autowired
     public TrackService(TrackRepo trackRepo) {
@@ -24,7 +24,7 @@ public class TrackService {
 
     public Track findTrackById(Long id) {
         return trackRepo.findById(id)
-                .orElseThrow(()-> new TrackNotFoundException(
+                .orElseThrow(() -> new TrackNotFoundException(
                         String.format("Track with id [%s] not found.", id)
                 ));
     }

@@ -18,13 +18,14 @@ export class ArtistListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onGetArtists();
+  }
+
+  onGetArtists() {
     this.artistsService.getArtists()
-      .pipe(
-        tap(
-          (artists: Artist[]) => {
-            this.artists = artists;
-          }
-        )).subscribe();
+      .pipe(tap(artists => {
+        this.artists = artists
+      })).subscribe();
   }
 
   onNewArtist() {

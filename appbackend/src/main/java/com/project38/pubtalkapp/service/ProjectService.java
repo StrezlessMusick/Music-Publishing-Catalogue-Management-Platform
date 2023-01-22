@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class ProjectService {
 
-    private ProjectRepo projectRepo;
+    private final ProjectRepo projectRepo;
 
     @Autowired
     public ProjectService(ProjectRepo projectRepo) {
@@ -24,7 +24,7 @@ public class ProjectService {
 
     public Project findProjectById(Long id) {
         return projectRepo.findById(id)
-                .orElseThrow(()-> new ProjectNotFoundException(
+                .orElseThrow(() -> new ProjectNotFoundException(
                         String.format("Project with id [%s] not found.", id)
                 ));
     }

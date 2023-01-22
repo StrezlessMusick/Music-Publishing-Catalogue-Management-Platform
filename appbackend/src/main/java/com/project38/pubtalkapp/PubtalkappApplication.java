@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PubtalkappApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PubtalkappApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PubtalkappApplication.class, args);
+    }
 
 
 }

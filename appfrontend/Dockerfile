@@ -5,13 +5,12 @@ FROM node:lts-alpine
 WORKDIR /app
 
 # Copy the frontend files
-COPY . .
+COPY dist/* /app/
+COPY package.json package-lock.json /app/
 
 # Install the dependencies for the frontend
+RUN npm install -g @angular/cli
 RUN npm install
-
-# Build the frontend
-RUN ng build --prod
 
 # Expose the port
 EXPOSE 4200

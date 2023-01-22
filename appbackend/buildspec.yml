@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --no-include-email --region us-west-2)
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean install -DskipTests
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mv target/*.jar app.jar
+      - echo Pushing the Docker image...
+      - docker build -t pubtalkapp:latest .
+      - docker tag pubtalkapp:latest 1234567890.dkr.ecr.us-west-2.amazonaws.com/pubtalkapp:latest
+      - docker push 1234567890.dkr.ecr.us-west-2.amazonaws.com/pubtalkapp:latest

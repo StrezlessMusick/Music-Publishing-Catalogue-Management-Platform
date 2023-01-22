@@ -18,3 +18,18 @@ phases:
       - docker build -t pubtalkapp:latest .
       - docker tag pubtalkapp:latest 1234567890.dkr.ecr.us-west-2.amazonaws.com/pubtalkapp:latest
       - docker push 1234567890.dkr.ecr.us-west-2.amazonaws.com/pubtalkapp:latest
+
+
+
+
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - java -version
+      - mvn clean package -Ddb_user=${db_user} -Ddb_url=${db_url} -Ddb_pass=${db_pass}
+artifacts:
+  files:
+    - 'Dockerfile'
+    - target/pubtalkapp-0.0.1-SNAPSHOT.jar

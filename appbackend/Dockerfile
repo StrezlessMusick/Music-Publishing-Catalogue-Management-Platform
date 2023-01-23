@@ -8,6 +8,7 @@ COPY target/pubtalkapp-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 # Start the server
+# Using command line in docker-compose.yml file
 CMD ["java", "-jar", "/app.jar"]
 
 

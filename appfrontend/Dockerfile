@@ -16,5 +16,7 @@ RUN npm run build
 # Serve the app using http-server
 #RUN npm install -g http-server
 EXPOSE 4200
+
+# Using command line in docker-compose.yml file
 CMD ["npm", "start"]
 

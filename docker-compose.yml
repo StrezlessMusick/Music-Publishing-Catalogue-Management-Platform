@@ -1,0 +1,26 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./appfrontend
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+  backend:
+    build:
+      context: ./appbackend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=pubtalkapp
+    ports:
+      - "5432:5432"

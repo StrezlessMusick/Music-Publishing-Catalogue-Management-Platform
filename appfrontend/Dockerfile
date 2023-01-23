@@ -18,5 +18,5 @@ RUN npm run build
 EXPOSE 4200
 
 # Using command line in docker-compose.yml file
-CMD ["npm", "start"]
+CMD ["npm", "start", "--", "--host", "0.0.0.0"]
 

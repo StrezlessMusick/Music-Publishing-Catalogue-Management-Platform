@@ -9,6 +9,6 @@ EXPOSE 8080
 
 # Start the server
 # Using command line in docker-compose.yml file
-CMD ["java", "-jar", "/app.jar"]
+CMD ["java", "-Djava.net.preferIPv4Stack=true", "-jar", "/app.jar"]
 
 

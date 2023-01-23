@@ -65,6 +65,60 @@ class ArtistServiceTest {
     }
 
     @Test
+    void itShouldFindAllArtistsAndAssociatedTracks() {
+        // Given
+        List<Artist> testList = new ArrayList<>();
+        List<Track> trackList = Arrays.asList(
+                new Track(
+                        1L,
+                        "Straight Fire",
+                        "www.imageUrl.com",
+                        "www.trackUrl.com",
+                        321,
+                        testList
+                ),
+                new Track(
+                        2L,
+                        "Better Than Ever",
+                        "www.imageUrl.com",
+                        "www.trackUrl.com",
+                        321,
+                        testList
+                )
+        );
+        List<Project> projectList = new ArrayList<>();
+
+        List<Artist> artistList = Arrays.asList(
+                new Artist(
+                        1L,
+                        "Billy",
+                        "www.imageurl.com",
+                        PRO.ASCAP,
+                        "22321",
+                        trackList,
+                        projectList
+                ),
+                new Artist(
+                        2L,
+                        "Tyler",
+                        "www.imageurl2.com",
+                        PRO.BMI,
+                        "53627",
+                        trackList,
+                        projectList
+                )
+        );
+
+        // When
+        when(artistRepo.findAllArtistAndFetchTracks()).thenReturn(artistList);
+
+        // Then
+        List<Artist> returned = underTest.findAllArtists();
+        assertThat(returned).hasSize(2);
+
+    }
+
+    @Test
     void itShouldFindArtistById() {
         // Given
         List<Track> trackList = new ArrayList<>();

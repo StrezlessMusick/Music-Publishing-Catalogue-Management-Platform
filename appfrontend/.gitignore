@@ -44,7 +44,7 @@ Thumbs.db
 
 # Docker files
 Dockerfile
-docker-compose.*
+docker-compose.properties
 
 # Environment files
 .env

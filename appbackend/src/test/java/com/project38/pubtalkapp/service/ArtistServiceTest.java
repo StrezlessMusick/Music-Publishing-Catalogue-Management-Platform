@@ -115,7 +115,7 @@ class ArtistServiceTest {
         // Then
         List<Artist> returned = underTest.findAllArtistsAndAssociatedTracks();
         assertThat(returned).hasSize(2);
-        
+
     }
 
     @Test

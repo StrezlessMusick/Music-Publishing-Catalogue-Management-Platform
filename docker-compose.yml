@@ -3,6 +3,7 @@ services:
   frontend:
     build:
       context: ./appfrontend
+    container_name: pta_frontend
     ports:
       - "4200:4200"
     environment:
@@ -12,21 +13,23 @@ services:
   backend:
     build:
       context: ./appbackend
+    container_name: pta_backend
     ports:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pubtalkapp
 #    command:
 #      - java -jar ./appbac
     depends_on:
       - db
   db:
     image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=pubtalkapp
-      - DATABASE_URL=jdbc:postgresql://db:5432/pubtalkapp
+    container_name: pta_db
+    hostname: postgres
     ports:
       - "5432:5432"
-    hostname: postgres
+    environment:
+      - POSTGRES_DB=pubtalkapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres

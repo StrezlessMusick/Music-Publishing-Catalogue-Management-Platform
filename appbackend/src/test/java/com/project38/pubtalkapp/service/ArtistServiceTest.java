@@ -113,9 +113,9 @@ class ArtistServiceTest {
         when(artistRepo.findAllArtistAndFetchTracks()).thenReturn(artistList);
 
         // Then
-        List<Artist> returned = underTest.findAllArtists();
+        List<Artist> returned = underTest.findAllArtistsAndAssociatedTracks();
         assertThat(returned).hasSize(2);
-
+        
     }
 
     @Test

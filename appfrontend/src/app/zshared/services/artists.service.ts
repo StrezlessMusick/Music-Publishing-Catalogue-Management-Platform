@@ -10,7 +10,6 @@ import {Observable, tap} from "rxjs";
 })
 export class ArtistsService {
   private apiServerUrl = environment.apiBaseUrl;
-  // public artistsChanged = new Subject<Artist[]>();
 
   constructor(private http: HttpClient,
               private tracksService: TracksService) {}

@@ -115,7 +115,7 @@ class ArtistServiceTest {
         // Then
         List<Artist> returned = underTest.findAllArtistsAndAssociatedTracks();
         assertThat(returned).hasSize(2);
-
+        assertThat(returned.get(0).getArtistTracks().get(1).getTrackName()).isEqualTo("Better Than Ever");
     }
 
     @Test

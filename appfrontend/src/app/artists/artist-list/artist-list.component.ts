@@ -24,6 +24,7 @@ export class ArtistListComponent implements OnInit {
   onGetArtists() {
     this.artistsService.getArtists()
       .pipe(tap(artists => {
+        console.log(artists);
         this.artists = artists
       })).subscribe();
   }

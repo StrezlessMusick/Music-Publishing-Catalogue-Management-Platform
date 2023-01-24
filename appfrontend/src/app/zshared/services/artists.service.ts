@@ -3,7 +3,7 @@ import {TracksService} from "./tracks.service";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Artist} from "../interfaces/artist";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

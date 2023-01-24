@@ -178,7 +178,7 @@ Content-Type: application/json
 ###
 
 // Creating a new Track with existing Artist
-POST http://localhost:8080/api/v1/tracks/add
+PUT http://localhost:8080/api/v1/tracks/update
 Content-Type: application/json
 
 {
@@ -188,7 +188,6 @@ Content-Type: application/json
   "trackLength": 127,
   "artist": [
     {
-      "id": "1",
       "artistName": "'Ol Boy",
       "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
       "pro": "BMI",

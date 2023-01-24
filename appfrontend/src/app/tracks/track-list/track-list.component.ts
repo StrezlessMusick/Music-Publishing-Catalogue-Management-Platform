@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {TracksService} from "../../zshared/services/tracks.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Track} from "../../zshared/interfaces/track";
 import {tap} from "rxjs";
+import {TracksService} from "../../zshared/services/tracks.service";
+import {Track} from "../../zshared/interfaces/track";
 
 @Component({
   selector: 'app-track-list',

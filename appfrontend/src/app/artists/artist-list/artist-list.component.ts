@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Artist} from "../../zshared/interfaces/artist";
-import {ArtistsService} from "../../zshared/services/artists.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {tap} from "rxjs";
+import {Artist} from "../../zshared/interfaces/artist";
+import {ArtistsService} from "../../zshared/services/artists.service";
 
 @Component({
   selector: 'app-artist-list',
@@ -15,11 +15,10 @@ export class ArtistListComponent implements OnInit {
   constructor(private artistsService: ArtistsService,
               private router: Router,
               private route: ActivatedRoute) {
-  }
-
-  ngOnInit(): void {
     this.onGetArtists();
   }
+
+  ngOnInit(): void {}
 
   onGetArtists() {
     this.artistsService.getArtists()

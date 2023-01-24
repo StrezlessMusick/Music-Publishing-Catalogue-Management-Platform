@@ -78,7 +78,17 @@ Content-Type: application/json
   "artistName": "'Ol Boy",
   "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
   "pro": "BMI",
-  "proIPI": "8513776"
+  "proIPI": "8513776",
+  "artistTracks":
+    [
+      {
+        "id": 1,
+        "trackName": "Updated Track Name",
+        "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
+        "trackUrl": "./assets/static/audio/test/Release.mp3",
+        "trackLength": 256
+      }
+    ]
 }
 
 <> 2023-01-11T161831-3.201.json

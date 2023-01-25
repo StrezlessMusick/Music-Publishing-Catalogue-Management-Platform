@@ -24,6 +24,7 @@ export class TrackListComponent implements OnInit {
     this.tracksService.getTracks()
       .pipe(tap(
           (tracks: Track[]) => {
+            console.log(tracks)
             this.tracks = tracks;
           })).subscribe();
   }

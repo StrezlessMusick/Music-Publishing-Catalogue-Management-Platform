@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.model;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,11 +33,15 @@ public class Artist implements Serializable {
     //    @NotBlank(message = "Artist PRO IPI number is required!")
     private String proIPI;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            targetEntity = Track.class
+    )
     @JoinTable(
-            name = "artist_track",
-            joinColumns = {@JoinColumn(name = "track_id")},
-            inverseJoinColumns = {@JoinColumn(name = "artist_id")}
+            name = "track_artist",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
     )
     private List<Track> artistTracks = new ArrayList<>();
 

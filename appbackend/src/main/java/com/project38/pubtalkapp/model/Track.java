@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,13 +29,11 @@ public class Track implements Serializable {
     private Integer trackLength;
 //    private String soundExchange;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "artist_track",
-            joinColumns = {@JoinColumn(name = "track_id")},
-            inverseJoinColumns = {@JoinColumn(name = "artist_id")}
+    @ManyToMany(
+            mappedBy = "artistTracks",
+            targetEntity = Artist.class
     )
-    @JsonIgnore
+
     private List<Artist> artist = new ArrayList<>();
 
 

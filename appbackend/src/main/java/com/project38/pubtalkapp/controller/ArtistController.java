@@ -42,7 +42,7 @@ public class ArtistController {
     @PutMapping("/update")
     public ResponseEntity<Artist> updateArtist(@RequestBody Artist artist) {
         Artist editedArtist = artistService.editArtist(artist);
-        return new ResponseEntity<>(editedArtist, HttpStatus.OK);
+        return new ResponseEntity<>(editedArtist, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete{id}")

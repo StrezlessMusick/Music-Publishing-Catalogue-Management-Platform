@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class Track implements Serializable {
             joinColumns = {@JoinColumn(name = "track_id")},
             inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
+    @JsonIgnore
     private List<Artist> artist = new ArrayList<>();
 
 

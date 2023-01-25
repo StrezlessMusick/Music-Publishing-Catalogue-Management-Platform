@@ -35,8 +35,8 @@ public class Artist implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "artist_track",
-            joinColumns = {@JoinColumn(name = "artist_id")},
-            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+            joinColumns = {@JoinColumn(name = "track_id")},
+            inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
     private List<Track> artistTracks = new ArrayList<>();
 

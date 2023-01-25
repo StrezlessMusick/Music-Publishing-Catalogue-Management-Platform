@@ -8,6 +8,6 @@ export interface Artist {
   artistImageUrl: string;
   pro: PRO;
   proIPI: string;
-  artistTrack: Track[];
-  artistProject: Project[];
+  artistTracks: Track[];
+  artistProjects: Project[];
 }

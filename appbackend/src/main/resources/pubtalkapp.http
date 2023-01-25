@@ -82,8 +82,7 @@ Content-Type: application/json
   "artistTracks":
     [
       {
-        "id": 1,
-        "trackName": "Updated Track Name",
+        "trackName": "Updated Name Again",
         "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
         "trackUrl": "./assets/static/audio/test/Release.mp3",
         "trackLength": 256,
@@ -189,7 +188,7 @@ Content-Type: application/json
 ###
 
 // Creating a new Track with existing Artist
-POST http://localhost:8080/api/v1/tracks/add
+PUT http://localhost:8080/api/v1/tracks/update
 Content-Type: application/json
 
 {

@@ -33,7 +33,7 @@ public class Track implements Serializable {
             mappedBy = "artistTracks",
             targetEntity = Artist.class
     )
-
+    @JsonIgnore
     private List<Artist> artist = new ArrayList<>();
 
 

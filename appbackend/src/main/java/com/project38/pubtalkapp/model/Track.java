@@ -29,19 +29,21 @@ public class Track implements Serializable {
     private Integer trackLength;
 //    private String soundExchange;
 
+
     @ManyToMany(
-            mappedBy = "artistTracks",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
             targetEntity = Artist.class
+    )
+    @JoinTable(
+            name = "artist_track",
+            joinColumns = {@JoinColumn(name = "artist_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
     )
     @JsonIgnore
     private List<Artist> artist = new ArrayList<>();
 
-
-    @ManyToOne(
-            targetEntity = Project.class
-    )
-    @JoinColumn(
-            name = "project_id"
-    )
+    @ManyToOne(targetEntity = Project.class)
+    @JoinColumn(name = "project_id")
     private Project project;
 }

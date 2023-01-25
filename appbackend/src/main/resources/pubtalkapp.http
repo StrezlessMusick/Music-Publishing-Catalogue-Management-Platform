@@ -79,25 +79,23 @@ Content-Type: application/json
   "artistImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4fBGnid94mnWO3M2h847ztbXzRVeXw8935rzOHFcZOaaj0luxUuzMMnv8ud4PytEVZoI&usqp=CAU",
   "pro": "BMI",
   "proIPI": "8513776",
-  "artistTracks":
-          [
-            {
-              "trackName": "Updated Name Again",
-              "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
-              "trackUrl": "./assets/static/audio/test/Release.mp3",
-              "trackLength": 256,
-              "artist": []
-            }
-          ],
-  "artistProjects":
-          [
-            {
-              "projectName": "Glued Down",
-              "projectImageUrl": "https://media.redbullmusicacademy.com/assets/Black_Milk_by_Maxwell_Schiano-2.132b8df9.jpg",
-              "numOfTracks": 38,
-              "projectLength": 888
-            }
-          ]
+  "artistTracks": [
+    {
+      "trackName": "Updated Name Again",
+      "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
+      "trackUrl": "./assets/static/audio/test/Release.mp3",
+      "trackLength": 256,
+      "artist": []
+    }
+  ],
+  "artistProjects": [
+    {
+      "projectName": "Glued Down",
+      "projectImageUrl": "https://media.redbullmusicacademy.com/assets/Black_Milk_by_Maxwell_Schiano-2.132b8df9.jpg",
+      "numOfTracks": 38,
+      "projectLength": 888
+    }
+  ]
 }
 
 <> 2023-01-11T161831-3.201.json
@@ -240,8 +238,7 @@ Content-Type: application/json
       "pro": "BMI",
       "proIPI": "673198"
     }
-  ],
-  "project": []
+  ]
 }
 
 <> 2023-01-11T161832.201.json

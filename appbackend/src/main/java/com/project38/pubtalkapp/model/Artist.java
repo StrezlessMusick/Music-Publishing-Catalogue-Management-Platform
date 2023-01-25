@@ -34,14 +34,8 @@ public class Artist implements Serializable {
     private String proIPI;
 
     @ManyToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+            mappedBy = "artist",
             targetEntity = Track.class
-    )
-    @JoinTable(
-            name = "track_artist",
-            joinColumns = {@JoinColumn(name = "artist_id")},
-            inverseJoinColumns = {@JoinColumn(name = "track_id")}
     )
     private List<Track> artistTracks = new ArrayList<>();
 
@@ -55,5 +49,6 @@ public class Artist implements Serializable {
             joinColumns = {@JoinColumn(name = "artist_id")},
             inverseJoinColumns = {@JoinColumn(name = "project_id")}
     )
+    @JsonIgnore
     private List<Project> artistProjects = new ArrayList<>();
 }

@@ -31,7 +31,6 @@ public class Project implements Serializable {
             mappedBy = "artistProjects",
             targetEntity = Artist.class
     )
-    @JsonIgnore
     private List<Artist> artist = new ArrayList<>();
 
     @OneToMany(

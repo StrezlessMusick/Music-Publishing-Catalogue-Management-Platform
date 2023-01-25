@@ -1,5 +1,6 @@
 package com.project38.pubtalkapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,17 @@ public class Project implements Serializable {
     private Integer numOfTracks;
     private Integer projectLength;
 
-    @ManyToMany(mappedBy = "artistProjects")
+    @ManyToMany(
+            mappedBy = "artistProjects",
+            targetEntity = Artist.class
+    )
+    @JsonIgnore
     private List<Artist> artist = new ArrayList<>();
 
-//    @OneToMany(mappedBy = "project")
-//    private List<Track> trackList = new ArrayList<>();
+    @OneToMany(
+            mappedBy = "project",
+            targetEntity = Track.class
+    )
+    @JsonIgnore
+    private List<Track> trackList = new ArrayList<>();
 }

@@ -37,9 +37,17 @@ public class Track implements Serializable {
     private List<Artist> artist = new ArrayList<>();
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "project_id")
-//    private Project project;
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            targetEntity = Project.class
+    )
+    @JoinTable(
+            name = "project_track",
+            joinColumns = {@JoinColumn(name = "project_id")},
+            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+    )
+    private Project project;
 
 
 }

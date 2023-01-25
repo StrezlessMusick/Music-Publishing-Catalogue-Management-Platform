@@ -45,8 +45,11 @@ public class Artist implements Serializable {
     )
     private List<Track> artistTracks = new ArrayList<>();
 
-
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            targetEntity = Project.class
+    )
     @JoinTable(
             name = "artist_project",
             joinColumns = {@JoinColumn(name = "artist_id")},

@@ -45,9 +45,9 @@ public class Artist implements Serializable {
             targetEntity = Project.class
     )
     @JoinTable(
-            name = "artist_project",
-            joinColumns = {@JoinColumn(name = "artist_id")},
-            inverseJoinColumns = {@JoinColumn(name = "project_id")}
+            name = "project_artist",
+            joinColumns = {@JoinColumn(name = "project_id")},
+            inverseJoinColumns = {@JoinColumn(name = "artist_id")}
     )
     @JsonIgnore
     private List<Project> artistProjects = new ArrayList<>();

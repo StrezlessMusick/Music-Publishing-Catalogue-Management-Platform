@@ -75,7 +75,9 @@ class ArtistServiceTest {
                         "www.imageUrl.com",
                         "www.trackUrl.com",
                         321,
-                        testList
+                        testList,
+                        null
+
                 ),
                 new Track(
                         2L,
@@ -83,7 +85,8 @@ class ArtistServiceTest {
                         "www.imageUrl.com",
                         "www.trackUrl.com",
                         321,
-                        testList
+                        testList,
+                        null
                 )
         );
         List<Project> projectList = new ArrayList<>();
@@ -142,6 +145,16 @@ class ArtistServiceTest {
 
         // Then
         assertThat(billy).isEqualToComparingFieldByField(returned);
+    }
+
+    @Test
+    void itShouldFindAndAddAllTracksByArtistID() {
+        // Given
+
+        // When
+
+        // Then
+        
     }
 
     @Test

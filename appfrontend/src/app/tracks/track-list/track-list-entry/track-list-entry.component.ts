@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Track} from "../../../zshared/interfaces/track";
+import {Artist} from "../../../zshared/interfaces/artist";
 
 @Component({
   selector: 'app-track-list-entry',
@@ -8,10 +9,10 @@ import {Track} from "../../../zshared/interfaces/track";
 })
 export class TrackListEntryComponent implements OnInit {
   @Input() track: Track;
+  @Input() artist: Artist[];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

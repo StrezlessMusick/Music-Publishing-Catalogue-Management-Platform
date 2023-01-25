@@ -38,7 +38,8 @@ class TrackServiceTest {
                         "www.imageurl.com",
                         "/path/to/intro.wav",
                         256,
-                        artists
+                        artists,
+                        null
                 ),
                 new Track(
                         2L,
@@ -46,7 +47,8 @@ class TrackServiceTest {
                         "www.imageurl.com",
                         "/path/to/next_up.wav",
                         305,
-                        artists
+                        artists,
+                        null
                 )
         );
 
@@ -69,7 +71,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/next_up.wav",
                 305,
-                artists
+                artists,
+                null
         );
         Optional<Track> trackOpt = Optional.of(track);
         when(trackRepo.findById(id)).thenReturn(trackOpt);
@@ -92,7 +95,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/next_up.wav",
                 305,
-                artists
+                artists,
+                null
         );
         Optional<Track> trackOpt = Optional.of(track);
         when(trackRepo.findById(id)).thenReturn(trackOpt);
@@ -120,7 +124,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/next_up.wav",
                 305,
-                artists
+                artists,
+                null
         );
         when(trackRepo.save(track)).thenReturn(track);
 
@@ -142,7 +147,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/intro.wav",
                 256,
-                artists
+                artists,
+                null
         );
         trackRepo.save(track);
 
@@ -156,7 +162,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/first_on.wav",
                 256,
-                artists
+                artists,
+                null
         );
         underTest.editTrack(trackEdit);
 
@@ -181,7 +188,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/intro.wav",
                 256,
-                artists
+                artists,
+                null
         );
         Track track2 = new Track(
                 2L,
@@ -189,7 +197,8 @@ class TrackServiceTest {
                 "www.imageurl.com",
                 "/path/to/next_up.wav",
                 305,
-                artists
+                artists,
+                null
         );
         trackRepo.saveAll(Arrays.asList(track1, track2));
 

@@ -38,7 +38,8 @@ class ProjectServiceTest {
                         "www.image1url.com",
                         17,
                         4321,
-                        artist
+                        artist,
+                        null
                 ),
                 new Project(
                         2L,
@@ -46,7 +47,8 @@ class ProjectServiceTest {
                         "www.image2url.com",
                         23,
                         3412,
-                        artist
+                        artist,
+                        null
                 )
         );
 
@@ -69,7 +71,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 17,
                 4321,
-                artist
+                artist,
+                null
         );
         Optional<Project> projOpt = Optional.of(project);
         when(projectRepo.findById(id)).thenReturn(projOpt);
@@ -92,7 +95,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 17,
                 4321,
-                artist
+                artist,
+                null
         );
         Optional<Project> projOpt = Optional.of(project);
         when(projectRepo.findById(id)).thenReturn(projOpt);
@@ -121,7 +125,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 17,
                 4321,
-                artist
+                artist,
+                null
         );
         when(projectRepo.save(project)).thenReturn(project);
 
@@ -144,7 +149,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 17,
                 4321,
-                artist
+                artist,
+                null
         );
         projectRepo.save(project);
 
@@ -158,7 +164,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 19,
                 2743,
-                artist
+                artist,
+                null
         );
         underTest.editProject(projEdit);
 
@@ -183,7 +190,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 17,
                 4321,
-                artist
+                artist,
+                null
         );
         Project realProject = new Project(
                 2L,
@@ -191,7 +199,8 @@ class ProjectServiceTest {
                 "www.image1url.com",
                 19,
                 2743,
-                artist
+                artist,
+                null
         );
         projectRepo.saveAll(Arrays.asList(project, realProject));
 

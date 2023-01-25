@@ -86,7 +86,8 @@ Content-Type: application/json
         "trackName": "Updated Track Name",
         "trackImageUrl": "https://i0.wp.com/cms.babbel.news/wp-content/uploads/2017/10/CM_MagazineHeader_Gaga.png",
         "trackUrl": "./assets/static/audio/test/Release.mp3",
-        "trackLength": 256
+        "trackLength": 256,
+        "artist": []
       }
     ]
 }

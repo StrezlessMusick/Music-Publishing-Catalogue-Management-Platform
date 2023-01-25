@@ -56,5 +56,4 @@ public class Artist implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "project_id")}
     )
     private List<Project> artistProjects = new ArrayList<>();
-
 }

@@ -14,13 +14,18 @@ export class ProjectListComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+    this.onGetProjects();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onGetProjects() {
     this.projectsService.getProjects()
-      .pipe(
-        tap(projects => this.projects = projects)
-      ).subscribe();
+      .pipe(tap(projects => {
+        console.log(projects);
+        this.projects = projects;
+      })).subscribe();
   }
 
   onNewProject() {

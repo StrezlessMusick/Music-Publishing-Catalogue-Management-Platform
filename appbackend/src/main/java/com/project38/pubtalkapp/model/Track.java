@@ -38,16 +38,10 @@ public class Track implements Serializable {
 
 
     @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
             targetEntity = Project.class
     )
-    @JoinTable(
-            name = "project_track",
-            joinColumns = {@JoinColumn(name = "project_id")},
-            inverseJoinColumns = {@JoinColumn(name = "track_id")}
+    @JoinColumn(
+            name = "project_id"
     )
     private Project project;
-
-
 }

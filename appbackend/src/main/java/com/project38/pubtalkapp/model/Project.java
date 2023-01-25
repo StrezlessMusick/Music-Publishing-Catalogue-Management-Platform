@@ -38,6 +38,5 @@ public class Project implements Serializable {
             mappedBy = "project",
             targetEntity = Track.class
     )
-    @JsonIgnore
     private List<Track> trackList = new ArrayList<>();
 }

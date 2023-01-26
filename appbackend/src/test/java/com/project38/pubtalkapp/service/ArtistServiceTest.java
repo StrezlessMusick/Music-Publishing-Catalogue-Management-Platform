@@ -65,63 +65,6 @@ class ArtistServiceTest {
     }
 
     @Test
-    void itShouldFindAllArtistsAndAssociatedTracks() {
-        // Given
-        List<Artist> testList = new ArrayList<>();
-        List<Track> trackList = Arrays.asList(
-                new Track(
-                        1L,
-                        "Straight Fire",
-                        "www.imageUrl.com",
-                        "www.trackUrl.com",
-                        321,
-                        testList,
-                        null
-
-                ),
-                new Track(
-                        2L,
-                        "Better Than Ever",
-                        "www.imageUrl.com",
-                        "www.trackUrl.com",
-                        321,
-                        testList,
-                        null
-                )
-        );
-        List<Project> projectList = new ArrayList<>();
-
-        List<Artist> artistList = Arrays.asList(
-                new Artist(
-                        1L,
-                        "Billy",
-                        "www.imageurl.com",
-                        PRO.ASCAP,
-                        "22321",
-                        trackList,
-                        projectList
-                ),
-                new Artist(
-                        2L,
-                        "Tyler",
-                        "www.imageurl2.com",
-                        PRO.BMI,
-                        "53627",
-                        trackList,
-                        projectList
-                )
-        );
-
-        // When
-        when(artistRepo.findAllArtistAndFetchTracks()).thenReturn(artistList);
-
-        // Then
-        List<Artist> returned = underTest.findAllArtistsAndAssociatedTracks();
-        assertThat(returned).hasSize(2);
-        assertThat(returned.get(0).getArtistTracks().get(1).getTrackName()).isEqualTo("Better Than Ever");
-    }
-
-    @Test
     void itShouldFindArtistById() {
         // Given
         List<Track> trackList = new ArrayList<>();
@@ -157,7 +100,17 @@ class ArtistServiceTest {
                 "www.imageurl.com",
                 PRO.ASCAP,
                 "22321",
-                null,
+                Arrays.asList(
+                        new Track(
+                                id,
+                                "Better Than Ever",
+                                "www.imageUrl.com",
+                                "www.trackUrl.com",
+                                321,
+                                null,
+                                null
+                        )
+                ),
                 null
         );
         Optional<Artist> artistOpt = Optional.of(artist);
@@ -169,17 +122,22 @@ class ArtistServiceTest {
                 "www.imageUrl.com",
                 "www.trackUrl.com",
                 321,
-                Collections.singletonList(artist),
+                Arrays.asList(artist),
                 null
         );
         Optional<Track> trackOpt = Optional.of(track);
         when(trackRepo.findById(id)).thenReturn(trackOpt);
 
         // When
+        List<Track> returned = underTest.findAllTracksAssociatedWithArtistByID(id);
+        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(returned);
+
 
         // Then
         assertEquals("Billy", artistRepo.findById(id).get().getArtistName());
         assertEquals("Better Than Ever", trackRepo.findById(id).get().getTrackName());
+        assertEquals("Better Than Ever", returned.get(0).getTrackName());
+
 
     }
 

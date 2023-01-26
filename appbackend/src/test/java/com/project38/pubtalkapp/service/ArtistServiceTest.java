@@ -122,7 +122,7 @@ class ArtistServiceTest {
                 "www.imageUrl.com",
                 "www.trackUrl.com",
                 321,
-                Arrays.asList(artist),
+                Collections.singletonList(artist),
                 null
         );
         Optional<Track> trackOpt = Optional.of(track);

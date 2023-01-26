@@ -13,10 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -172,7 +169,7 @@ class ArtistServiceTest {
                 "www.imageUrl.com",
                 "www.trackUrl.com",
                 321,
-                null,
+                Collections.singletonList(artist),
                 null
         );
         Optional<Track> trackOpt = Optional.of(track);
@@ -181,7 +178,8 @@ class ArtistServiceTest {
         // When
 
         // Then
-        
+        assertEquals("Billy", artistRepo.findById(id).get().getArtistName());
+        assertEquals("Better Than Ever", trackRepo.findById(id).get().getTrackName());
 
     }
 

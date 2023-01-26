@@ -6,6 +6,7 @@ import com.project38.pubtalkapp.model.PRO;
 import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.ArtistRepo;
+import com.project38.pubtalkapp.repo.TrackRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,6 +27,8 @@ class ArtistServiceTest {
 
     @Mock
     private ArtistRepo artistRepo;
+    @Mock
+    private TrackRepo trackRepo;
     @InjectMocks
     private ArtistService underTest;
 
@@ -150,11 +153,36 @@ class ArtistServiceTest {
     @Test
     void itShouldFindAndAddAllTracksByArtistID() {
         // Given
+        Long id = 1L;
+        Artist artist = new Artist(
+                id,
+                "Billy",
+                "www.imageurl.com",
+                PRO.ASCAP,
+                "22321",
+                null,
+                null
+        );
+        Optional<Artist> artistOpt = Optional.of(artist);
+        when(artistRepo.findById(id)).thenReturn(artistOpt);
+
+        Track track = new Track(
+                id,
+                "Better Than Ever",
+                "www.imageUrl.com",
+                "www.trackUrl.com",
+                321,
+                null,
+                null
+        );
+        Optional<Track> trackOpt = Optional.of(track);
+        when(trackRepo.findById(id)).thenReturn(trackOpt);
 
         // When
 
         // Then
         
+
     }
 
     @Test

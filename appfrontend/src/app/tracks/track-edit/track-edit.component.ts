@@ -34,8 +34,7 @@ export class TrackEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .subscribe(
-        (param: Params) => {
+      .subscribe(param => {
           this.id = +param['id'];
           this.editMode = param['id'] != null;
           this.initForm();

@@ -38,8 +38,7 @@ export class TrackEditComponent implements OnInit {
           this.id = +param['id'];
           this.editMode = param['id'] != null;
           this.initForm();
-        }
-      );
+        });
 
   }
 

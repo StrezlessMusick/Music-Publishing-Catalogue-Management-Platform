@@ -32,6 +32,6 @@ export class TrackListComponent implements OnInit {
     this.router.navigate(
       ['new'],
       {relativeTo: this.route}
-    )
+    );
   }
 }

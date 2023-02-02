@@ -15,7 +15,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-<h2 align="center">PubTalk WebApp</h2>
+<h3 align="center">PubTalk WebApp</h3>
 
   <p align="center">
     A simple and effective solution for music publishers to manage their roster of artists and songs. 

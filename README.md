@@ -155,7 +155,7 @@ The application provides secure storage of sensitive information, such as the de
 publishing roster and the royalties due. 
 This ensures that confidential information is protected and only accessible by authorized users.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+[//]: # (_For more examples, please refer to the [Documentation]&#40;https://example.com&#41;_)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -38,7 +39,7 @@ This web application allows you to keep track of all your songs, artists, and pu
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-application">About The Application</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -99,7 +100,7 @@ You will need to have the following software installed on your machine:
 * Maven
 * Angular CLI
 
-### Installing
+### Installation
 
 Clone the repository to your local machine:
 

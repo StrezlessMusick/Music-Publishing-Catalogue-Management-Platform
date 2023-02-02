@@ -110,7 +110,7 @@ Clone the repository to your local machine:
 Navigate to the project directory:
 
    ```sh
-   cd music-publishing-roster-management-app
+   cd music-publishing-catalogue-management-platform
    ```
 
 Start the application with Docker Compose:

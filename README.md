@@ -259,7 +259,7 @@ Link: [https://github.com/formula38/Music-Publishing-Catalogue-Management-Platfo
 
 [license-shield]: https://img.shields.io/github/license/formula38/Music-Publishing-Catalogue-Management-Platform.svg?style=for-the-badge
 
-[license-url]: https://github.com/formula38/Music-Publishing-Catalogue-Management-Platform/blob/master/LICENSE.md
+[license-url]: https://github.com/formula38/Music-Publishing-Catalogue-Management-Platform/blob/main/LICENSE.md
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 

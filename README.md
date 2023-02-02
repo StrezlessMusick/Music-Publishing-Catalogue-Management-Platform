@@ -65,6 +65,21 @@ This web application allows you to keep track of all your songs, artists, and pu
 <!-- ABOUT THE PROJECT -->
 
 ## About The Application
+PubTalk Web Application is a software solution designed for music publishers to keep track 
+of their artist roster and manage the publishing rights of their musical works. 
+The application provides a centralized platform for music publishers to manage and organize their artists, 
+musical works, and publishing rights information in a single place. 
+The application offers a range of features to streamline the workflow of music publishers, including artist management, 
+musical work management, publishing rights management, and reporting capabilities.
+
+The application is built using modern web technologies, making it accessible from any device with an internet 
+connection. 
+The user-friendly interface and intuitive navigation make it easy for music publishers to get started and quickly 
+begin managing their artist roster and musical works. 
+The application is designed to be flexible and scalable, so it can accommodate the changing needs of music 
+publishers as their business grows. 
+Whether you are a small music publishing company just starting out or a larger organization with hundreds of artists, 
+this application provides the tools you need to manage your publishing operations effectively.
 
 [//]: # ([![Product Name Screen Shot][product-screenshot]]&#40;https://example.com&#41;)
 

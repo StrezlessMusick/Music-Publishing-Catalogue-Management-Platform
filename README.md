@@ -104,7 +104,7 @@ You will need to have the following software installed on your machine:
 Clone the repository to your local machine:
 
   ```sh
-  git clone https://github.com/your-username/music-publishing-catalogue-management-platform.git
+  git clone https://github.com/formula38/music-publishing-catalogue-management-platform.git
   ```
 
 Navigate to the project directory:

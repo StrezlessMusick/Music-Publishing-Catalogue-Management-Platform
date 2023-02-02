@@ -165,7 +165,7 @@ This ensures that confidential information is protected and only accessible by a
 
 ## Roadmap
 
-- [ ] Manage your roster of artists and songs
+- [x] Manage your roster of artists and songs
 - [ ] Store details about each song, including title, writer, and publisher information
 - [ ] Keep track of publishing agreements and royalty splits
 - [ ] Search and filter your roster to find the information you need quickly

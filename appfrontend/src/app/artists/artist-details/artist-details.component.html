@@ -42,11 +42,10 @@
   <div class="row">
     <div class="col-xs-12">
       <ul class="list-group">
-        <li class="list-group-item"
-            *ngFor="let track of artist.artistTracks"
-        >
+        <li class="list-group-item">
           <!-- REPLACE WITH FILTERED LIST (default to release date) SONG AND PROJECT w/ LINKS -->
-          <p>{{track.trackName}} - {{track.trackLength}}</p>
+          <p>Artist ID: {{artist.id}}</p>
+          <p>Artist IPI Num: {{artist.proIPI}}</p>
         </li>
       </ul>
     </div>

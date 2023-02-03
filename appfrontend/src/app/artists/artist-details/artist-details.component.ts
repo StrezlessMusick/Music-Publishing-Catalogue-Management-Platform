@@ -26,8 +26,7 @@ export class ArtistDetailsComponent implements OnInit {
             .subscribe(
               (artist: Artist) => {
                 this.artist = artist;
-              }
-            );
+              });
         }
       );
   }

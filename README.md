@@ -16,6 +16,7 @@
   </a> -->
 
 <h3 align="center">PubTalk WebApp</h3>
+<h4 align="center">(status: in development)</h4>
 
   <p align="center">
     A simple and effective solution for music publishers to manage their roster of artists and songs. 
@@ -65,10 +66,8 @@ This web application allows you to keep track of all your songs, artists, and pu
 <!-- ABOUT THE PROJECT -->
 
 ## About The Application
-PubTalk Web Application is a software solution designed for music publishers to keep track 
-of their artist roster and manage the publishing rights of their musical works. 
-The application provides a centralized platform for music publishers to manage and organize their artists, 
-musical works, and publishing rights information in a single place. 
+PubTalk Web Application is a software solution designed to provide a centralized platform for music publishers 
+to manage and organize their artists, musical works, and publishing rights information in a single place. 
 The application offers a range of features to streamline the workflow of music publishers, including artist management, 
 musical work management, publishing rights management, and reporting capabilities.
 
@@ -78,6 +77,7 @@ The user-friendly interface and intuitive navigation make it easy for music publ
 begin managing their artist roster and musical works. 
 The application is designed to be flexible and scalable, so it can accommodate the changing needs of music 
 publishers as their business grows. 
+
 Whether you are a small music publishing company just starting out or a larger organization with hundreds of artists, 
 this application provides the tools you need to manage your publishing operations effectively.
 
@@ -182,7 +182,7 @@ This ensures that confidential information is protected and only accessible by a
 ## Roadmap
 
 - [x] Manage your roster of artists and songs
-- [ ] Store details about each song, including title, writer, and publisher information
+- [x] Store details about each song, including title, writer, and publisher information
 - [ ] Keep track of publishing agreements and royalty splits
 - [ ] Search and filter your roster to find the information you need quickly
 - [ ] Generate reports to get an overview of your roster and publishing agreements

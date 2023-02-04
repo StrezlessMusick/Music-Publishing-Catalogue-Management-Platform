@@ -7,6 +7,7 @@ import com.project38.pubtalkapp.repo.ArtistRepo;
 import com.project38.pubtalkapp.repo.TrackRepo;
 import java.util.Collections;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.mapping.Join;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ArtistService {
     @Autowired
@@ -31,7 +33,11 @@ public class ArtistService {
         List<Track> trackList = artistOpt.getArtistTracks();
 
         // find the tracks associated with artist
+        log.info("Grabbing all currently stored tracks..");
+
         List<Track> all = trackRepo.findAll();
+        log.info(all.toString());
+
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);
 
         // add any found tracks to trackList

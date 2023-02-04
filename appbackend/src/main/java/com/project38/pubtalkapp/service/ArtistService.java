@@ -31,6 +31,7 @@ public class ArtistService {
         List<Track> trackList = artistOpt.getArtistTracks();
 
         // find the tracks associated with artist
+        List<Track> all = trackRepo.findAll();
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);
 
         // add any found tracks to trackList

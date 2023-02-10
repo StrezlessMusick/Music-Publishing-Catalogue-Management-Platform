@@ -35,7 +35,7 @@ public class ArtistService {
         // find the tracks associated with artist
 //        log.info("Checking if this logger is working..");
 
-        List<Track> all = trackRepo.findAll();
+//        List<Track> all = trackRepo.findAll();
 //        log.info(all.toString());
 
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);

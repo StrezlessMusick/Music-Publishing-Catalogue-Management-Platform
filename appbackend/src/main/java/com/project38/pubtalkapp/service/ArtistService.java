@@ -43,7 +43,7 @@ public class ArtistService {
         // add any found tracks to trackList
         trackList.addAll(artistTracks);
 
-        return Collections.emptyList();
+        return trackList;
     }
 
     public Artist findArtistById(Long id) {

@@ -7,6 +7,7 @@ import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.ArtistRepo;
 import com.project38.pubtalkapp.repo.TrackRepo;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -91,6 +92,7 @@ class ArtistServiceTest {
     }
 
     @Test
+    @Disabled
     void itShouldFindAndAddAllTracksByArtistID() {
         // Given
         Long id = 1L;

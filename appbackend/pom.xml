@@ -47,6 +47,7 @@
         </dependency>
 
         <!-- HEDERA DEPENDENCIES -->
+
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -72,6 +73,7 @@
             <artifactId>sdk</artifactId>
             <version>1.1.4</version>
         </dependency>
+
         <!-- END OF HEDERA DEPENDENCIES -->
 
     </dependencies>

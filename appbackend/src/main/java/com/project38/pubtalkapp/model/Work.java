@@ -1,6 +1,6 @@
 package com.project38.pubtalkapp.model;
 
-public class Work {
+public class  Work {
     private Long id;
     private Artist artist;
     private Project project;

@@ -1,6 +1,5 @@
 package com.project38.pubtalkapp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,14 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "projects")
 public class Project implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //    @NotBlank(message = "Project name is required!")
+
     private String projectName;
-    //    @NotBlank(message = "Project cover art url is required!")
     private String projectImageUrl;
-    //    @NotBlank(message = "Number of tracks is required!")
     private Integer numOfTracks;
     private Integer projectLength;
 

@@ -3,17 +3,15 @@ package com.project38.pubtalkapp.service;
 import com.project38.pubtalkapp.exception.ProjectNotFoundException;
 import com.project38.pubtalkapp.model.Project;
 import com.project38.pubtalkapp.repo.ProjectRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class ProjectService {
 
-    private final ProjectRepo projectRepo;
-
-    @Autowired
     public ProjectService(ProjectRepo projectRepo) {
         this.projectRepo = projectRepo;
     }
@@ -40,4 +38,6 @@ public class ProjectService {
     public void deleteProjectById(Long id) {
         projectRepo.deleteById(id);
     }
+
+    private final ProjectRepo projectRepo;
 }

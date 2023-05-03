@@ -3,17 +3,15 @@ package com.project38.pubtalkapp.service;
 import com.project38.pubtalkapp.exception.TrackNotFoundException;
 import com.project38.pubtalkapp.model.Track;
 import com.project38.pubtalkapp.repo.TrackRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 public class TrackService {
 
-    private final TrackRepo trackRepo;
-
-    @Autowired
     public TrackService(TrackRepo trackRepo) {
         this.trackRepo = trackRepo;
     }
@@ -40,4 +38,6 @@ public class TrackService {
     public void deleteTrackById(Long id) {
         trackRepo.deleteById(id);
     }
+
+    private final TrackRepo trackRepo;
 }

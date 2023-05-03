@@ -10,8 +10,6 @@ import {ArtistsService} from "../../zshared/services/artists.service";
   styleUrls: ['./artist-list.component.css']
 })
 export class ArtistListComponent implements OnInit {
-  artists: Artist[];
-
   constructor(private artistsService: ArtistsService,
               private router: Router,
               private route: ActivatedRoute) {
@@ -35,4 +33,5 @@ export class ArtistListComponent implements OnInit {
     );
   }
 
+  artists: Artist[];
 }

@@ -24,17 +24,26 @@ public class ArtistService {
     }
 
     public List<Track> findAllTracksAssociatedWithArtistByID(Long id) {
+
         Artist artistOpt = findArtistById(id);
         List<Track> trackList = artistOpt.getArtistTracks();
-        // find the tracks associated with artist
-        log.info("Checking if this logger is working..");
+        log.info("\ncurrent tracklist:\n " + trackList);
 
+        // find the tracks associated with artist
         List<Track> all = trackRepo.findAll();
-//        log.info(all.toString());
+        log.info("\ntracks associated with artist: \n" + all);
 
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);
-        // add any found tracks to trackList
-        trackList.addAll(artistTracks);
+        log.info("\ntracks associated with artist: \n" + all);
+
+        log.info("\nadding any found tracks to trackList...\n");
+        List<Track> updatedTrackList = trackList;
+//      trackList.addAll(artistTracks);
+
+        for (Track t : artistTracks) {
+            updatedTrackList.add(t);
+        }
+        log.info("\nupdated tracklist: \n" + updatedTrackList);
 
         return trackList;
     }

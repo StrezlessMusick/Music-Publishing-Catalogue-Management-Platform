@@ -102,7 +102,7 @@ class ArtistServiceTest {
                 "www.imageurl.com",
                 PRO.ASCAP,
                 "22321",
-                Arrays.asList(
+                List.of(
                         new Track(
                                 id,
                                 "Better Than Ever",

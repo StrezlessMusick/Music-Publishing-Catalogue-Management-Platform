@@ -13,7 +13,7 @@ public interface TrackRepo extends JpaRepository<Track, Long> {
 
 
     @Query(
-            value = "SELECT t " +
+            value = "SELECT * " +
                     "FROM tracks t " +
                     "LEFT JOIN artist_track a " +
                     "ON t.id = a.track_id",
@@ -22,10 +22,10 @@ public interface TrackRepo extends JpaRepository<Track, Long> {
     public List<Track> findAllTracksAndFetchArtists();
 
     @Query(
-            value = "SELECT t " +
+            value = "SELECT * " +
                     "FROM tracks t " +
-                    "JOIN artist_track at " +
-                    "on t.id = at.artist_id " +
+                    "JOIN artist_track a " +
+                    "on t.id = a.artist_id " +
                     "WHERE at.artist_id = ?",
             nativeQuery = true
     )

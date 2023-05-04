@@ -94,6 +94,12 @@ class ArtistServiceTest {
     @Test
     @Disabled
     void itShouldFindAndAddAllTracksByArtistID() {
+
+        // TODO: Needs to be reworked. I was such a rookie smh
+        // first I need to create artist with a track
+        // then try to add a 2nd track to that artist
+        // by creating a new track and adding the created artist to the new track param
+
         // Given
         Long id = 1L;
         Artist artist = new Artist(
@@ -118,21 +124,22 @@ class ArtistServiceTest {
         Optional<Artist> artistOpt = Optional.of(artist);
         when(artistRepo.findById(id)).thenReturn(artistOpt);
 
-        Track track = new Track(
+        List<Track> newTracks = List.of (
+                new Track(
                 id,
-                "Better Than Ever",
-                "www.imageUrl.com",
-                "www.trackUrl.com",
-                321,
+                "New Release",
+                "www.imageUrl2.com",
+                "www.trackUrl2.com",
+                888,
                 Collections.singletonList(artist),
                 null
+                )
         );
-        Optional<Track> trackOpt = Optional.of(track);
-        when(trackRepo.findById(id)).thenReturn(trackOpt);
+        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(newTracks);
 
         // When
         List<Track> returned = underTest.findAllTracksAssociatedWithArtistByID(id);
-        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(returned);
+//        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(returned);
 
 
         // Then

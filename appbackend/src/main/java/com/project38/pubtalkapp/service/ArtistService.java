@@ -38,7 +38,7 @@ public class ArtistService {
 
         log.info("\nadding any found tracks to trackList...\n");
         List<Track> updatedTrackList = trackList;
-//      trackList.addAll(artistTracks);
+        trackList.addAll(artistTracks);
 
         for (Track t : artistTracks) {
             updatedTrackList.add(t);

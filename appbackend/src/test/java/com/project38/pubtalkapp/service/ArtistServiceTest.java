@@ -99,55 +99,65 @@ class ArtistServiceTest {
 
         // Given
         // first I need to create artist with a track
-        Long id1 = 1L;
+        Long id = 1L;
         Artist artist = new Artist(
-                id1,
+                id,
                 "Billy",
                 "www.imageurl.com",
                 PRO.ASCAP,
                 "22321",
-                List.of(
-                        new Track(
-                                id1,
-                                "Better Than Ever",
-                                "www.imageUrl.com",
-                                "www.trackUrl.com",
-                                321,
-                                null,
-                                null
-                        )
-                ),
+                null,
+//                List.of(
+//                        new Track(
+//                                id1,
+//                                "Better Than Ever",
+//                                "www.imageUrl.com",
+//                                "www.trackUrl.com",
+//                                321,
+//                                null,
+//                                null
+//                        )
+//                ),
                 null
         );
         Optional<Artist> artistOpt = Optional.of(artist);
-        when(artistRepo.findById(id1)).thenReturn(artistOpt);
+        when(artistRepo.findById(id)).thenReturn(artistOpt);
 
         // then try to add a 2nd track to that artist
         // by creating a new track and adding the created artist to the new track param
-        Long id2 = 2L;
-        List<Track> newTracks = List.of (
+        List<Track> newTracks = List.of(
                 new Track(
-                id2,
-                "New Release",
-                "www.imageUrl2.com",
-                "www.trackUrl2.com",
-                888,
-                Collections.singletonList(artist),
-                null
+                        id,
+                        "New Release",
+                        "www.imageUrl2.com",
+                        "www.trackUrl2.com",
+                        888,
+                        Collections.singletonList(artist),
+                        null
+                ),
+                new Track(
+                        2L,
+                        "Better Than Ever",
+                        "www.imageUrl.com",
+                        "www.trackUrl.com",
+                        321,
+                        null,
+                        null
                 )
         );
         trackRepo.saveAll(newTracks);
-        when(trackRepo.findAllTracksByArtistID(id1)).thenReturn(newTracks);
+        when(trackRepo.findAll()).thenReturn(newTracks);
+        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(newTracks);
 
 
         // When
-        List<Track> returned = underTest.findAllTracksAssociatedWithArtistByID(id1);
+        List<Track> returned = underTest.findAllTracksAssociatedWithArtistByID(id);
 //        when(trackRepo.findAllTracksByArtistID(id)).thenReturn(returned);
 
 
         // Then
-        assertEquals("Billy", artistRepo.findById(id1).get().getArtistName());
-        assertEquals("Better Than Ever", trackRepo.findById(id1).get().getTrackName());
+        assertEquals("Billy", artistRepo.findById(id).get().getArtistName());
+        assertEquals("Better Than Ever", trackRepo.findById(id).get().getTrackName());
         assertEquals("Better Than Ever", returned.get(0).getTrackName());
 
 

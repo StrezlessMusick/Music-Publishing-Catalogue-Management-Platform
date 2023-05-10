@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -41,7 +42,11 @@ public class ArtistService {
         trackList.addAll(artistTracks);
 
         for (Track t : artistTracks) {
-            updatedTrackList.add(t);
+            if (Objects.equals(
+                    t.getArtist().get(0).getId(),
+                    artistOpt.getId()
+            ))
+                updatedTrackList.add(t);
         }
         log.info("\nupdated tracklist: \n" + updatedTrackList);
 

@@ -37,18 +37,19 @@ public class ArtistService {
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);
         log.info("\ntracks associated with artist: \n" + artistTracks);
 
-        log.info("\nadding any found tracks to trackList...\n");
-        List<Track> updatedTrackList = trackList;
-        trackList.addAll(artistTracks);
-
         for (Track t : artistTracks) {
-            if (Objects.equals(
-                    t.getArtist().get(0).getId(),
-                    artistOpt.getId()
-            ))
-                updatedTrackList.add(t);
+            int i = 0;
+            while (i <= artistTracks.size()) {
+                if (!Objects.equals(t.getArtist().get(i).getId(), artistOpt.getId())) {
+                    i += 1;
+                }
+                trackList.add(t);
+            }
         }
-        log.info("\nupdated tracklist: \n" + updatedTrackList);
+
+        log.info("\nadding any found tracks to trackList...\n");
+        trackList.addAll(artistTracks);
+//        log.info("\nupdated tracklist: \n" + trackList);
 
         return trackList;
     }

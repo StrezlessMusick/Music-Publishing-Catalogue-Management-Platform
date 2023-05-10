@@ -34,7 +34,7 @@ public class ArtistService {
         log.info("\nList of all tracks: \n" + all);
 
         List<Track> artistTracks = trackRepo.findAllTracksByArtistID(id);
-        log.info("\ntracks associated with artist: \n" + all);
+        log.info("\ntracks associated with artist: \n" + artistTracks);
 
         log.info("\nadding any found tracks to trackList...\n");
         List<Track> updatedTrackList = trackList;

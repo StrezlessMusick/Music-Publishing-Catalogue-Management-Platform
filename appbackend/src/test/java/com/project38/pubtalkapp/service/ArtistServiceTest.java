@@ -146,7 +146,8 @@ class ArtistServiceTest {
                 )
         );
         trackRepo.saveAll(newTracks);
-        when(trackRepo.findAll()).thenReturn(newTracks);
+
+        // TODO: Use Stream API to only pull "Billy's" tracks from newtracks
         when(trackRepo.findAllTracksByArtistID(id)).thenReturn(newTracks);
 
 

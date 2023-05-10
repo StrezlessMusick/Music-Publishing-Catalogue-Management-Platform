@@ -26,7 +26,7 @@ public interface TrackRepo extends JpaRepository<Track, Long> {
                     "FROM tracks t " +
                     "JOIN artist_track a " +
                     "on t.id = a.artist_id " +
-                    "WHERE at.artist_id = ?",
+                    "WHERE a.artist_id = ?",
             nativeQuery = true
     )
     List<Track> findAllTracksByArtistID(@Param("artist_id") Long id);

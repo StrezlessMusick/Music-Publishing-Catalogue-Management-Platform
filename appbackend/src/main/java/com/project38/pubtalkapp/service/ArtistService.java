@@ -40,10 +40,10 @@ public class ArtistService {
         for (Track t : artistTracks) {
             int i = 0;
             while (i <= artistTracks.size()) {
-                if (!Objects.equals(t.getArtist().get(i).getId(), artistOpt.getId())) {
-                    i += 1;
+                if (Objects.equals(t.getArtist().get(i).getId(), artistOpt.getId())) {
+                    trackList.add(t);
                 }
-                trackList.add(t);
+                break;
             }
         }
 

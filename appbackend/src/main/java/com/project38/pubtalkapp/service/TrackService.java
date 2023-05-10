@@ -12,9 +12,6 @@ import java.util.List;
 @Service
 public class TrackService {
 
-    public TrackService(TrackRepo trackRepo) {
-        this.trackRepo = trackRepo;
-    }
 
     public List<Track> findAllTracks() {
         return trackRepo.findAll();
@@ -37,6 +34,10 @@ public class TrackService {
 
     public void deleteTrackById(Long id) {
         trackRepo.deleteById(id);
+    }
+
+    public TrackService(TrackRepo trackRepo) {
+        this.trackRepo = trackRepo;
     }
 
     private final TrackRepo trackRepo;

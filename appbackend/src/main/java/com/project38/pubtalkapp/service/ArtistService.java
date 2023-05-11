@@ -25,6 +25,7 @@ public class ArtistService {
     }
 
     public List<Track> findAllTracksAssociatedWithArtistByID(Long id) {
+        // TODO: This method might be trying to do too much - Consider decoupling whatever this is
 
         Artist artistOpt = findArtistById(id);
         List<Track> trackList = artistOpt.getArtistTracks();
@@ -42,6 +43,7 @@ public class ArtistService {
             while (i <= artistTracks.size()) {
                 if (Objects.equals(t.getArtist().get(i).getId(), artistOpt.getId())) {
                     trackList.add(t);
+                    i += 1;
                 }
                 break;
             }

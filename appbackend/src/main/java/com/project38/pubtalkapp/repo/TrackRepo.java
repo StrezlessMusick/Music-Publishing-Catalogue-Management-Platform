@@ -22,13 +22,13 @@ public interface TrackRepo extends JpaRepository<Track, Long> {
     public List<Track> findAllTracksAndFetchArtists();
 
     @Query(
-            value = "SELECT * " +
+            value = "SELECT track_name " +
                     "FROM tracks t " +
                     "JOIN artist_track a " +
-                    "on t.id = a.artist_id " +
+                    "on t.id = a.track_id " +
                     "WHERE a.artist_id = ?",
             nativeQuery = true
     )
-    List<Track> findAllTracksByArtistID(@Param("artist_id") Long id);
+    List<Track> findAllTracksByArtistID(@Param("a.artist_id") Long id);
 
 }

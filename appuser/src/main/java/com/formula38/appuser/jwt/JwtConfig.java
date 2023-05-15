@@ -39,7 +39,7 @@ public class JwtConfig {
         this.tokenExpirationAfterDays = tokenExpirationAfterDays;
     }
 
-    public String getAuthorizationHeaders() {
+    public String getAuthorizationHeader() {
         return HttpHeaders.AUTHORIZATION;
     }
 }

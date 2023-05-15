@@ -14,17 +14,19 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "application_user")
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor(force = true)
 public class ApplicationUser implements UserDetails {
 
-    public ApplicationUser(String username,
+    public ApplicationUser(Long id,
+                           String username,
                            String password,
                            Set<? extends GrantedAuthority> grantedAuthorities,
                            boolean isAccountNonExpired,
                            boolean isAccountNonLocked,
                            boolean isCredentialsNonExpired,
                            boolean isEnabled) {
+        this.id = id;
         this.grantedAuthorities = grantedAuthorities;
         this.username = username;
         this.password = password;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ApplicationUserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return applicationUserRepo.;
+        return applicationUserRepo.findBy(username);
     }
 
     private final ApplicationUserRepo applicationUserRepo;

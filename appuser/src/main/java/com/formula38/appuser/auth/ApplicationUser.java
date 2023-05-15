@@ -2,10 +2,9 @@ package com.formula38.appuser.auth;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,19 +13,19 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "application_user")
+@AllArgsConstructor
 @NoArgsConstructor(force = true)
 public class ApplicationUser implements UserDetails {
 
-    public ApplicationUser(Long id, String username,
+    public ApplicationUser(String username,
                            String password,
-                           Set<? extends GrantedAuthority> grantAuthorities,
+                           Set<? extends GrantedAuthority> grantedAuthorities,
                            boolean isAccountNonExpired,
                            boolean isAccountNonLocked,
                            boolean isCredentialsNonExpired,
                            boolean isEnabled) {
-        this.id = id;
-        this.grantAuthorities = grantAuthorities;
+        this.grantedAuthorities = grantedAuthorities;
         this.username = username;
         this.password = password;
         this.isAccountNonExpired = isAccountNonExpired;
@@ -35,10 +34,9 @@ public class ApplicationUser implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return grantedAuthorities;
     }
 
     @Override
@@ -76,10 +74,9 @@ public class ApplicationUser implements UserDetails {
     private Long id;
     private final String username;
     private final String password;
-    private final Set<? extends GrantedAuthority> grantAuthorities;
+    private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final boolean isAccountNonExpired;
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
-
 }

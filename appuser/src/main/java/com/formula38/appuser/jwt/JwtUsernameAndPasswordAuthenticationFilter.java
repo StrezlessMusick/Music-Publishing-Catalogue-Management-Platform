@@ -38,8 +38,8 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         try {
 
             // Object Mapper reads value from input stream and places values in UsernameAndPasswordAuthReq class
-            UsernameAndPasswordAuthenticatonRequest authenticatonRequest = new ObjectMapper()
-                    .readValue(request.getInputStream(), UsernameAndPasswordAuthenticatonRequest.class);
+            UsernameAndPasswordAuthenticationRequest authenticatonRequest = new ObjectMapper()
+                    .readValue(request.getInputStream(), UsernameAndPasswordAuthenticationRequest.class);
 
             // Check if username exist then check if password is correct
             Authentication authentication = new UsernamePasswordAuthenticationToken(

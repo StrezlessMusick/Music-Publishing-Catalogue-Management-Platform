@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,41 +30,43 @@ public class ApplicationSecurityConfig {
     private final ApplicationUserService applicationUserService;
     private final SecretKey secretKey;
     private final JwtConfig jwtConfig;
+    private final HttpSecurity http;
 
     public ApplicationSecurityConfig(PasswordEncoder passwordEncoder,
                                      ApplicationUserService applicationUserService,
                                      SecretKey secretKey,
-                                     JwtConfig jwtConfig) {
+                                     JwtConfig jwtConfig, HttpSecurity http) {
         this.passwordEncoder = passwordEncoder;
         this.applicationUserService = applicationUserService;
         this.secretKey = secretKey;
         this.jwtConfig = jwtConfig;
+        this.http = http;
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain() throws Exception {
 
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.DELETE)
+                    .requestMatchers(HttpMethod.DELETE)
                 .hasRole("ADMIN")
-                .requestMatchers("/admin/**")
+                    .requestMatchers("/admin/**")
                 .hasAnyRole("ADMIN")
-                .requestMatchers("/user/**")
+                    .requestMatchers("/user/**")
                 .hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/login/**")
+                    .requestMatchers("/login/**")
                 .anonymous()
-                .anyRequest()
-                .authenticated()
+                    .anyRequest()
+                    .authenticated()
                 .and()
-                .authenticationProvider(authenticationProvider())
-                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
-                .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtUsernameAndPasswordAuthenticationFilter.class)
-                .httpBasic()
+                    .authenticationProvider(authenticationProvider())
+                    .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
+                        .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtUsernameAndPasswordAuthenticationFilter.class)
+                    .httpBasic()
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                    .sessionManagement()
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         return http.build();
     }
@@ -77,13 +79,6 @@ public class ApplicationSecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authConfig
-    ) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
-
-    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
@@ -93,15 +88,13 @@ public class ApplicationSecurityConfig {
         return authProvider;
     }
 
-//    @Bean
-//    public AuthenticationManager authenticationManager(HttpSecurity http,
-//                                                       BCryptPasswordEncoder bCryptPasswordEncoder,
-//                                                       UserDetailsService userDetailsService)
-//    throws Exception {
-//        return http.getSharedObject(AuthenticationManagerBuilder.class)
-//                .userDetailsService(userDetailsService)
-//                .passwordEncoder(bCryptPasswordEncoder)
-//                .and()
-//                .build();
-//    }
+    @Bean
+    public AuthenticationManager authenticationManager()
+    throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(applicationUserService)
+                .passwordEncoder(passwordEncoder)
+                .and()
+                .build();
+    }
 }

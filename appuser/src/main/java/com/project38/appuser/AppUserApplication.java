@@ -4,12 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@ComponentScan()
-//@EnableJpaRepositories()
-//@EntityScan()
-public class AppuserApplication {
+public class AppUserApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppuserApplication.class, args);
+		SpringApplication.run(AppUserApplication.class, args);
 	}
 }

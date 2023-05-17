@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/appuser/appuser.iml" filepath="$PROJECT_DIR$/appuser/appuser.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pubtalkapp.iml" filepath="$PROJECT_DIR$/.idea/pubtalkapp.iml" />
     </modules>
   </component>

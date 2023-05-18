@@ -2,6 +2,7 @@ package com.project38.appuser.auth;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,20 +13,18 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "application_user")
-//@AllArgsConstructor
+@Table(name = "app_user")
+@AllArgsConstructor
 @NoArgsConstructor(force = true)
 public class ApplicationUser implements UserDetails {
 
-    public ApplicationUser(Long id,
-                           String username,
+    public ApplicationUser(String username,
                            String password,
                            Set<? extends GrantedAuthority> grantedAuthorities,
                            boolean isAccountNonExpired,
                            boolean isAccountNonLocked,
                            boolean isCredentialsNonExpired,
                            boolean isEnabled) {
-        this.id = id;
         this.grantedAuthorities = grantedAuthorities;
         this.username = username;
         this.password = password;

@@ -9,11 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/v1")
-public class UserController {
+public class TemplateController {
 
     @GetMapping("/login")
     public String loginEndpoint() {
-        return "Login!";
+        return "login";
+    }
+
+    @GetMapping("/courses")
+    public String courses() {
+        return "courses";
     }
 
     @GetMapping("/admin")

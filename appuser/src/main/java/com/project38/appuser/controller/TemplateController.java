@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/v1")
+@RequestMapping("/")
 public class TemplateController {
 
-    @GetMapping("/login")
+    @GetMapping("home")
     public String loginEndpoint() {
         return "login";
     }
 
-    @GetMapping("/courses")
+    @GetMapping("courses")
     public String courses() {
         return "courses";
     }

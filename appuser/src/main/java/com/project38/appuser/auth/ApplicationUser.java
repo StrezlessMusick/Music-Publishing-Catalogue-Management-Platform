@@ -1,13 +1,13 @@
 package com.project38.appuser.auth;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "app_user")
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
-public class ApplicationUser implements UserDetails {
+public class ApplicationUser implements UserDetails, Serializable {
 
     public ApplicationUser(String username,
                            String password,

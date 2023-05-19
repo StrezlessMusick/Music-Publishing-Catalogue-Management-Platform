@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/appfrontend/dist" />
       <excludeFolder url="file://$MODULE_DIR$/appfrontend/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/httpRequests" />
+      <excludeFolder url="file://$MODULE_DIR$/appfrontend/src/environments" />
     </content>
   </component>
   <component name="FacetManager">

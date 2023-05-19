@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class TemplateController {
 
-    @GetMapping("home")
+    @GetMapping("login")
     public String loginEndpoint() {
         return "login";
     }

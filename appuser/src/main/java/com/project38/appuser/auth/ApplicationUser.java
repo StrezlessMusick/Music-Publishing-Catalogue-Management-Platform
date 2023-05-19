@@ -11,11 +11,11 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 
-@Data
-@Entity
-@Table(name = "app_user")
-@AllArgsConstructor
-@NoArgsConstructor(force = true)
+//@Data
+//@Entity
+//@Table(name = "app_user")
+//@AllArgsConstructor
+//@NoArgsConstructor(force = true)
 public class ApplicationUser implements UserDetails, Serializable {
 
     public ApplicationUser(String username,
@@ -69,9 +69,9 @@ public class ApplicationUser implements UserDetails, Serializable {
         return isEnabled;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
     private final String username;
     private final String password;
     private final Set<? extends GrantedAuthority> grantedAuthorities;

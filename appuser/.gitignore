@@ -1,6 +1,6 @@
-HELP.md
+app-backend/HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!app-backend/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -14,10 +14,12 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
+*.properties
+*.http
 
 ### NetBeans ###
 /nbproject/private/
@@ -31,3 +33,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Docker files
+Dockerfile
+docker-compose.properties
+
+# Environment files
+.env
+.env.*

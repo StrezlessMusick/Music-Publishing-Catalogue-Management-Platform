@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/app-backend/pom.xml" />
         <option value="$PROJECT_DIR$/appbackend/pom.xml" />
         <option value="$PROJECT_DIR$/appuser/pom.xml" />
+        <option value="$PROJECT_DIR$/authservice/pom.xml" />
       </list>
     </option>
   </component>

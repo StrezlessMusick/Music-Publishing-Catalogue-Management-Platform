@@ -9,12 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="pubtalkapp" />
         <module name="appuser" />
+        <module name="authservice" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="appuser" options="-parameters" />
+      <module name="authservice" options="-parameters" />
       <module name="pubtalkapp" options="-parameters" />
     </option>
   </component>

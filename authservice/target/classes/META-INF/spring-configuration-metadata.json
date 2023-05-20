@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "rsa",
+      "type": "com.project38.authservice.security.RsaKeyProperties",
+      "sourceType": "com.project38.authservice.security.RsaKeyProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

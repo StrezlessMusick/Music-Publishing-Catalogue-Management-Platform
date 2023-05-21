@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/appuser/appuser.iml" filepath="$PROJECT_DIR$/appuser/appuser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authbackend/authbackend.iml" filepath="$PROJECT_DIR$/authbackend/authbackend.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pubtalkapp.iml" filepath="$PROJECT_DIR$/.idea/pubtalkapp.iml" />
     </modules>
   </component>

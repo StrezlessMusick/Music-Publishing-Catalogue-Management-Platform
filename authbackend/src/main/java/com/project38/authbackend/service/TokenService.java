@@ -1,7 +1,6 @@
 package com.project38.authbackend.service;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
@@ -16,17 +15,11 @@ import java.util.stream.Collectors;
 @Service
 public class TokenService {
 
-    @Autowired
-    private JwtEncoder jwtEncoder;
-
-    @Autowired
-    private JwtDecoder jwtDecoder;
-
     public String generateJwt(Authentication auth) {
 
         Instant now = Instant.now();
-
-        String scope = auth.getAuthorities().stream()
+        String scope = auth.getAuthorities()
+                .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
 
@@ -37,6 +30,17 @@ public class TokenService {
                 .claim("roles", scope)
                 .build();
 
-        return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+        return jwtEncoder
+                .encode(JwtEncoderParameters.from(claims))
+                .getTokenValue();
     }
+
+    public TokenService(JwtEncoder jwtEncoder,
+                        JwtDecoder jwtDecoder) {
+        this.jwtEncoder = jwtEncoder;
+        this.jwtDecoder = jwtDecoder;
+    }
+
+    private final JwtEncoder jwtEncoder;
+    private final JwtDecoder jwtDecoder;
 }

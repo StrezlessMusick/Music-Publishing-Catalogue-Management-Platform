@@ -15,7 +15,6 @@ public class AuthController {
     public ApplicationUser registerUser(@RequestBody RegistrationDTO body) {
         return authenticationService.registerUser(body.getUsername(), body.getPassword());
     }
-
     // In more complex setups RegistrationDTO and LoginResponseDTO would be used separately
     @PostMapping("/login")
     public LoginResponseDTO loginUser(@RequestBody RegistrationDTO body) {

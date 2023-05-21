@@ -1,11 +1,10 @@
 package com.project38.authbackend.service;
 
-import com.project38.authbackend.model.ApplicationUser;
 import com.project38.authbackend.dto.LoginResponseDTO;
+import com.project38.authbackend.model.ApplicationUser;
 import com.project38.authbackend.model.Role;
 import com.project38.authbackend.repository.RoleRepository;
 import com.project38.authbackend.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,21 +19,6 @@ import java.util.Set;
 @Service
 @Transactional
 public class AuthenticationService {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private TokenService tokenService;
 
     public ApplicationUser registerUser(String username, String password){
         String encodedPassword = passwordEncoder.encode(password);
@@ -57,4 +41,22 @@ public class AuthenticationService {
             return new LoginResponseDTO(null, "");
         }
     }
+
+    public AuthenticationService(UserRepository userRepository,
+                                 RoleRepository roleRepository,
+                                 PasswordEncoder passwordEncoder,
+                                 AuthenticationManager authenticationManager,
+                                 TokenService tokenService) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.tokenService = tokenService;
+    }
+
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final TokenService tokenService;
 }

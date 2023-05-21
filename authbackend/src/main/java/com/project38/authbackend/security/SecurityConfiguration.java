@@ -29,12 +29,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfiguration {
 
-    private final RSAKeyProperties keys;
-
-    public SecurityConfiguration(RSAKeyProperties keys) {
-        this.keys = keys;
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -109,4 +103,10 @@ public class SecurityConfiguration {
 
         return jwtConverter;
     }
+
+    public SecurityConfiguration(RSAKeyProperties keys) {
+        this.keys = keys;
+    }
+
+    private final RSAKeyProperties keys;
 }

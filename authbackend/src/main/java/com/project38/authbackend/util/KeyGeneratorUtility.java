@@ -4,7 +4,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 
 public class KeyGeneratorUtility {
-
+    
     public static KeyPair generatedRsaKey() {
         KeyPair keyPair;
 
@@ -18,4 +18,6 @@ public class KeyGeneratorUtility {
 
         return keyPair;
     }
+
+    private KeyGeneratorUtility() {}
 }

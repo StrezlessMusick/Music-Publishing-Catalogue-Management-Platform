@@ -4,12 +4,6 @@ import com.project38.authbackend.model.ApplicationUser;
 
 public class LoginResponseDTO {
 
-    private ApplicationUser user;
-    private String jwt;
-
-    public LoginResponseDTO() {
-    }
-
     public LoginResponseDTO(ApplicationUser user, String jwt) {
         this.user = user;
         this.jwt = jwt;
@@ -30,4 +24,9 @@ public class LoginResponseDTO {
     public void setJwt(String jwt) {
         this.jwt = jwt;
     }
+
+    public LoginResponseDTO() {}
+
+    private ApplicationUser user;
+    private String jwt;
 }

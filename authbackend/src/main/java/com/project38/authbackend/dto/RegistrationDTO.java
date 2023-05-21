@@ -2,14 +2,6 @@ package com.project38.authbackend.dto;
 
 public class RegistrationDTO {
 
-    private String username;
-    private String password;
-
-    public RegistrationDTO(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -30,7 +22,15 @@ public class RegistrationDTO {
     public String toString() {
         return "RegistrationDTO{" +
                 "username='" + username + '\'' +
-                ", passwrod='" + password + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
+
+    public RegistrationDTO(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    private String username;
+    private String password;
 }

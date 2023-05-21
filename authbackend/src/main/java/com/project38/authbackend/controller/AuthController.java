@@ -1,20 +1,15 @@
 package com.project38.authbackend.controller;
 
 import com.project38.authbackend.model.ApplicationUser;
-import com.project38.authbackend.model.LoginResponseDTO;
-import com.project38.authbackend.model.RegistrationDTO;
+import com.project38.authbackend.dto.LoginResponseDTO;
+import com.project38.authbackend.dto.RegistrationDTO;
 import com.project38.authbackend.service.AuthenticationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 @CrossOrigin("*")
 public class AuthController {
-
-    @Autowired
-    private AuthenticationService authenticationService;
 
     @PostMapping("/register")
     public ApplicationUser registerUser(@RequestBody RegistrationDTO body) {
@@ -27,4 +22,9 @@ public class AuthController {
         return authenticationService.loginUser(body.getUsername(), body.getPassword());
     }
 
+    public AuthController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+    private final AuthenticationService authenticationService;
 }

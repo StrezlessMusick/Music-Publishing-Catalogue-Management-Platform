@@ -1,4 +1,6 @@
-package com.project38.authbackend.model;
+package com.project38.authbackend.dto;
+
+import com.project38.authbackend.model.ApplicationUser;
 
 public class LoginResponseDTO {
 

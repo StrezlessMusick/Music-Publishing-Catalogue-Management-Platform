@@ -1,4 +1,4 @@
-package com.project38.authbackend.model;
+package com.project38.authbackend.dto;
 
 public class RegistrationDTO {
 

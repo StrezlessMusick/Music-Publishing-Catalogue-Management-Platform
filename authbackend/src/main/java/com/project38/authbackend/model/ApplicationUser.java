@@ -16,7 +16,6 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private Integer userId;
-
     @Column(unique = true)
     private String username;
     private String password;
@@ -31,7 +30,6 @@ public class ApplicationUser implements UserDetails {
     private Set<Role> authorities;
 
     public ApplicationUser() {
-        super();
         this.authorities = new HashSet<Role>();
     }
 

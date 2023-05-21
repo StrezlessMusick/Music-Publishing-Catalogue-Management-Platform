@@ -10,12 +10,17 @@
         <module name="pubtalkapp" />
         <module name="appuser" />
         <module name="authservice" />
+        <module name="authbackend" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="authservice" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="appuser" options="-parameters" />
+      <module name="authbackend" options="-parameters" />
       <module name="authservice" options="-parameters" />
       <module name="pubtalkapp" options="-parameters" />
     </option>

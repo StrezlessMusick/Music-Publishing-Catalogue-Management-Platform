@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/appbackend/pom.xml" />
         <option value="$PROJECT_DIR$/appuser/pom.xml" />
         <option value="$PROJECT_DIR$/authservice/pom.xml" />
+        <option value="$PROJECT_DIR$/authbackend/pom.xml" />
       </list>
     </option>
   </component>

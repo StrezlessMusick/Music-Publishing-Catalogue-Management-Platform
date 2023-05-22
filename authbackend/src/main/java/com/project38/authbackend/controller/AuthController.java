@@ -1,10 +1,9 @@
 package com.project38.authbackend.controller;
 
-import com.project38.authbackend.model.ApplicationUser;
 import com.project38.authbackend.dto.LoginResponseDTO;
 import com.project38.authbackend.dto.RegistrationDTO;
+import com.project38.authbackend.model.ApplicationUser;
 import com.project38.authbackend.service.AuthenticationService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +15,6 @@ public class AuthController {
     public ApplicationUser registerUser(@RequestBody RegistrationDTO body) {
         return authenticationService.registerUser(body.getUsername(), body.getPassword());
     }
-
     // In more complex setups RegistrationDTO and LoginResponseDTO would be used separately
     @PostMapping("/login")
     public LoginResponseDTO loginUser(@RequestBody RegistrationDTO body) {

@@ -50,7 +50,7 @@ public class SecurityConfiguration {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/userlogin", "/welcome").permitAll();
+                auth.requestMatchers("/login", "/welcome").permitAll();
                 auth.requestMatchers("/api/v1/auth/**").permitAll();
                 auth.requestMatchers("/api/v1/admin/**").hasRole("ADMIN");
                 auth.requestMatchers("/api/v1/user/**").hasAnyRole("ADMIN", "USER");

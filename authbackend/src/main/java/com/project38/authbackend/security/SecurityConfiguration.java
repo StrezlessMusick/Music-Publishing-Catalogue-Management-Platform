@@ -50,11 +50,22 @@ public class SecurityConfiguration {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/auth/**").permitAll();
-                auth.requestMatchers("/admin/**").hasRole("ADMIN");
-                auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER");
+                auth.requestMatchers("/userlogin", "/welcome").permitAll();
+                auth.requestMatchers("/api/v1/auth/**").permitAll();
+                auth.requestMatchers("/api/v1/admin/**").hasRole("ADMIN");
+                auth.requestMatchers("/api/v1/user/**").hasAnyRole("ADMIN", "USER");
                 auth.anyRequest().authenticated();
+//                auth.anyRequest().permitAll();
             });
+
+        http
+                .formLogin(
+                        form -> form
+                                .loginPage("/api/v1/auth/login")
+                                .loginProcessingUrl("/api/v1/auth/login")
+                                .defaultSuccessUrl("/api/v1/auth/welcome")
+                                .permitAll()
+                );
 
         http
             .oauth2ResourceServer()

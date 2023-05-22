@@ -31,8 +31,6 @@ Cauthbackend/src/main/java/com/project38/authbackend/model/Role.java,4/1/4188a3
 Rauthbackend/src/main/java/com/project38/authbackend/repository/RoleRepository.java,1/b/1b0107f488323b056a1f4d4703d230462c0fbcbe
 ‚
 Rauthbackend/src/main/java/com/project38/authbackend/repository/UserRepository.java,3/a/3a85d7fa8d7ca5de0d48c782a7f42501e5cf7546
-†
-Vauthbackend/src/main/java/com/project38/authbackend/service/AuthenticationService.java,8/3/83ead5cb1e030050ba913fef73b817fb27a7312a
 }
 Mauthbackend/src/main/java/com/project38/authbackend/service/TokenService.java,b/2/b25c72a2d7d1bdc86969f361afc82e9c192f9818
 |

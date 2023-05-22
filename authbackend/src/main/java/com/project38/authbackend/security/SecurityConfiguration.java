@@ -26,6 +26,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfiguration {
@@ -49,23 +50,32 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/login", "/welcome").permitAll();
-                auth.requestMatchers("/api/v1/auth/**").permitAll();
-                auth.requestMatchers("/api/v1/admin/**").hasRole("ADMIN");
-                auth.requestMatchers("/api/v1/user/**").hasAnyRole("ADMIN", "USER");
-                auth.anyRequest().authenticated();
-//                auth.anyRequest().permitAll();
-            });
+            .authorizeHttpRequests
+                    (auth -> {
+                        auth.requestMatchers("/login", "/welcome")
+                                .permitAll();
+                        auth.requestMatchers("/api/v1/auth/**")
+                                .permitAll();
+                        auth.requestMatchers("/api/v1/admin/**")
+                                .hasRole("ADMIN");
+                        auth.requestMatchers("/api/v1/user/**")
+                                .hasAnyRole("ADMIN", "USER");
+                        auth.anyRequest()
+                                .authenticated();
+                    });
 
         http
-                .formLogin(
-                        form -> form
-                                .loginPage("/api/v1/auth/login")
-                                .loginProcessingUrl("/api/v1/auth/login")
-                                .defaultSuccessUrl("/api/v1/auth/welcome")
-                                .permitAll()
-                );
+            .formLogin(
+                    form -> form
+                        .loginPage("/api/v1/auth/login")
+                        .loginProcessingUrl("/api/v1/auth/login")
+                        .defaultSuccessUrl("/api/v1/auth/welcome")
+                        .permitAll()
+            ).logout(
+                    logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .permitAll()
+            );
 
         http
             .oauth2ResourceServer()

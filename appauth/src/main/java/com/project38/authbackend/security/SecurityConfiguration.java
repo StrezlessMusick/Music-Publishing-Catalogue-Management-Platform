@@ -67,7 +67,7 @@ public class SecurityConfiguration {
         http
             .formLogin(
                     form -> form
-                        .loginPage("/login1")
+                        .loginPage("/login")
 //                        .loginProcessingUrl("/login1")
                         .defaultSuccessUrl("/welcome")
                         .permitAll()

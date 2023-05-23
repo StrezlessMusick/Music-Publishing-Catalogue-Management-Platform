@@ -14,10 +14,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
-public class AuthBackend {
+public class AppAuth {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AuthBackend.class, args);
+		SpringApplication.run(AppAuth.class, args);
 	}
 
 	@Bean

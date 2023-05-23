@@ -8,19 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pubtalkapp" />
-        <module name="appuser" />
+        <module name="appauth" />
         <module name="authservice" />
-        <module name="authbackend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="appuser" target="17" />
       <module name="authservice" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="appauth" options="-parameters" />
       <module name="appuser" options="-parameters" />
-      <module name="authbackend" options="-parameters" />
       <module name="authservice" options="-parameters" />
       <module name="pubtalkapp" options="-parameters" />
     </option>

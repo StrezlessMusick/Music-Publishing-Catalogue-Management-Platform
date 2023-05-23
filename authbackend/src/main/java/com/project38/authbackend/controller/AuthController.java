@@ -4,9 +4,10 @@ import com.project38.authbackend.dto.LoginResponseDTO;
 import com.project38.authbackend.dto.RegistrationDTO;
 import com.project38.authbackend.model.ApplicationUser;
 import com.project38.authbackend.service.AuthenticationService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1/auth")
 @CrossOrigin("*")
 public class AuthController {
@@ -16,7 +17,7 @@ public class AuthController {
         return authenticationService.registerUser(body.getUsername(), body.getPassword());
     }
     // In more complex setups RegistrationDTO and LoginResponseDTO would be used separately
-    @PostMapping("/login")
+    @PostMapping("/loginUser")
     public LoginResponseDTO loginUser(@RequestBody RegistrationDTO body) {
         return authenticationService.loginUser(body.getUsername(), body.getPassword());
     }

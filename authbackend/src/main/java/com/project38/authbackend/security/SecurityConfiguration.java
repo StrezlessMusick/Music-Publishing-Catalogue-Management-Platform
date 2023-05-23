@@ -67,9 +67,9 @@ public class SecurityConfiguration {
         http
             .formLogin(
                     form -> form
-                        .loginPage("/api/v1/auth/login")
-                        .loginProcessingUrl("/api/v1/auth/login")
-                        .defaultSuccessUrl("/api/v1/auth/welcome")
+                        .loginPage("/login1")
+                        .loginProcessingUrl("/login1")
+                        .defaultSuccessUrl("/welcome")
                         .permitAll()
             ).logout(
                     logout -> logout

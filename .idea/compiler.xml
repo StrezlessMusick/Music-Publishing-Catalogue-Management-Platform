@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pubtalkapp" />
-        <module name="appauth" />
         <module name="authservice" />
+        <module name="appauth" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

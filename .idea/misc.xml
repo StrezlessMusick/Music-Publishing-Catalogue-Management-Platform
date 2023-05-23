@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/appuser/pom.xml" />
         <option value="$PROJECT_DIR$/authservice/pom.xml" />
         <option value="$PROJECT_DIR$/authbackend/pom.xml" />
+        <option value="$PROJECT_DIR$/appauth/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

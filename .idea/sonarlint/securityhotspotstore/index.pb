@@ -11,5 +11,3 @@ B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
 J
 appauth/docker-compose.yml,7/c/7cbe99b74372a6d3c8ea2c8f7f8eae32c42a4286
-?
-appauth/pom.xml,e/1/e17c14555659dd9fc56de743fa6888f5b7cb0c0b

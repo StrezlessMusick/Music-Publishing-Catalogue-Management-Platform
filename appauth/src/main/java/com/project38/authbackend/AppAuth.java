@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -29,7 +30,13 @@ public class AppAuth {
 			if (roleRepository.findByAuthority("ADMIN").isPresent()) return;
 
 			Role adminRole = roleRepository.save(new Role("ADMIN"));
-			roleRepository.save(new Role("USER"));
+			List<Role> defaultRoles = List.of(
+					new Role("USER"),
+					new Role("PUBLISHER"),
+					new Role("ARTIST")
+			);
+
+			roleRepository.saveAll(defaultRoles);
 
 			Set<Role> roles = new HashSet<>();
 			roles.add(adminRole);
@@ -41,7 +48,6 @@ public class AppAuth {
 					roles);
 
 			userRepository.save(admin);
-
 		};
 	}
 

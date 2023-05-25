@@ -50,5 +50,4 @@ public class AppAuth {
 			userRepository.save(admin);
 		};
 	}
-
 }

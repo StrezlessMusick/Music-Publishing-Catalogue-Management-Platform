@@ -35,7 +35,6 @@ public class AppAuth {
 					new Role("PUBLISHER"),
 					new Role("ARTIST")
 			);
-
 			roleRepository.saveAll(defaultRoles);
 
 			Set<Role> roles = new HashSet<>();

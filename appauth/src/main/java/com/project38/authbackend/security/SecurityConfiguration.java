@@ -52,12 +52,6 @@ public class SecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests
                     (auth -> {
-<<<<<<< HEAD
-//                        auth.requestMatchers("/login", "/register")
-=======
-//                        auth.requestMatchers("/login","/register", "/welcome")
->>>>>>> d1ef2f2 (Stashing)
-//                                .permitAll();
                         auth.requestMatchers("/api/v1/auth/**")
                                 .permitAll();
                         auth.requestMatchers("/api/v1/admin/**")
@@ -73,9 +67,9 @@ public class SecurityConfiguration {
                     form -> form
                         .loginPage("/login")
 //                        .loginProcessingUrl("/login")
-                        .successForwardUrl("/welcome")
-//                        .defaultSuccessUrl("/welcome")
-                        .permitAll()
+//                        .successForwardUrl("/welcome")
+                        .defaultSuccessUrl("/welcome")
+                    .permitAll()
             ).logout(
                     logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

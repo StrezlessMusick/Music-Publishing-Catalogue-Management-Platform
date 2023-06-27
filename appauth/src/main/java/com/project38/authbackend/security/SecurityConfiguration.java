@@ -52,6 +52,8 @@ public class SecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests
                     (auth -> {
+                        auth.requestMatchers("/login", "/register")
+                                .permitAll();
                         auth.requestMatchers("/api/v1/auth/**")
                                 .permitAll();
                         auth.requestMatchers("/api/v1/admin/**")
@@ -67,9 +69,9 @@ public class SecurityConfiguration {
                     form -> form
                         .loginPage("/login")
 //                        .loginProcessingUrl("/login")
-//                        .successForwardUrl("/welcome")
-                        .defaultSuccessUrl("/welcome")
-                    .permitAll()
+                        .successForwardUrl("/welcome")
+//                        .defaultSuccessUrl("/welcome")
+                        .permitAll()
             ).logout(
                     logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -90,7 +92,7 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web
+        return web -> web
                 .ignoring()
                 .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
     }
